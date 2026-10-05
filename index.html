@@ -1605,8 +1605,12 @@ body{font-size:1.0625rem}
   /* Videos: reproducen al verse y hacen pausa de 2,5 s en el cuadro final */
   document.querySelectorAll('#casaVid, video[data-auto]').forEach(v=>{ let t;
     v.addEventListener('ended',()=>{ t=setTimeout(()=>{ v.currentTime=0; v.play().catch(()=>{}); },2500); });
-    new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting){ if(v.paused&&!v.ended) v.play().catch(()=>{}); } else { clearTimeout(t); v.pause(); if(v.ended) v.currentTime=0; } }),{threshold:.25}).observe(v);
+    new IntersectionObserver(es=>es.forEach(e=>{ v._vis=e.isIntersecting; if(e.isIntersecting){ if(v.paused&&!v.ended) v.play().catch(()=>{}); } else { clearTimeout(t); v.pause(); if(v.ended) v.currentTime=0; } }),{threshold:.25}).observe(v);
   });
+  /* iPhone en modo de ahorro de batería no deja reproducir videos solos: al primer toque en la página se arrancan los que estén a la vista */
+  const vidsRetry=()=>document.querySelectorAll('#casaVid, video[data-auto]').forEach(v=>{ if(v._vis && v.paused && !v.ended){ v.muted=true; v.play().catch(()=>{}); } });
+  ['touchend','click','keydown'].forEach(ev=>addEventListener(ev,vidsRetry,{passive:true,capture:true}));
+  document.addEventListener('visibilitychange',()=>{ if(!document.hidden) vidsRetry(); });
 
   /* Hojas inferiores al estilo iOS: suben con un resorte, se cierran arrastrando hacia abajo
      y se pueden interrumpir en cualquier momento (el resorte siempre parte de la posición actual). */
