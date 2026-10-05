@@ -1081,6 +1081,8 @@ body{font-size:1.0625rem}
   #metodo .pin-in{align-content:center;padding-top:calc(var(--nav-h) + 40px);padding-bottom:60px;gap:clamp(48px,6svh,80px)}
   #metodo .steps{min-height:360px}
 }
+/* v67 · celular: espacio reservado para la onda entre la fecha del terremoto y el titular */
+@media (max-width:700px){.hero-content h1{margin-top:84px}}
 </style>
 
 </head>
@@ -1684,8 +1686,14 @@ body{font-size:1.0625rem}
   /* Tableta: cuando el cuadro del terremoto va arriba del titular, la onda ocupa el espacio libre entre los dos, sin pasar por detrás de ningún texto */
   function placeSeismo(){
     const q=document.querySelector('.quake'), eb=document.querySelector('.hero-eyebrow'), hero=cv.parentElement;
-    cv.style.top=''; cv.style.height=''; cv.style.left=''; cv.style.width='';
-    if(innerWidth<=700 || !q || !eb) return;
+    cv.style.top=''; cv.style.height=''; cv.style.left=''; cv.style.width=''; cv.style.display='';
+    if(innerWidth<=700){ /* celular: la onda va en el espacio libre entre la fecha del terremoto y el titular; si no cabe, no se muestra */
+      const h1=document.getElementById('h-hero'); if(!eb||!h1) return;
+      const h=hero.getBoundingClientRect(), top=eb.getBoundingClientRect().bottom-h.top+14, bottom=h1.getBoundingClientRect().top-h.top-14;
+      if(bottom-top<36){ cv.style.display='none'; return; }
+      cv.style.top=top+'px'; cv.style.height=Math.min(170,bottom-top)+'px'; cv.style.top=(top+Math.max(0,(bottom-top-170)/2))+'px'; return;
+    }
+    if(!q || !eb) return;
     const qs=getComputedStyle(q); if(qs.display==='none' || qs.position==='absolute') return;
     const h=hero.getBoundingClientRect(), top=q.getBoundingClientRect().bottom-h.top+20, bottom=eb.getBoundingClientRect().top-h.top-20;
     if(bottom-top<40){ const qr=q.getBoundingClientRect(), x=qr.right-h.left+32, w=h.width-x-32; if(w>160){ cv.style.top=(qr.top-h.top+20)+'px'; cv.style.height=(qr.height-40)+'px'; cv.style.left=x+'px'; cv.style.width=w+'px'; } return; }
