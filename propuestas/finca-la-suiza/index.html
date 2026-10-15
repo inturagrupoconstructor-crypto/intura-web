@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light only">
 <title>Propuesta Finca La Suiza</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <meta name="robots" content="noindex, nofollow">
@@ -14,16 +15,11 @@
 :root{
   --bg:#F6F6F4; --paper:#FFFFFF; --ink:#111214; --muted:#5E6066; --line:#D9D9D5; --soft:#ECECE8;
   --band:#0B0B0C; --band-ink:#F6F6F4; --accent:#3A64B8; --accent-soft:#E3EAF7; --good:#1F7A4D; --good-soft:#E2F1E8;
+  color-scheme:light;
   --f-display:"Archivo","Arial Narrow",Arial,sans-serif;
   --f-body:"IBM Plex Sans","Segoe UI",Calibri,Arial,sans-serif;
   --f-mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
 }
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
-  --bg:#121315; --paper:#1A1B1E; --ink:#ECECE8; --muted:#A3A5AB; --line:#2E3034; --soft:#222327;
-  --band:#000000; --band-ink:#F6F6F4; --accent:#88A8EA; --accent-soft:#1E2840; --good:#6CCB98; --good-soft:#16281E; color-scheme:dark}}
-:root[data-theme="dark"]{
-  --bg:#121315; --paper:#1A1B1E; --ink:#ECECE8; --muted:#A3A5AB; --line:#2E3034; --soft:#222327;
-  --band:#000000; --band-ink:#F6F6F4; --accent:#88A8EA; --accent-soft:#1E2840; --good:#6CCB98; --good-soft:#16281E; color-scheme:dark}
 *{box-sizing:border-box}
 body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.55}
 .wrap{max-width:1080px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
@@ -96,6 +92,7 @@ button.btn:hover{background:var(--ink);color:var(--paper)}
 
 /* tablas */
 .tbl{overflow-x:auto;border:1px solid var(--line);background:var(--paper)}
+td.m{display:none}
 table{border-collapse:collapse;width:100%;font-size:14px;min-width:640px}
 th{font-family:var(--f-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);text-align:left;font-weight:500;padding:10px 12px;border-bottom:2px solid var(--ink);white-space:nowrap}
 td{padding:8px 12px;border-bottom:1px solid var(--line);vertical-align:top}
@@ -161,6 +158,63 @@ footer a{color:var(--band-ink)}
   footer .wrap{grid-template-columns:1fr}
   .band .doc{display:none}
   details.group summary{grid-template-columns:34px 1fr auto 16px;gap:8px;padding:12px}
+}
+@media (max-width:640px){
+  body{font-size:15px}
+  .hero h1{font-size:44px}
+  .meta{grid-template-columns:1fr;gap:2px}
+  .meta dd{margin-bottom:10px}
+  .fig .v{white-space:normal;font-size:26px}
+  .sec-head{gap:10px}
+  .sec-head h2{font-size:22px}
+  section.sec{padding-block:36px}
+  .three > div{padding:18px}
+  .cmp-row .track{height:26px}
+  .seg{font-size:0;padding:0}
+  .legend{display:grid;grid-template-columns:1fr;gap:6px}
+  .tbl{overflow:visible}
+  table{min-width:0;font-size:14px}
+  thead{display:none}
+  table,tbody,tr,td{display:block;width:100%}
+  tr{border-bottom:1px solid var(--line);padding:10px 12px}
+  td{border:0;padding:2px 0;text-align:left}
+  td.n,td.c{display:flex;justify-content:space-between;gap:12px;text-align:right;white-space:normal}
+  td[data-label]::before{content:attr(data-label);color:var(--muted);font-family:var(--f-body);font-size:12px;text-align:left}
+  td:empty{display:none}
+  tr.it td:first-child{font-size:12px}
+  tr.it td.d{font-weight:500;padding-bottom:6px}
+  tr.it td.c,tr.it td.n:not(.tot){display:none}
+  tr.it{display:grid;grid-template-columns:1fr auto;column-gap:12px;row-gap:2px}
+  tr.it td{width:auto}
+  tr.it td:first-child,tr.it td.d{grid-column:1 / -1}
+  tr.it td.d{padding-bottom:2px}
+  tr.it td.m{display:block;color:var(--muted);font-family:var(--f-mono);font-size:12.5px;align-self:center}
+  tr.it td.tot{font-weight:600;display:block;text-align:right;font-family:var(--f-mono)}
+  tr.it td.tot::before{display:none}
+  tr.it td.d:only-of-type{}
+  tr.chap,tr.sub,tr.total,tr.hl{display:flex;justify-content:space-between;gap:12px;align-items:baseline}
+  tr.chap td,tr.sub td,tr.total td,tr.hl td{width:auto;background:transparent}
+  tr.chap td.n,tr.sub td.n,tr.total td.n{white-space:nowrap;flex:none}
+  tr.chap{background:var(--soft)} tr.sub{background:var(--soft)} tr.hl{background:var(--accent-soft)} tr.total{background:var(--ink)}
+  tr.total td{color:var(--paper)}
+  tr.hl td.n::before{display:none}
+  tr.note{padding-top:0}
+  tr.kv td.d{font-weight:500;padding-bottom:4px}
+  tr.kv td.tot{font-weight:600}
+  tr.kv td:first-child:not(.d){font-family:var(--f-mono);font-size:12px;color:var(--muted)}
+  details.group summary{grid-template-columns:26px 1fr 14px;row-gap:4px}
+  details.group summary .cv{grid-column:2;grid-row:2;font-size:14px}
+  details.group summary .chev{grid-column:3;grid-row:1}
+  .tabs{flex-wrap:wrap;border-bottom:0;gap:6px;margin-bottom:10px}
+  .tabs button{border:1px solid var(--line);border-radius:3px;margin:0;padding:8px 10px;background:var(--paper);font-size:13px}
+  .tabs button[aria-selected="true"]{border-color:var(--ink);background:var(--ink);color:var(--paper)}
+  .tabs button[aria-selected="true"] .mono{color:var(--paper)}
+  #pg-tbl{border-top:1px solid var(--line)!important}
+  .grand{padding:14px;gap:6px 12px}
+  .grand .t.r{font-size:17px}
+  .sheet-scroll{max-height:60vh}
+  .sheet.zoom img{width:400%}
+  footer .contact{font-size:13px;word-break:break-word}
 }
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
@@ -339,7 +393,7 @@ $('#legend').innerHTML = rowsCmp.flatMap(r=>r.segs).filter(([n])=>!seen.has(n)&&
 
 // presupuesto por capítulos
 const head6 = `<thead><tr><th>Ítem</th><th>Descripción</th><th class="c">Und</th><th class="n">Cant.</th><th class="n">Vr. unitario</th><th class="n">Vr. parcial</th></tr></thead>`;
-const itemRow = r => `<tr class="it"><td>${esc(typeof r[0]==='number'?r[0].toFixed(2):r[0])}</td><td>${esc(r[1])}${r[0]==='4.07'?' <a href="#bodega">ver desglose</a>':''}</td><td class="c">${esc(r[2])}</td><td class="n">${fmt(r[3])}</td><td class="n">${r[4]!=null?money(r[4]):''}</td><td class="n">${money(r[5])}</td></tr>`;
+const itemRow = r => `<tr class="it"><td>${esc(typeof r[0]==='number'?r[0].toFixed(2):r[0])}</td><td class="d">${esc(r[1])}${r[0]==='4.07'?' <a href="#bodega">ver desglose</a>':''}</td><td class="m">${fmt(r[3])} ${esc(r[2])}${r[4]!=null?' × '+money(r[4]):''}</td><td class="c" data-label="Unidad">${esc(r[2])}</td><td class="n" data-label="Cantidad">${fmt(r[3])}</td><td class="n" data-label="Valor unitario">${r[4]!=null?money(r[4]):''}</td><td class="n tot" data-label="Valor parcial">${money(r[5])}</td></tr>`;
 const groups = []; let g = null;
 for (const r of cd.slice(0,-3)) { if (r[2]==null && r[3]==null) { g = {r, items:[]}; groups.push(g); } else g.items.push(r); }
 $('#cd-groups').innerHTML = groups.map((g,i) => `<details class="group"${i===0?' open':''}><summary><span class="cn">${g.r[0]}</span><span><span class="ct">${esc(g.r[1])}</span><div class="bar-mini"><span style="width:${(g.r[5]/TOTAL_CD*100).toFixed(1)}%"></span></div></span><span class="cv">${money(g.r[5])}</span><span class="chev" aria-hidden="true">›</span></summary><div class="tbl"><table>${head6}<tbody>${g.items.map(itemRow).join('')}</tbody></table></div></details>`).join('');
@@ -358,9 +412,9 @@ const tabNames = ['Mano de obra','Materiales','Transportes y alquileres','Valor 
 function showTab(i){
   [...$('#pg-tabs').children].forEach((b,j)=>b.setAttribute('aria-selected', j===i));
   const c = caps[i];
-  if (i===3) { $('#pg-tbl').innerHTML = `<table><tbody><tr class="it"><td>4</td><td>Valor fijo y cerrado por ejecución y administración de la obra — Intura Grupo Constructor</td><td class="n">${money(FIJO)}</td></tr><tr class="note"><td></td><td colspan="2">Incluye la dirección técnica, la ejecución y la administración durante toda la obra.</td></tr></tbody></table>`; }
+  if (i===3) { $('#pg-tbl').innerHTML = `<table><tbody><tr class="kv"><td>4</td><td class="d">Valor fijo y cerrado por ejecución y administración de la obra — Intura Grupo Constructor</td><td class="n tot" data-label="Valor">${money(FIJO)}</td></tr><tr class="note"><td></td><td colspan="2">Incluye la dirección técnica, la ejecución y la administración durante toda la obra.</td></tr></tbody></table>`; }
   else {
-    $('#pg-tbl').innerHTML = `<table>${head6}<tbody>${c.items.map(r => r[4]==null && r[0]==null ? `<tr class="hl"><td></td><td>${esc(r[1])}</td><td class="c">${esc(r[2])}</td><td class="n"><b>${fmt(r[3])}</b></td><td></td><td></td></tr>` : itemRow(r)).join('')}<tr class="sub"><td colspan="5">Total ${esc(tabNames[i].toLowerCase())}</td><td class="n">${money(c.r[5])}</td></tr></tbody></table>`;
+    $('#pg-tbl').innerHTML = `<table>${head6}<tbody>${c.items.map(r => r[4]==null && r[0]==null ? `<tr class="hl"><td></td><td>${esc(r[1])}</td><td class="n"><b>${fmt(r[3])} ${esc(r[2])}</b></td><td></td><td></td><td></td></tr>` : itemRow(r)).join('')}<tr class="sub"><td colspan="5">Total ${esc(tabNames[i].toLowerCase())}</td><td class="n">${money(c.r[5])}</td></tr></tbody></table>`;
   }
   try { localStorage.setItem('suiza-tab', i); } catch(e) {}
 }
@@ -372,7 +426,7 @@ $('#pg-grand').innerHTML = `<span>Mano de obra</span><span class="r">${money(MO)
 
 // cuadrilla
 const crew = pg.filter(r => typeof r[0]==='number' && r[2]==='día');
-$('#crew-tbl').innerHTML = `<table><thead><tr><th>Trabajador</th><th class="n">Valor por día</th><th class="n">Total ${DIAS} días</th></tr></thead><tbody>${crew.map(r=>`<tr><td>${esc(r[1])}</td><td class="n">${money(r[4])}</td><td class="n">${money(r[5])}</td></tr>`).join('')}<tr class="sub"><td>Cuadrilla completa</td><td class="n">${money(crew.reduce((a,r)=>a+r[4],0))}</td><td class="n">${money(MO)}</td></tr></tbody></table>`;
+$('#crew-tbl').innerHTML = `<table><thead><tr><th>Trabajador</th><th class="n">Valor por día</th><th class="n">Total ${DIAS} días</th></tr></thead><tbody>${crew.map(r=>`<tr class="kv"><td class="d">${esc(r[1])}</td><td class="n" data-label="Valor por día">${money(r[4])}</td><td class="n tot" data-label="Total ${DIAS} días">${money(r[5])}</td></tr>`).join('')}<tr class="sub"><td colspan="2">Cuadrilla completa (${money(crew.reduce((a,r)=>a+r[4],0))} por día)</td><td class="n">${money(MO)}</td></tr></tbody></table>`;
 
 $('#consid').innerHTML = [
   `La mano de obra corresponde a una cuadrilla de 4 personas (oficial, maestro y 2 ayudantes) durante ${DIAS} días. Si la duración cambia, la nómina cambia en la misma proporción.`,
