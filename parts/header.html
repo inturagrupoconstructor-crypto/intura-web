@@ -1,0 +1,21 @@
+<div class="wrap">
+  <header class="jarvis" id="jarvis">
+    <div class="hudwrap"><canvas id="hud" role="img" aria-label="Asistente: casco holográfico. Tócalo para escuchar el saludo."></canvas></div>
+    <div class="jtext">
+      <div class="jtop"><span id="today"></span><span>Ing. Daniel · <b id="clock">--:--</b></span></div>
+      <p class="jsay" id="say" aria-live="polite">Iniciando sistemas…</p>
+      <div class="jstats" id="stats"><span class="on"><b id="n">0</b> pendientes</span></div>
+      <button type="button" class="voz" id="voz" aria-pressed="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 6v4h2.5l3.5 3V3L5 6z"/><path id="vozwave" d="M11 5.5a3.5 3.5 0 0 1 0 5M12.8 3.6a6 6 0 0 1 0 8.8"/></svg><span id="vozlbl">Voz activada</span></button>
+    </div>
+    <form class="ask" id="ask" autocomplete="off" hidden>
+      <span class="pr" aria-hidden="true">›</span>
+      <input type="text" id="q" maxlength="400" placeholder="Pregúntame por una obra. Ej.: ¿qué me falta en la obra de…?" aria-label="Pregunta para el asistente">
+      <button type="submit" id="askbtn" disabled>Preguntar</button>
+    </form>
+    <section class="answer" id="answer" hidden aria-live="polite">
+      <div class="ahead"><span id="aq"></span><button type="button" id="aclose">Cerrar ✕</button></div>
+      <p class="atext" id="atext"></p>
+      <ul id="alist"></ul>
+    </section>
+  </header>
+

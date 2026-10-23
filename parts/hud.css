@@ -1,0 +1,64 @@
+/* Consola tipo Jarvis: siempre oscura (es una pantalla holográfica), el resto del tablero sigue el tema */
+:root{
+  --hud-bg:#03080C; --hud-bg2:#0A1A24; --hud-cyan:#4FD8FF; --hud-ice:#CDEFFF;
+  --hud-dim:rgba(79,216,255,.38); --hud-line:rgba(79,216,255,.22); --hud-warn:#FFB35C;
+}
+body{padding-block:24px 64px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.jarvis{position:relative;overflow:hidden;border-radius:16px;color:var(--hud-ice);color-scheme:dark;
+  background:radial-gradient(120% 90% at 22% 30%,var(--hud-bg2),var(--hud-bg) 70%);
+  border:1px solid var(--hud-line);padding:18px;display:grid;gap:16px;
+  grid-template-columns:clamp(190px,36%,250px) minmax(0,1fr);align-items:center}
+.jarvis::after{content:"";position:absolute;inset:0;pointer-events:none;border-radius:inherit;
+  background:repeating-linear-gradient(0deg,rgba(79,216,255,.035) 0 1px,transparent 1px 3px)}
+.hudwrap{position:relative;width:100%;aspect-ratio:1;max-width:100%}
+#hud{position:absolute;inset:0;width:100%;height:100%;display:block;cursor:pointer;border-radius:50%}
+.jtext{display:grid;gap:12px;min-width:0}
+.jtop{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--hud-dim)}
+.jtop b{color:var(--hud-cyan);font-weight:500}
+.jsay{margin:0;font-family:var(--display);font-variation-settings:"wdth" 112;font-weight:600;font-size:clamp(21px,4.6vw,30px);line-height:1.12;letter-spacing:-.005em;color:var(--hud-ice);min-height:2.3em;text-wrap:balance;text-shadow:0 0 18px rgba(79,216,255,.35)}
+.jsay .num{color:var(--hud-cyan)}
+.jsay .caret{display:inline-block;width:.5em;height:.9em;margin-left:2px;vertical-align:-.08em;background:var(--hud-cyan);box-shadow:0 0 10px var(--hud-cyan)}
+@media (prefers-reduced-motion:no-preference){.jsay .caret{animation:blink 1s steps(1) infinite}@keyframes blink{50%{opacity:0}}}
+.jstats{display:flex;flex-wrap:wrap;gap:6px}
+.jstats span{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;border:1px solid var(--hud-line);border-radius:4px;padding:4px 8px;color:var(--hud-dim);font-variant-numeric:tabular-nums}
+.jstats span.on{color:var(--hud-cyan);border-color:var(--hud-dim)}
+.jstats span.warn{color:var(--hud-warn);border-color:rgba(255,179,92,.45)}
+.voz{justify-self:start;display:inline-flex;align-items:center;gap:8px;background:transparent;border:1px solid var(--hud-line);color:var(--hud-dim);border-radius:999px;padding:6px 12px 6px 10px;font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;cursor:pointer}
+.voz svg{width:15px;height:15px}
+.voz[aria-pressed="true"]{color:var(--hud-cyan);border-color:var(--hud-dim)}
+.voz:hover{color:var(--hud-ice)}
+/* preguntar */
+.ask{grid-column:1/-1;display:flex;gap:8px;align-items:center;border:1px solid var(--hud-line);background:rgba(79,216,255,.05);border-radius:10px;padding:6px 6px 6px 12px;position:relative;z-index:1}
+.ask:focus-within{border-color:var(--hud-dim);box-shadow:0 0 0 3px rgba(79,216,255,.12)}
+.ask .pr{font-family:var(--mono);color:var(--hud-cyan);font-size:14px}
+.ask input{flex:1;min-width:0;border:0;background:transparent;color:var(--hud-ice);font-size:16px;padding:8px 2px;outline:none}
+.ask input::placeholder{color:rgba(205,239,255,.42)}
+.ask button{flex:none;border:0;border-radius:7px;background:var(--hud-cyan);color:#03141C;font-family:var(--display);font-variation-settings:"wdth" 112;font-weight:700;font-size:14px;padding:9px 14px;cursor:pointer}
+.ask button:disabled{opacity:.4;cursor:default}
+.jarvis :focus-visible{outline:2px solid var(--hud-cyan);outline-offset:2px}
+.answer[hidden],.ask[hidden]{display:none}
+.answer{grid-column:1/-1;display:grid;gap:10px;position:relative;z-index:1;border-top:1px solid var(--hud-line);padding-top:14px}
+.ahead{display:flex;justify-content:space-between;align-items:baseline;gap:10px;font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--hud-dim)}
+.ahead button{border:0;background:transparent;color:var(--hud-dim);font:inherit;letter-spacing:inherit;text-transform:inherit;cursor:pointer;padding:4px}
+.ahead button:hover{color:var(--hud-ice)}
+.atext{margin:0;font-size:16px;line-height:1.5;color:var(--hud-ice);max-width:62ch;white-space:pre-line}
+.atext.err{color:var(--hud-warn)}
+/* las tareas de la respuesta usan las mismas tarjetas, en versión holográfica */
+.answer ul{gap:6px}
+.answer li.task{background:rgba(79,216,255,.06);border-color:var(--hud-line);color:var(--hud-ice)}
+.answer li.task.urg{box-shadow:inset 4px 0 0 var(--hud-warn)}
+.answer .check{border-color:var(--hud-dim);color:var(--hud-bg)}
+.answer li.done .check{background:var(--hud-cyan);border-color:var(--hud-cyan)}
+.answer .meta{color:var(--hud-dim)}
+.answer .meta .late,.answer .meta .urgtag{color:var(--hud-warn)}
+.answer .meta .pj{color:var(--hud-cyan)}
+.answer li.done .text{color:var(--hud-dim)}
+.answer .del{color:var(--hud-dim)}
+.answer .edit{background:var(--hud-bg);color:var(--hud-ice);border-color:var(--hud-line)}
+@media (max-width:560px){
+  .jarvis{grid-template-columns:1fr;justify-items:center;text-align:center;padding:16px 14px}
+  .hudwrap{width:min(230px,70vw)}
+  .jtext{justify-items:center;width:100%}
+  .jtop{justify-content:center}.jstats{justify-content:center}.voz{justify-self:center}
+  .answer,.ask{width:100%;text-align:left}
+}

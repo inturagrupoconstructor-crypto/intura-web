@@ -1,0 +1,18 @@
+/* Layout: una columna como planilla de obra. Captura rápida arriba; debajo, grupos (Proyectos de Intura, Otros…) con sus proyectos plegables y las tareas de cada uno */
+:root{
+  --bg:#EEEDE8; --panel:#FAF9F6; --sub:#F3F2EE; --ink:#141516; --muted:#6B6C66; --line:#D4D2CB;
+  --accent:#F2D64B; --accent-ink:#141516; --urgent:#C2410C; --ok:#3F6B4E; --stage:#DCDCDA; --glow:transparent;
+  --form:#DAD4C8; --form-line:#C2BBAD; --form-muted:#57554C;
+  --display:"Archivo","Arial Narrow",Helvetica,Arial,sans-serif;
+  --body:"IBM Plex Sans",Helvetica,Arial,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0E0F10; --panel:#18191B; --sub:#141517; --ink:#EEECE6; --muted:#8E8F88; --line:#2C2D2F;
+  --accent:#F2D64B; --accent-ink:#141516; --urgent:#F08A5D; --ok:#7FB28E; --stage:#CFCFCD; --glow:rgba(238,236,230,.13); --form:#2B2925; --form-line:#45413A; --form-muted:#A6A297; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0E0F10; --panel:#18191B; --sub:#141517; --ink:#EEECE6; --muted:#8E8F88; --line:#2C2D2F;
+  --accent:#F2D64B; --accent-ink:#141516; --urgent:#F08A5D; --ok:#7FB28E; --stage:#CFCFCD; --glow:rgba(238,236,230,.13); --form:#2B2925; --form-line:#45413A; --form-muted:#A6A297; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.45;padding:28px 16px 64px}
+.wrap{max-width:680px;margin:0 auto;display:grid;gap:22px}

@@ -1,0 +1,12 @@
+  <form class="add" id="form" autocomplete="off">
+    <input type="text" id="txt" placeholder="Escribe una tarea y presiona Enter…" maxlength="300" aria-label="Nueva tarea">
+    <div class="row">
+      <label class="chip">Proyecto <select id="proj" aria-label="Proyecto de la tarea"><option value="">General</option></select></label>
+      <button type="button" class="chip" id="urg" aria-pressed="false">⚑ Urgente</button>
+      <label class="chip">Fecha <input type="date" id="due" aria-label="Fecha límite"></label>
+      <button class="btn" id="addbtn" type="submit" disabled>Agregar</button>
+    </div>
+  </form>
+
+  <p class="notice" id="notice">Cargando tus tareas…</p>
+  <div id="board" class="wrap" style="gap:28px"></div>
