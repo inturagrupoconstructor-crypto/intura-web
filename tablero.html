@@ -132,40 +132,41 @@ a{color:inherit}
 /* calendario */
 .calnav{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:12px}
 .calnav b{font-size:17px;font-weight:700;text-align:center;flex:1}
-/* la semana como lista: una fila por día, solo con lo que hay (sin horas vacías) */
-.days{display:grid;align-content:start}
-.drow{display:grid;grid-template-columns:70px minmax(0,1fr);gap:10px;align-items:start;padding:5px 0;border-top:1px solid var(--line)}
-.dlab{display:flex;align-items:center;gap:6px;color:var(--muted);min-height:30px}
-.dlab span{font-size:12px;font-weight:600;width:28px}
-.dlab b{font-size:14px;font-weight:700;color:var(--ink);width:28px;height:28px;border-radius:50%;display:grid;place-items:center;font-variant-numeric:tabular-nums}
-.drow.today .dlab span{color:var(--ink)}
-.drow.today .dlab b{background:var(--accent);color:var(--accent-ink)}
-.drow.past:not(.today){opacity:.55}
-.ditems{display:flex;flex-wrap:wrap;gap:6px;min-width:0;align-content:start}
-.ditems .it{flex:1 1 170px;max-width:100%}
-.it{display:grid;gap:1px;min-width:0;border-radius:10px;padding:5px 9px;background:var(--sub);color:var(--ink);text-decoration:none;font-size:12px;line-height:1.3;border-left:3px solid var(--pc,transparent)}
-.it time{font-family:var(--mono);font-size:10.5px;color:var(--muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.it b{font-weight:600;overflow-wrap:anywhere;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
-.it.ev{background:var(--accent);color:var(--accent-ink);border-left-color:transparent}
+/* la semana en tarjetas: cada día es su propia tarjeta y cada actividad un bloque sólido */
+.days{display:grid;gap:10px;grid-template-columns:repeat(7,minmax(0,1fr));align-content:start}
+.dcard{display:flex;flex-direction:column;gap:8px;min-width:0;min-height:150px;background:var(--card-hi);border:1px solid var(--line);border-radius:16px;padding:10px}
+.dcard.today{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent),0 14px 30px -18px var(--accent)}
+.dcard.past:not(.today){opacity:.6}
+.dhead{display:flex;align-items:center;gap:8px;min-width:0}
+.dhead span{font-size:13px;font-weight:700;color:var(--muted);flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.dhead b{font-size:15px;font-weight:800;width:30px;height:30px;border-radius:50%;display:grid;place-items:center;background:var(--sub);font-variant-numeric:tabular-nums;flex:none}
+.dcard.today .dhead span{color:var(--ink)}
+.dcard.today .dhead b{background:var(--accent);color:var(--accent-ink)}
+.dlist{display:grid;gap:6px;align-content:start;min-height:0}
+.it{display:grid;gap:2px;min-width:0;border-radius:10px;padding:8px 10px;color:#fff;text-decoration:none;font-size:12.5px;line-height:1.3;background:var(--muted)}
+.it time{font-family:var(--mono);font-size:10.5px;opacity:.85;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.it b{font-weight:700;overflow-wrap:anywhere;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.it.ev{background:var(--accent);color:var(--accent-ink)}
 .it.ev.per{background:var(--info);color:#fff}
-.it.ev time{color:inherit;opacity:.8}
+.it.cal{background:var(--ink);color:var(--card)}
+.it.fest{background:var(--ok);color:var(--accent-ink)}
+.it.task{background:var(--pc,var(--muted));color:#fff}
+.it.task.late{box-shadow:inset 0 0 0 2px var(--bad)}
 .it.past{opacity:.5}
-.it.cal{background:var(--info-soft);color:var(--info)}
-.it.fest{background:var(--ok-soft);color:var(--ok)}
-.it.cal time,.it.fest time{color:inherit;opacity:.8}
-.it.task.urg time{color:var(--accent)}
-.it.task.late{background:var(--bad-soft)}
-.it.task.late time{color:var(--bad)}
 a.it:hover{filter:brightness(1.08)}
-.dempty{color:var(--faint);font-size:12.5px;padding:6px 0}
+.dempty{color:var(--faint);font-size:12.5px;padding:4px 2px}
 .calempty{grid-column:1/-1;margin-top:10px;display:flex;align-items:center;gap:12px;flex-wrap:wrap;background:var(--card-hi);border:1px solid var(--line2);border-radius:14px;padding:12px 14px;font-size:13.5px;color:var(--muted)}
 .calempty b{color:var(--ink)}
 .calempty .chipbtn{margin-left:auto}
 @media (max-width:640px){.calnav .lg{display:none}.calnav .chipbtn{width:38px;height:38px;padding:0;font-size:18px}}
+@media (max-width:1199px){.days{grid-template-columns:repeat(4,minmax(0,1fr))}}
+@media (max-width:860px){.days{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:640px){
-  .ditems .it{flex-basis:100%;padding:9px 12px;font-size:14px}
+  .days{grid-template-columns:minmax(0,1fr)}
+  .dcard{min-height:0}
+  .dcard.free{flex-direction:row;align-items:center}
+  .it{padding:10px 12px;font-size:14px}
   .it time{font-size:12px}
-}
 }
 
 /* asistente (pantalla holográfica) */
@@ -218,12 +219,14 @@ form.add{display:grid;gap:10px;background:var(--sub);border:1px solid var(--line
 .ghost:hover{color:var(--ink);background:var(--sub)}
 .ghost.danger{color:var(--bad)}
 .ghost.armed{background:var(--bad);color:#fff}
-#board{display:grid;gap:18px;margin-top:16px}
-.group{display:grid;gap:10px}
+#board{display:grid;gap:12px;margin-top:16px}
+.group{display:grid;gap:10px;background:var(--card-hi);border:1px solid var(--line2);border-radius:18px;padding:8px 14px;box-shadow:var(--shadow)}
+.group.open{padding-bottom:14px}
+.group:not(.open)>.ghead{border-bottom:0;padding-bottom:0}
 .ghead{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;padding-bottom:6px;border-bottom:1px solid var(--line)}
 .ghead h2{margin:0;flex:1;min-width:0;font-size:15px;font-weight:700}
 .gtoggle{width:100%;display:flex;align-items:center;gap:10px;flex-wrap:wrap;background:transparent;border:0;cursor:pointer;padding:4px 0;text-align:left;font:inherit}
-.gtoggle .gname{min-width:0;overflow-wrap:anywhere;text-transform:uppercase;letter-spacing:.06em;font-size:13px}
+.gtoggle .gname{min-width:0;overflow-wrap:anywhere;text-transform:uppercase;letter-spacing:.06em;font-size:14px;font-weight:800}
 .group.open>.ghead .chev{transform:rotate(90deg)}
 .gcount{font-size:12px;font-weight:600;color:var(--muted);letter-spacing:0;text-transform:none}
 .gcount.has{color:var(--accent)}
@@ -327,7 +330,8 @@ li.done .text{text-decoration:line-through;color:var(--muted)}
   .w-pend form.add,.w-pend .notice{flex:none}
   .w-pend #board{flex:1;min-height:0;overflow:auto;margin-top:12px;padding-right:4px;align-content:start;scrollbar-width:thin}
   .w-cal .calnav{flex:none;margin-bottom:4px}
-  .w-cal .days{flex:1;min-height:0;overflow:auto;scrollbar-width:thin}
+  .w-cal .days{flex:1;min-height:0;overflow:auto;scrollbar-width:thin;grid-auto-rows:minmax(150px,1fr)}
+  .w-cal .dlist{overflow:auto;scrollbar-width:thin}
   .calempty{margin-top:8px;padding:8px 12px;font-size:12.5px}
   .w-asis{gap:10px}
   .w-asis .hudwrap{width:auto;height:min(230px,30vh);flex:none;margin-top:auto}
@@ -618,7 +622,7 @@ li.done .text{text-decoration:line-through;color:var(--muted)}
     events.filter(e=>e.allDay&&e.days.includes(k)).forEach(e=>out.push(item(e.link,"it "+(e.fest?"fest":"cal"),e.fest?"Festivo":"Todo el día",e.title)));
     events.filter(e=>!e.allDay&&ymd(e.start)===k).sort((x,y)=>x.start-y.start).forEach(e=>
       out.push(item(e.link,"it ev"+(e.per?" per":"")+((e.end||e.start)<now?" past":""),hm(e.start)+(e.end&&ymd(e.end)===k?" – "+hm(e.end):""),e.title)));
-    dayTasks(k).forEach(t=>{const it=item(null,"it task"+(t.due<td?" late":t.urgent?" urg":""),(t.due<td?"Vencida · ":t.urgent?"Urgente · ":"")+pname(t),t.text);
+    dayTasks(k).forEach(t=>{const it=item(null,"it task"+(t.due<td?" late":t.urgent?" urg":""),"☐ "+(t.due<td?"Vencida · ":t.urgent?"Urgente · ":"")+pname(t),t.text);
       const c=colorOf(t.projectId);if(c)it.style.setProperty("--pc",c);out.push(it)});
     return out}
   function renderCal(){
@@ -627,9 +631,9 @@ li.done .text{text-decoration:line-through;color:var(--muted)}
     $("caltitle").textContent=inWeek?new Date().getDate()+" de "+MES[new Date().getMonth()]:a.getMonth()===b.getMonth()?a.getDate()+" – "+b.getDate()+" de "+MES[a.getMonth()]:a.getDate()+" "+MES[a.getMonth()].slice(0,3)+" – "+b.getDate()+" "+MES[b.getMonth()].slice(0,3);
     const kids=[];
     ds.forEach((d,i)=>{const k=ymd(d), items=dayItems(k,td);
-      kids.push(h("div",{class:"drow"+(k===td?" today":k<td?" past":""),role:"group","aria-label":DLARGO[i]+" "+d.getDate()},
-        h("div",{class:"dlab"},h("span",{text:DCORTO[i]}),h("b",{text:String(d.getDate())})),
-        h("div",{class:"ditems"},...(items.length?items:[h("div",{class:"dempty",text:"Libre"})]))))});
+      kids.push(h("section",{class:"dcard"+(k===td?" today":k<td?" past":"")+(items.length?"":" free"),"aria-label":DLARGO[i]+" "+d.getDate()},
+        h("div",{class:"dhead"},h("span",{text:DLARGO[i]}),h("b",{text:String(d.getDate())})),
+        h("div",{class:"dlist"},...(items.length?items:[h("div",{class:"dempty",text:"Libre"})]))))});
     const note=calMsg||perMsg;
     if(note)kids.push(h("div",{class:"calempty"},h("span",{html:note}),calState==="err"?Object.assign(h("button",{type:"button",class:"chipbtn",text:"Ver conexiones"}),{onclick:e=>{e.stopPropagation();toggle($("menu"),$("me"),true);$("conexiones").scrollIntoView({block:"nearest"})}}):null));
     $("days").replaceChildren(...kids);
