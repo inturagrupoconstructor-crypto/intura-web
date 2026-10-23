@@ -21,8 +21,8 @@ window.claude={use:async n=>n==="db"?{collection:col}:n==="sample"?sample:n==="m
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@500&display=swap">
 <style>
-/* Layout: panel de widgets. Barra lateral de apps a la izquierda, barra superior (tema, asistente, avisos, perfil),
-   y una cuadrícula: calendario + asistente arriba; pendientes, Drive y web debajo. Oscuro por defecto con brillo naranja. */
+/* Layout: tablero por secciones. Barra lateral con las secciones a la izquierda (abajo en celular), barra superior (tema, asistente, avisos, perfil)
+   y una sección visible a la vez: Pendientes + asistente (principal), Calendario o Página web. Oscuro por defecto con brillo naranja. */
 :root{
   --bg:#0C0806; --glow:rgba(255,92,22,.42); --glow2:rgba(255,140,60,.16);
   --card:#17110E; --card-hi:#1F1713; --sub:rgba(255,236,222,.045); --line:rgba(255,236,222,.08); --line2:rgba(255,236,222,.14);
@@ -129,9 +129,15 @@ a{color:inherit}
 .nempty{padding:14px 10px;color:var(--muted);font-size:14px}
 
 /* cuadrícula de widgets */
-.grid{display:grid;gap:16px;grid-template-columns:repeat(3,minmax(0,1fr));grid-template-areas:"cal cal asis" "pend pend drive" "pend pend web";align-items:start}
+/* secciones: .main[data-view] = pend (principal) | cal | web; solo se ve la sección activa */
+.grid{display:grid;gap:16px;grid-template-columns:minmax(0,1fr);align-items:start}
+.main[data-view="pend"] .w-cal,.main[data-view="pend"] .w-web,
+.main[data-view="cal"] .w-pend,.main[data-view="cal"] .w-asis,.main[data-view="cal"] .w-web,
+.main[data-view="web"] .w-pend,.main[data-view="web"] .w-asis,.main[data-view="web"] .w-cal{display:none!important}
+.w-pend{order:-1}
+@media (min-width:861px){.main[data-view="pend"] .grid{grid-template-columns:minmax(0,1.8fr) minmax(0,1fr)}}
 .w{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:18px;box-shadow:var(--shadow);min-width:0;scroll-margin-top:16px}
-.w-cal{grid-area:cal}.w-asis{grid-area:asis;align-self:stretch}.w-pend{grid-area:pend}.w-drive{grid-area:drive}.w-web{grid-area:web}
+.w-asis{align-self:stretch}
 .wh{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:14px;min-width:0}
 .wh h2{margin:0;font-size:18px;font-weight:700;letter-spacing:-.01em;display:flex;align-items:center;gap:10px;min-width:0}
 .wh h2 .cnt{font-size:12px;font-weight:700;color:var(--accent);background:var(--accent-soft);border-radius:999px;padding:2px 9px;font-variant-numeric:tabular-nums}
@@ -285,29 +291,6 @@ li.done .text{text-decoration:line-through;color:var(--muted)}
 .newgroup{justify-self:start}
 @media (prefers-reduced-motion:no-preference){li.task{animation:in .18s ease-out}@keyframes in{from{transform:translateY(4px);opacity:.4}}}
 
-/* drive */
-.dsearch{display:flex;align-items:center;gap:8px;border:1px solid var(--line);background:var(--sub);border-radius:12px;padding:0 10px;margin-bottom:10px}
-.dsearch svg{width:16px;height:16px;color:var(--muted);flex:none}
-.dsearch input{flex:1;min-width:0;border:0;background:transparent;outline:none;padding:9px 0;font-size:14px}
-.files{display:grid;gap:4px}
-.file{display:grid;grid-template-columns:36px minmax(0,1fr) auto;gap:10px;align-items:center;padding:8px;border-radius:12px;text-decoration:none;color:var(--ink)}
-.file:hover{background:var(--sub)}
-.ficon{width:36px;height:36px;border-radius:10px;display:grid;place-items:center;font-size:10px;font-weight:800;letter-spacing:.02em}
-.ficon svg{width:18px;height:18px}
-.f-folder{background:var(--accent-soft);color:var(--accent)}
-.f-pdf{background:var(--bad-soft);color:var(--bad)}
-.f-img{background:var(--ok-soft);color:var(--ok)}
-.f-doc{background:var(--info-soft);color:var(--info)}
-.f-other{background:var(--sub);color:var(--muted)}
-.fname{display:block;font-weight:600;font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.fmeta{display:block;font-size:12px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.fgo{color:var(--faint);font-size:14px}
-.dstate{font-size:13.5px;color:var(--muted);padding:10px 4px;line-height:1.45}
-.dstate b{color:var(--ink)}
-.skel{height:44px;border-radius:12px;background:linear-gradient(90deg,var(--sub),var(--line),var(--sub));background-size:200% 100%}
-@media (prefers-reduced-motion:no-preference){.skel{animation:sk 1.2s linear infinite}@keyframes sk{to{background-position:-200% 0}}}
-.dfoot{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-top:8px;font-size:12px;color:var(--faint)}
-
 /* web */
 .w-web{padding:0;overflow:hidden;position:relative}
 .webshot{position:relative;display:block;aspect-ratio:1200/630;background:#141010;overflow:hidden}
@@ -317,14 +300,21 @@ li.done .text{text-decoration:line-through;color:var(--muted)}
 .webbar i{width:7px;height:7px;border-radius:50%;background:#4CC38F;box-shadow:0 0 8px #4CC38F;flex:none}
 .webbar span{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-family:var(--mono)}
 .webbody{padding:14px 18px 18px;display:grid;gap:10px}
-.webbody h2{margin:0;font-size:17px}
+.webbody h2{margin:0;font-size:19px}
 .webbody p{margin:0;font-size:13.5px;color:var(--muted)}
 .webacts{display:flex;gap:8px;flex-wrap:wrap}
+/* la sección web: portada grande y, en pantallas anchas, el texto al lado */
+@media (min-width:861px){
+  .w-web{display:grid!important;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr)}
+  .webshot{align-self:start}
+  .webbody{align-content:center;padding:28px;gap:14px}
+  .webbody h2{font-size:24px}
+  .webbody p{font-size:15px}
+}
 .btn-a{display:inline-flex;align-items:center;gap:6px;text-decoration:none;border-radius:999px;padding:8px 14px;font-weight:700;font-size:13px;background:var(--accent);color:var(--accent-ink)}
 .btn-b{display:inline-flex;align-items:center;gap:6px;text-decoration:none;border-radius:999px;padding:8px 14px;font-weight:600;font-size:13px;border:1px solid var(--line2);color:var(--ink)}
 
 /* adaptable */
-@media (max-width:999px){.grid{grid-template-columns:repeat(2,minmax(0,1fr));grid-template-areas:"cal cal" "asis drive" "pend pend" "web web"}}
 @media (max-width:860px){
   .app{grid-template-columns:minmax(0,1fr)}
   .side{position:fixed;z-index:35;left:0;right:0;bottom:0;top:auto;height:auto;max-height:none;flex-direction:row;justify-content:center;padding:8px max(16px,env(safe-area-inset-right,0px)) calc(8px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px));background:linear-gradient(transparent,var(--bg) 40%)}
@@ -332,7 +322,6 @@ li.done .text{text-decoration:line-through;color:var(--muted)}
   .side .pill{flex-direction:row}
   .nb .tip{display:none}
   body{padding-bottom:calc(92px + env(safe-area-inset-bottom,0px))}
-  .grid{grid-template-columns:minmax(0,1fr);grid-template-areas:"asis" "cal" "pend" "drive" "web"}
 }
 @media (max-width:640px){
   .top{flex-wrap:wrap}
@@ -348,10 +337,7 @@ li.done .text{text-decoration:line-through;color:var(--muted)}
   .app{height:100%;min-height:640px}
   .side{top:0;height:100%;max-height:none}
   .main{height:100%;min-height:0;grid-template-rows:auto minmax(0,1fr);gap:14px}
-  .grid{height:100%;min-height:0;gap:14px;align-items:stretch;
-    grid-template-columns:minmax(0,1.35fr) minmax(0,1fr) minmax(0,1fr) minmax(0,1.05fr);
-    grid-template-rows:minmax(0,1.6fr) minmax(0,1fr);
-    grid-template-areas:"pend cal cal asis" "pend drive web asis"}
+  .grid{height:100%;min-height:0;gap:14px;align-items:stretch;grid-template-rows:minmax(0,1fr)}
   .w{display:flex;flex-direction:column;min-height:0;overflow:hidden;padding:16px}
   .wh{flex:none;margin-bottom:10px}
   .w-pend form.add,.w-pend .notice{flex:none}
@@ -365,27 +351,18 @@ li.done .text{text-decoration:line-through;color:var(--muted)}
   .jsay{min-height:0;font-size:clamp(17px,1.5vw,21px)}
   .answer{flex:1;min-height:0;overflow:auto;scrollbar-width:thin}
   .answer ul{max-height:none}
-  .dsearch{flex:none}
-  .files{flex:1;min-height:0;overflow:auto;align-content:start;scrollbar-width:thin}
-  .dfoot{flex:none}
-  .dfoot #dwhen{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-  .dfoot a{white-space:nowrap}
   .w-web{padding:0}
-  .webshot{flex:1;min-height:0;aspect-ratio:auto}
-  .webbody{flex:none;padding:12px 16px 14px;gap:8px}
-  .webbody p{display:none}
+  .main[data-view="web"] .grid{height:auto;align-items:start}
 }
 </style>
 
 <div class="app">
   <aside class="side" aria-label="Aplicaciones">
     <div class="logo" aria-hidden="true"><img src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2064%2064%22%3E%3Cdefs%3E%3CradialGradient%20id%3D%22g%22%20cx%3D%2250%25%22%20cy%3D%2245%25%22%20r%3D%2260%25%22%3E%3Cstop%20offset%3D%220%22%20stop-color%3D%22%233A1A0B%22%2F%3E%3Cstop%20offset%3D%221%22%20stop-color%3D%22%230B0705%22%2F%3E%3C%2FradialGradient%3E%3C%2Fdefs%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20rx%3D%2215%22%20fill%3D%22url(%23g)%22%2F%3E%3Ccircle%20cx%3D%2232%22%20cy%3D%2232%22%20r%3D%2227%22%20fill%3D%22none%22%20stroke%3D%22%23FF7A30%22%20stroke-width%3D%221.6%22%20stroke-dasharray%3D%222%203%22%20opacity%3D%22.55%22%2F%3E%3Cpath%20d%3D%22M8.5%2024A25%2025%200%200%201%2024%208.6M40%208.6A25%2025%200%200%201%2055.5%2024M55.5%2040A25%2025%200%200%201%2040%2055.4M24%2055.4A25%2025%200%200%201%208.5%2040%22%20fill%3D%22none%22%20stroke%3D%22%23FF7A30%22%20stroke-width%3D%222.6%22%20stroke-linecap%3D%22round%22%2F%3E%3Cg%20fill%3D%22none%22%20stroke%3D%22%23FF9A55%22%20stroke-linecap%3D%22round%22%20transform%3D%22translate(32%2033)%20scale(1.22)%20translate(-32%20-33)%22%3E%3Cpath%20d%3D%22M17%2037a15%2016%200%200%201%2030%200%22%20stroke-width%3D%222.6%22%2F%3E%3Cpath%20d%3D%22M32%2021v16M28.5%2021.5a7%2016%200%200%200-4.5%2015.5M35.5%2021.5a7%2016%200%200%201%204.5%2015.5%22%20stroke-width%3D%221.6%22%2F%3E%3Cpath%20d%3D%22M19.5%2030.5h25%22%20stroke-width%3D%221.2%22%20opacity%3D%22.7%22%2F%3E%3Cellipse%20cx%3D%2232%22%20cy%3D%2238.5%22%20rx%3D%2219%22%20ry%3D%223.6%22%20stroke-width%3D%222.6%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E" alt=""></div>
-    <nav class="pill" id="nav">
-      <button class="nb" data-go="top" aria-current="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg><span class="tip">Inicio</span></button>
-      <button class="nb" data-go="cal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5" width="17" height="15.5" rx="3"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg><span class="tip">Calendario</span></button>
-      <button class="nb" data-go="pend"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3.5" width="16" height="17" rx="3"/><path d="m8 9 1.5 1.5L12 8M8 15l1.5 1.5L12 14M14.5 9.5H17M14.5 15.5H17"/></svg><span class="tip">Pendientes</span></button>
-      <button class="nb" data-go="drive"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 7.5a2 2 0 0 1 2-2h4l2 2.5h7a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-13a2 2 0 0 1-2-2z"/></svg><span class="tip">Drive</span></button>
-      <button class="nb" data-go="web"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M3.5 12h17M12 3.5c2.5 2.6 3.5 5.4 3.5 8.5s-1 5.9-3.5 8.5c-2.5-2.6-3.5-5.4-3.5-8.5s1-5.9 3.5-8.5"/></svg><span class="tip">Web Intura</span></button>
+    <nav class="pill" id="nav" aria-label="Secciones">
+      <button class="nb" data-view="pend" aria-current="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3.5" width="16" height="17" rx="3"/><path d="m8 9 1.5 1.5L12 8M8 15l1.5 1.5L12 14M14.5 9.5H17M14.5 15.5H17"/></svg><span class="tip">Pendientes</span></button>
+      <button class="nb" data-view="cal" aria-current="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5" width="17" height="15.5" rx="3"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg><span class="tip">Calendario</span></button>
+      <button class="nb" data-view="web" aria-current="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M3.5 12h17M12 3.5c2.5 2.6 3.5 5.4 3.5 8.5s-1 5.9-3.5 8.5c-2.5-2.6-3.5-5.4-3.5-8.5s1-5.9 3.5-8.5"/></svg><span class="tip">Página web</span></button>
     </nav>
     <div class="pill low">
       <button class="nb" id="sideapps"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg><span class="tip">Conectar apps</span></button>
@@ -393,7 +370,7 @@ li.done .text{text-decoration:line-through;color:var(--muted)}
     </div>
   </aside>
 
-  <main class="main" id="top">
+  <main class="main" id="top" data-view="pend">
     <header class="top">
       <div class="theme" role="group" aria-label="Tema">
         <button type="button" id="th-dark" aria-pressed="false" aria-label="Tema oscuro"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></svg></button>
@@ -423,9 +400,8 @@ li.done .text{text-decoration:line-through;color:var(--muted)}
       <h4 id="conexiones">Apps conectadas</h4>
       <div class="mi" style="cursor:default"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5" width="17" height="15.5" rx="3"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg><span class="grow">Google Calendar</span><span class="st off" id="st-cal">Revisando…</span></div>
       <p class="howto" id="howto-cal" hidden>Conéctalo en claude.ai → Ajustes → Conectores → Google Calendar y recarga el tablero.</p>
-      <div class="mi" style="cursor:default"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 7.5a2 2 0 0 1 2-2h4l2 2.5h7a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-13a2 2 0 0 1-2-2z"/></svg><span class="grow">Google Drive</span><span class="st off" id="st-drive">Revisando…</span></div>
       <div class="mi" style="cursor:default"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5a8.5 8.5 0 1 0 0 17"/><path d="M15 9.5l5-5M20 4.5v4M20 4.5h-4"/></svg><span class="grow">Asistente (Claude)</span><span class="st off" id="st-ai">Revisando…</span></div>
-      <button type="button" class="mi" id="m-perm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="10.5" width="14" height="10" rx="2.5"/><path d="M8.5 10.5V8a3.5 3.5 0 0 1 7 0v2.5"/></svg><span class="grow">Permisos de esta página<small>Activa o quita el acceso a Calendar, Drive y al asistente</small></span></button>
+      <button type="button" class="mi" id="m-perm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="10.5" width="14" height="10" rx="2.5"/><path d="M8.5 10.5V8a3.5 3.5 0 0 1 7 0v2.5"/></svg><span class="grow">Permisos de esta página<small>Activa o quita el acceso a Calendar y al asistente</small></span></button>
     </div>
 
     <div class="grid">
@@ -467,14 +443,6 @@ li.done .text{text-decoration:line-through;color:var(--muted)}
         </form>
         <p class="notice" id="notice">Cargando tus tareas…</p>
         <div id="board"></div>
-      </section>
-
-      <!-- DRIVE -->
-      <section class="w w-drive" id="drive" aria-label="Google Drive">
-        <div class="wh"><h2>Drive</h2><button type="button" class="chipbtn" id="drefresh">Actualizar</button></div>
-        <label class="dsearch"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><input type="search" id="dq" placeholder="Buscar archivos por nombre…" aria-label="Buscar en Drive"></label>
-        <div class="files" id="files"><div class="skel"></div><div class="skel"></div><div class="skel"></div></div>
-        <div class="dfoot"><span id="dwhen"></span><a href="https://drive.google.com/drive/recent" target="_blank" rel="noopener" class="ghost">Abrir Drive ↗</a></div>
       </section>
 
       <!-- WEB INTURA -->
@@ -589,7 +557,7 @@ li.done .text{text-decoration:line-through;color:var(--muted)}
 </script>
 
 <script>
-// Panel: tema, navegación, menús, avisos, calendario semanal y Drive
+// Panel: tema, secciones, menús, avisos y calendario semanal
 (function(){
   const $=id=>document.getElementById(id);
   const h=(tag,props,...kids)=>{const e=document.createElement(tag);if(props)for(const k in props){if(k==="class")e.className=props[k];else if(k.startsWith("on"))e[k]=props[k];else if(k==="text")e.textContent=props[k];else if(k==="html")e.innerHTML=props[k];else e.setAttribute(k,props[k])}e.append(...kids.filter(Boolean));return e};
@@ -608,9 +576,10 @@ li.done .text{text-decoration:line-through;color:var(--muted)}
   $("th-dark").onclick=()=>setTheme("dark");$("th-light").onclick=()=>setTheme("light");
   $("m-theme").onclick=()=>setTheme(eff()==="dark"?"light":"dark");
 
-  // ---- navegación lateral ----
+  // ---- secciones: el tablero siempre abre en Pendientes ----
   const navBtns=[...document.querySelectorAll("#nav .nb")];
-  navBtns.forEach(b=>b.onclick=()=>{navBtns.forEach(x=>x.setAttribute("aria-current",x===b));const t=$(b.dataset.go);if(t)t.scrollIntoView({behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth",block:"start"})});
+  function showView(v){$("top").dataset.view=v;navBtns.forEach(x=>x.setAttribute("aria-current",String(x.dataset.view===v)));scrollTo(0,0)}
+  navBtns.forEach(b=>b.onclick=()=>showView(b.dataset.view));
 
   // ---- menús (perfil y avisos) ----
   let openPop=null;
@@ -684,68 +653,7 @@ li.done .text{text-decoration:line-through;color:var(--muted)}
   const hm=d=>{const x=d.getHours(),m=String(d.getMinutes()).padStart(2,"0");return (x%12||12)+":"+m+(x<12?" am":" pm")};
   renderCal();setInterval(renderCal,60000);
 
-  // ---- Google Drive ----
-  const DRIVE="Google Drive";
-  let mcp=null, unwatch=null, searchCtl=null, lastFiles=null;
-  const ago=s=>{if(!s)return"";const d=(Date.now()-new Date(s))/864e5;return d<1/24?"hace un momento":d<1?"hace "+Math.round(d*24)+" h":d<30?"hace "+Math.round(d)+" d":d<365?"hace "+Math.round(d/30)+" mes"+(Math.round(d/30)>1?"es":""):"hace más de un año"};
-  const FOLDER='<svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 7.5A2.5 2.5 0 0 1 5.5 5h3.8l2 2.5h7.2A2.5 2.5 0 0 1 21 10v7.5a2.5 2.5 0 0 1-2.5 2.5h-13A2.5 2.5 0 0 1 3 17.5z"/></svg>';
-  function kind(f){const m=f.mimeType||"",x=(f.fileExtension||(f.title||"").split(".").pop()||"").toUpperCase().slice(0,4);
-    if(m.endsWith(".folder"))return["f-folder",null,"Carpeta"];
-    if(m==="application/pdf")return["f-pdf","PDF","PDF"];
-    if(m.startsWith("image/"))return["f-img","IMG","Imagen"];
-    if(m.includes("document")||m.includes("word"))return["f-doc","DOC","Documento"];
-    if(m.includes("spreadsheet")||m.includes("excel"))return["f-img","XLS","Hoja de cálculo"];
-    if(m.includes("presentation"))return["f-pdf","PPT","Presentación"];
-    if(m.startsWith("video/"))return["f-doc","VID","Video"];
-    return["f-other",x||"ARCH","Archivo"]}
-  function showFiles(list,note){
-    const box=$("files");
-    if(!list.length){box.replaceChildren(h("div",{class:"dstate",text:note||"No hay archivos para mostrar."}));return}
-    box.replaceChildren(...list.slice(0,7).map(f=>{const [c,lbl,tn]=kind(f);
-      const ic=h("span",{class:"ficon "+c});if(lbl)ic.textContent=lbl;else ic.innerHTML=FOLDER;
-      return h("a",{class:"file",href:f.viewUrl||"https://drive.google.com",target:"_blank",rel:"noopener"},ic,
-        h("span",{style:"min-width:0"},h("span",{class:"fname",text:f.title||"Sin nombre"}),h("span",{class:"fmeta",text:tn+" · modificado "+ago(f.modifiedTime)})),h("span",{class:"fgo",text:"↗"}))}));
-  }
-  const ERRD={
-    server_not_connected:"<b>Google Drive no está conectado.</b> Agrégalo en claude.ai → Ajustes → Conectores.",
-    needs_reauth:"<b>Tu conexión con Drive venció.</b> Vuelve a conectarlo en claude.ai → Ajustes → Conectores.",
-    not_in_manifest:"<b>Drive está desactivado para esta página.</b> Actívalo en Perfil → Permisos de esta página.",
-    selection_required:"<b>Tienes más de una cuenta de Drive.</b> Elige cuál usar en el aviso de Claude.",
-    blocked_by_policy:"Tu organización no permite usar Drive aquí.",
-    server_unavailable:"Drive no respondió. Toca Actualizar en un momento.",
-    not_granted:"Abre el tablero dentro de Claude para ver tu Drive.",
-    capability_disabled:"Abre el tablero dentro de Claude para ver tu Drive."};
-  function driveErr(err){const c=err&&err.code;
-    const st={server_not_connected:["Sin conectar","warn"],needs_reauth:["Reconectar","warn"],not_in_manifest:["Desactivado","off"]}[c]||["Con problemas","warn"];
-    $("st-drive").textContent=st[0];$("st-drive").className="st "+st[1];
-    const keep=c==="server_unavailable"||c==="upstream_error";
-    if(!keep||!lastFiles)$("files").replaceChildren(h("div",{class:"dstate",html:ERRD[c]||"No se pudo leer Drive. Toca Actualizar para intentarlo de nuevo."}));
-    else $("dwhen").textContent="No se pudo actualizar; mostrando lo último.";
-  }
-  function watchRecent(){
-    if(unwatch)unwatch();
-    unwatch=mcp.watchTool(DRIVE,"list_recent_files",{pageSize:8,excludeContentSnippets:true},ev=>{
-      if($("dq").value.trim())return;
-      if(ev.type==="error")return driveErr(ev.error);
-      const p=ev.result.payload, files=p&&Array.isArray(p.files)?p.files:[];
-      lastFiles=files;$("st-drive").textContent="Conectado";$("st-drive").className="st ok";
-      showFiles(files,"Aún no hay archivos recientes.");
-      const at=ev.result.cache?ev.result.cache.storedAt:Date.now();$("dwhen").textContent="Recientes · actualizado "+ago(new Date(at).toISOString());
-    },{refetchInterval:5*60*1000});
-  }
-  let dt=null;
-  $("dq").addEventListener("input",()=>{clearTimeout(dt);dt=setTimeout(searchDrive,450)});
-  async function searchDrive(){
-    if(!mcp)return;const q=$("dq").value.trim();
-    if(searchCtl)searchCtl.abort();
-    if(!q){showFiles(lastFiles||[]);$("dwhen").textContent="Recientes";return}
-    searchCtl=new AbortController();const ctl=searchCtl;
-    $("files").replaceChildren(h("div",{class:"skel"}),h("div",{class:"skel"}));
-    try{const r=await mcp.callTool(DRIVE,"search_files",{query:"title contains '"+q.replace(/\\/g,"\\\\").replace(/'/g,"\\'")+"'",pageSize:8,excludeContentSnippets:true},{signal:ctl.signal,cache:{staleTime:60000}});
-      if(ctl!==searchCtl)return;const p=r.payload;showFiles(p&&Array.isArray(p.files)?p.files:[],"No encontré archivos con «"+q+"».");$("dwhen").textContent="Resultados para «"+q+"»";
-    }catch(err){if(err&&err.code==="cancelled")return;if(ctl===searchCtl)driveErr(err)}
-  }
-  $("drefresh").onclick=async()=>{if(!mcp)return;$("dq").value="";try{await mcp.invalidate(DRIVE,"list_recent_files")}catch(e){watchRecent()}};
+  let mcp=null;
 
   // ---- Google Calendar (solo lectura): citas de la semana visible, calendario personal y festivos de Colombia ----
   // El conector entra con la cuenta de Intura; el calendario personal se lee porque está compartido con esa cuenta.
@@ -807,9 +715,8 @@ li.done .text{text-decoration:line-through;color:var(--muted)}
 
   (async()=>{
     mcp=window.claude?await window.claude.use("mcp"):null;
-    if(!mcp){$("files").replaceChildren(h("div",{class:"dstate",html:ERRD.not_granted}));$("st-drive").textContent="No disponible";
-      calState="err";calMsg="Abre el tablero dentro de Claude para ver tus citas.";calStatus("No disponible","off");renderCal();return}
-    watchRecent();watchCal();
+    if(!mcp){calState="err";calMsg="Abre el tablero dentro de Claude para ver tus citas.";calStatus("No disponible","off");renderCal();return}
+    watchCal();
   })();
   (async()=>{const s=window.claude?await window.claude.use("sample"):null;$("st-ai").textContent=s?"Activo":"No disponible";$("st-ai").className="st "+(s?"ok":"off")})();
 })();
