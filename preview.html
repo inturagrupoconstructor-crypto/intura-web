@@ -875,9 +875,10 @@ li.done .text{text-decoration:line-through;color:var(--muted)}
     return byCreated(a,b);
   }
 
-  // colores de proyecto: el que eligió el ingeniero (p.color) o uno por orden de creación
+  // colores de proyecto: el que eligió el ingeniero (p.color) o uno por orden de creación dentro de su grupo,
+  // para que los proyectos de un mismo grupo no se repitan
   const PCOL=[["#3B82F6","Azul"],["#10B981","Verde"],["#A855F7","Morado"],["#F59E0B","Ámbar"],["#EC4899","Rosa"],["#14B8A6","Turquesa"],["#6366F1","Índigo"],["#84CC16","Lima"],["#06B6D4","Cian"],["#D946EF","Fucsia"]];
-  function pcolorIdx(p){if(Number.isInteger(p.color)&&PCOL[p.color])return p.color;const i=projects.slice().sort(byCreated).findIndex(x=>x.id===p.id);return Math.max(0,i)%PCOL.length}
+  function pcolorIdx(p){if(Number.isInteger(p.color)&&PCOL[p.color])return p.color;const i=projects.filter(x=>x.groupId===p.groupId).sort(byCreated).findIndex(x=>x.id===p.id);return Math.max(0,i)%PCOL.length}
   const colorOf=id=>{const p=projects.find(p=>p.id===id);return p?PCOL[pcolorIdx(p)][0]:null};
 
   function taskItem(t){
