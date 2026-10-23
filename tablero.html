@@ -152,6 +152,7 @@ a{color:inherit}
 .ev small{display:block;font-weight:500;opacity:.85}
 .ev.alt{background:var(--ink);color:var(--card)}
 a.ev{text-decoration:none;z-index:1}
+.ev.per{background:var(--info);color:#fff;box-shadow:0 8px 20px -10px var(--info)}
 .nowline{position:absolute;left:0;right:0;height:2px;background:var(--accent);z-index:2}
 .nowline::before{content:"";position:absolute;left:-4px;top:-3px;width:8px;height:8px;border-radius:50%;background:var(--accent)}
 .calempty{grid-column:1/-1;margin-top:10px;display:flex;align-items:center;gap:12px;flex-wrap:wrap;background:var(--card-hi);border:1px solid var(--line2);border-radius:14px;padding:12px 14px;font-size:13.5px;color:var(--muted)}
@@ -639,7 +640,8 @@ li.done .text{text-decoration:line-through;color:var(--muted)}
   // ---- calendario semanal ----
   // events: citas de Google Calendar de la semana visible: {title, start:Date, end:Date|null, allDay, days:[ymd], link, fest}
   // calState: "loading" | "ok" | "err"; calMsg: aviso bajo el calendario (vacío = nada que avisar)
-  let events=[], calState="loading", calMsg="<b>Cargando tus citas…</b>";
+  // perMsg: aviso del calendario personal (Gmail), aparte para no tapar el de la cuenta principal
+  let events=[], calState="loading", calMsg="<b>Cargando tus citas…</b>", perMsg="";
   const monday=d=>{const x=new Date(d.getFullYear(),d.getMonth(),d.getDate());const k=(x.getDay()+6)%7;x.setDate(x.getDate()-k);return x};
   let wk=monday(new Date()), sel=today();
   const H0=6,H1=21,ROW=48;
@@ -678,11 +680,12 @@ li.done .text{text-decoration:line-through;color:var(--muted)}
         const en=!e.end?s+1:ymd(e.end)!==k?H1:e.end.getHours()+e.end.getMinutes()/60;
         const top=Math.max(0,Math.min(H1-H0-.5,s-H0)*ROW), ht=Math.max(28,(Math.min(H1,en)-Math.max(H0,s))*ROW-4);
         const when=hm(e.start)+(e.end?" – "+hm(e.end):"");
-        col.append(h(e.link?"a":"div",evLink({class:"ev"+(j%2?" alt":""),style:"top:"+top+"px;height:"+ht+"px",title:e.title+" · "+when},e),document.createTextNode(e.title),h("small",{text:when})))});
+        col.append(h(e.link?"a":"div",evLink({class:"ev"+(e.per?" per":j%2?" alt":""),style:"top:"+top+"px;height:"+ht+"px",title:e.title+" · "+when},e),document.createTextNode(e.title),h("small",{text:when})))});
       if(k===td){const n=new Date(), y=(n.getHours()+n.getMinutes()/60-H0)*ROW;if(y>0&&y<(H1-H0)*ROW)col.append(h("div",{class:"nowline",style:"top:"+y+"px"}))}
       hrs.append(col)});
     kids.push(hrs);
-    if(calMsg)kids.push(h("div",{class:"calempty"},h("span",{html:calMsg}),calState==="err"?Object.assign(h("button",{type:"button",class:"chipbtn",text:"Ver conexiones"}),{onclick:e=>{e.stopPropagation();toggle($("menu"),$("me"),true);$("conexiones").scrollIntoView({block:"nearest"})}}):null));
+    const note=calMsg||perMsg;
+    if(note)kids.push(h("div",{class:"calempty"},h("span",{html:note}),calState==="err"?Object.assign(h("button",{type:"button",class:"chipbtn",text:"Ver conexiones"}),{onclick:e=>{e.stopPropagation();toggle($("menu"),$("me"),true);$("conexiones").scrollIntoView({block:"nearest"})}}):null));
     grid.replaceChildren(...kids);
     if(!didScroll){didScroll=true;const n=new Date().getHours();hrs.scrollTop=Math.max(0,(Math.min(Math.max(n-1,7),H1-5)-H0)*ROW)}
     // agenda del día (celular)
@@ -691,7 +694,7 @@ li.done .text{text-decoration:line-through;color:var(--muted)}
     events.filter(e=>!e.allDay&&ymd(e.start)===sel).sort((x,y)=>x.start-y.start).forEach(e=>list.push(h(e.link?"a":"div",evLink({class:"ag ev"},e),h("time",{text:hm(e.start)}),h("span",{class:"agt",text:e.title}))));
     dayTasks(sel).forEach(t=>list.push(h("div",{class:"ag"+(t.urgent?" urg":"")},h("time",{text:t.due<td?"Vencida":"Tarea"}),h("span",{class:"agt",text:t.text+" · "+pname(t)}))));
     if(!list.length)list.push(h("div",{class:"note",text:calState==="ok"?"Sin citas ni tareas para este día.":"Sin tareas con fecha para este día."}));
-    if(calMsg)list.push(h("div",{class:"note",html:calMsg}));
+    if(note)list.push(h("div",{class:"note",html:note}));
     ag.replaceChildren(...list);
   }
   const hm=d=>{const x=d.getHours(),m=String(d.getMinutes()).padStart(2,"0");return (x%12||12)+":"+m+(x<12?" am":" pm")};
@@ -760,9 +763,10 @@ li.done .text{text-decoration:line-through;color:var(--muted)}
   }
   $("drefresh").onclick=async()=>{if(!mcp)return;$("dq").value="";try{await mcp.invalidate(DRIVE,"list_recent_files")}catch(e){watchRecent()}};
 
-  // ---- Google Calendar (solo lectura): citas de la semana visible + festivos de Colombia ----
-  const CAL="Google Calendar", FEST="es-us.co#holiday@group.v.calendar.google.com";
-  let calMain=[], calFest=[], calUnw=[], calWeek="";
+  // ---- Google Calendar (solo lectura): citas de la semana visible, calendario personal y festivos de Colombia ----
+  // El conector entra con la cuenta de Intura; el calendario personal se lee porque está compartido con esa cuenta.
+  const CAL="Google Calendar", FEST="es-us.co#holiday@group.v.calendar.google.com", PER="dgarcia.civil@gmail.com";
+  let calMain=[], calPer=[], calFest=[], calUnw=[], calWeek="";
   // las fechas de todo el día llegan como "2026-10-12T00:00:00Z": se usa solo la fecha, sin zona horaria
   const dpart=s=>{const [y,m,d]=String(s).slice(0,10).split("-").map(Number);return new Date(y,m-1,d)};
   function toEv(e,fest){
@@ -777,7 +781,7 @@ li.done .text{text-decoration:line-through;color:var(--muted)}
     return null}
   const evList=p=>(p&&Array.isArray(p.events)?p.events:[]);
   function calStatus(txt,cls){$("st-cal").textContent=txt;$("st-cal").className="st "+cls;$("howto-cal").hidden=cls!=="warn"}
-  function mergeCal(){events=calMain.concat(calFest);renderCal()}
+  function mergeCal(){events=calMain.concat(calPer,calFest);renderCal()}
   const ERRC={
     server_not_connected:["Sin conectar","warn","<b>Google Calendar no está conectado.</b> Agrégalo en claude.ai → Ajustes → Conectores."],
     needs_reauth:["Reconectar","warn","<b>Tu conexión con Google Calendar venció.</b> Vuelve a conectarlo en claude.ai → Ajustes → Conectores."],
@@ -789,10 +793,10 @@ li.done .text{text-decoration:line-through;color:var(--muted)}
     // fallas pasajeras: se dejan las citas que ya estaban
     if((c==="server_unavailable"||c==="upstream_error"||c==="rate_limited")&&calState==="ok"){calMsg="No se pudo actualizar el calendario; mostrando lo último.";renderCal();return}
     const x=ERRC[c]||["Con problemas","warn","<b>No se pudo leer tu calendario.</b> Cambia de semana o recarga para intentarlo de nuevo."];
-    calState="err";calMsg=x[2];calMain=[];calFest=[];calStatus(x[0],x[1]);mergeCal()}
+    calState="err";calMsg=x[2];calMain=[];calPer=[];calFest=[];calStatus(x[0],x[1]);mergeCal()}
   function watchCal(){
     if(!mcp)return;const key=ymd(wk);if(key===calWeek)return;calWeek=key;
-    calUnw.forEach(u=>u());calUnw=[];calMain=[];calFest=[];mergeCal();
+    calUnw.forEach(u=>u());calUnw=[];calMain=[];calPer=[];calFest=[];mergeCal();
     const end=new Date(wk);end.setDate(end.getDate()+7);
     const inp={startTime:key+"T00:00:00",endTime:ymd(end)+"T00:00:00",orderBy:"startTime",pageSize:250};
     calUnw.push(mcp.watchTool(CAL,"list_events",inp,ev=>{
@@ -800,6 +804,15 @@ li.done .text{text-decoration:line-through;color:var(--muted)}
       if(ev.type==="error")return calErr(ev.error);
       calMain=evList(ev.result.payload).map(e=>toEv(e,false)).filter(Boolean);
       calState="ok";calMsg="";calStatus("Conectado","ok");mergeCal();
+    },{refetchInterval:5*60*1000}));
+    // calendario personal: si no está compartido, se avisa sin tocar las citas de Intura
+    calUnw.push(mcp.watchTool(CAL,"list_events",Object.assign({calendarId:PER},inp),ev=>{
+      if(key!==calWeek||calState==="err")return;
+      if(ev.type==="error"){const c=ev.error&&ev.error.code;
+        if(c==="server_unavailable"||c==="upstream_error"||c==="rate_limited")return;
+        calPer=[];perMsg="<b>Tu calendario personal (dgarcia.civil) no está compartido.</b> En Google Calendar de esa cuenta: Configuración → tu calendario → Compartir con gerencia@inturagrupoconstructor.com.";mergeCal();return}
+      calPer=evList(ev.result.payload).map(e=>toEv(e,false)).filter(Boolean).map(e=>Object.assign(e,{per:true}));
+      perMsg="";mergeCal();
     },{refetchInterval:5*60*1000}));
     // los festivos son un extra: si fallan, el calendario sigue igual
     calUnw.push(mcp.watchTool(CAL,"list_events",Object.assign({calendarId:FEST},inp),ev=>{
