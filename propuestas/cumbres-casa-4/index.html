@@ -1,0 +1,628 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>Cubierta Casa 4 Cumbres</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="color-scheme" content="light only">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>html{color-scheme:light}:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style><style>
+/* Layout: memoria técnica de cubierta — banda negra, columna de 1080px, planta interactiva como pliego blanco, cifras en mono tabular. Solo tema claro (estándar Intura). */
+:root{
+  --bg:#F6F6F4; --paper:#FFFFFF; --ink:#111214; --muted:#5E6066; --line:#D9D9D5; --soft:#ECECE8;
+  --band:#0B0B0C; --band-ink:#F6F6F4; --accent:#3A64B8; --accent-soft:#E3EAF7; --accent-2:#7FA0DA;
+  --wall:#2B2D33; --teja:#F1F3F8; --canal:#9BB3E0;
+  color-scheme:light;
+  --f-display:"Archivo","Arial Narrow",Arial,sans-serif;
+  --f-body:"IBM Plex Sans","Segoe UI",Calibri,Arial,sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.55}
+.wrap{max-width:1080px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.mono,.num{font-family:var(--f-mono);font-variant-numeric:tabular-nums}
+h1,h2,h3{font-family:var(--f-display);text-wrap:balance;margin:0}
+a{color:var(--accent)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+.band{background:var(--band);color:var(--band-ink)}
+.band .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:14px}
+.brand{font-family:var(--f-display);font-weight:800;letter-spacing:.32em;font-size:15px}
+.brand span{font-weight:400;letter-spacing:.24em;opacity:.7;margin-left:10px;font-size:11px}
+.band .doc{font-family:var(--f-mono);font-size:12px;opacity:.75;text-align:right}
+
+.hero .wrap{padding-block:56px 36px;display:grid;grid-template-columns:1.3fr 1fr;gap:40px;align-items:end}
+.eyebrow{font-family:var(--f-mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.hero h1{font-size:clamp(40px,7vw,76px);font-weight:800;line-height:.95;letter-spacing:-.02em;margin-top:12px}
+.hero h1 em{font-style:normal;display:block;font-weight:400;color:var(--muted);font-size:.36em;letter-spacing:.06em;margin-top:16px;text-transform:uppercase;line-height:1.25}
+.meta{display:grid;grid-template-columns:auto 1fr;gap:6px 18px;font-size:15px;border-top:3px solid var(--ink);padding-top:16px;margin:0}
+.meta dt{color:var(--muted);font-family:var(--f-mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;padding-top:3px}
+.meta dd{margin:0;font-weight:600}
+
+.figs{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.fig{padding:22px 20px 22px 0;display:flex;flex-direction:column;gap:6px;min-width:0}
+.fig+.fig{border-left:1px solid var(--line);padding-left:20px}
+.fig .k{font-size:13px;color:var(--muted)}
+.fig .v{font-family:var(--f-mono);font-size:clamp(22px,3.2vw,32px);font-weight:500;letter-spacing:-.02em;font-variant-numeric:tabular-nums;white-space:nowrap}
+.fig.main .v{color:var(--accent)}
+.fig .s{font-size:13px;color:var(--muted)}
+
+section.sec{padding-block:48px;border-top:1px solid var(--line)}
+.sec-head{display:flex;gap:18px;align-items:baseline;margin-bottom:22px}
+.sec-head .no{font-family:var(--f-mono);color:var(--muted);font-size:14px}
+.sec-head h2{font-size:clamp(24px,3.4vw,34px);font-weight:800;letter-spacing:-.01em;text-transform:uppercase}
+.lead{max-width:68ch;margin:0 0 22px}
+.muted{color:var(--muted)}
+
+/* planta interactiva */
+.plan{display:grid;grid-template-columns:1.55fr 1fr;gap:0;border:1px solid var(--line);background:var(--paper)}
+.plan > *{min-width:0}
+.plan-fig{padding:18px;border-right:1px solid var(--line);position:relative}
+.plan-fig svg{display:block;width:100%;height:auto}
+.zone{cursor:pointer}
+.zone .roof{fill:var(--teja);stroke:var(--ink);stroke-width:1.5;transition:fill .25s ease}
+.zone:hover .roof,.zone:focus .roof{fill:#E4EAF6}
+.zone.on .roof{fill:var(--accent-soft)}
+.zone.on .ribs{stroke:var(--accent)}
+.zone:focus{outline:none}
+.zone:focus-visible .roof{stroke:var(--accent);stroke-width:3}
+.ribs{stroke:#B9BEC9;stroke-width:1;transition:stroke .25s}
+.wall{fill:var(--wall)}
+.canal{fill:var(--canal)}
+.transl{fill:#FFFFFF;stroke:var(--accent);stroke-width:1.5;stroke-dasharray:4 3}
+.lbl{font-family:var(--f-mono);font-size:15px;fill:var(--ink);pointer-events:none}
+.lbl.s{font-size:12px;fill:var(--muted)}
+.arrow{stroke:var(--accent);stroke-width:2.5;fill:none;marker-end:url(#ah)}
+.flow{stroke-dasharray:6 10;animation:flow 1.6s linear infinite}
+@keyframes flow{to{stroke-dashoffset:-32}}
+.plan-legend{display:flex;flex-wrap:wrap;gap:14px;font-size:12.5px;color:var(--muted);margin-top:12px}
+.plan-legend i{display:inline-block;width:14px;height:10px;margin-right:6px;vertical-align:0;border:1px solid var(--ink)}
+.zone-tabs{display:flex;border-bottom:1px solid var(--line)}
+.zone-tabs button{flex:1;font:inherit;font-size:13.5px;font-weight:600;background:var(--paper);border:0;border-bottom:3px solid transparent;padding:14px 8px;color:var(--muted);cursor:pointer}
+.zone-tabs button[aria-selected="true"]{color:var(--ink);border-bottom-color:var(--accent)}
+.zone-panel{padding:20px 22px}
+.zone-panel h3{font-size:22px;font-weight:800;margin-bottom:4px}
+.zone-panel .desc{color:var(--muted);font-size:14px;margin:0 0 16px}
+.qrow{display:grid;grid-template-columns:1fr auto;gap:4px 12px;padding:10px 0;border-top:1px solid var(--line);align-items:baseline}
+.qrow span{font-size:14px}
+.qrow b{font-family:var(--f-mono);font-weight:500;font-variant-numeric:tabular-nums;white-space:nowrap}
+.qrow .bar{grid-column:1/-1;height:4px;background:var(--soft);border-radius:2px;overflow:hidden}
+.qrow .bar span{display:block;height:100%;background:var(--accent);width:0;transition:width .6s cubic-bezier(.2,.7,.2,1)}
+
+/* galería de planos */
+.tabs{display:flex;gap:0;border-bottom:2px solid var(--ink);overflow-x:auto}
+.tabs button{font:inherit;font-size:14px;font-weight:600;background:none;border:0;padding:10px 16px;color:var(--muted);cursor:pointer;border-bottom:3px solid transparent;margin-bottom:-2px;white-space:nowrap}
+.tabs button[aria-selected="true"]{color:var(--ink);border-bottom-color:var(--accent)}
+.sheet{background:#FFFFFF;border:1px solid var(--line);border-top:0;position:relative}
+.sheet-scroll{overflow:auto;max-height:78vh;cursor:zoom-in;-webkit-overflow-scrolling:touch}
+.sheet img{display:block;width:100%;max-width:none;height:auto;transition:opacity .25s ease}
+.sheet.zoom .sheet-scroll{cursor:zoom-out}
+.sheet.zoom img{width:240%}
+.sheet img.fade{opacity:0}
+.sheet-bar{display:flex;gap:10px;align-items:center;justify-content:space-between;flex-wrap:wrap;margin-top:10px;font-size:13px;color:var(--muted)}
+button.btn{font:inherit;font-size:14px;font-weight:600;border:1px solid var(--ink);background:var(--paper);color:var(--ink);padding:8px 14px;border-radius:3px;cursor:pointer}
+button.btn:hover{background:var(--ink);color:var(--paper)}
+
+/* presupuesto */
+.tbl{overflow-x:auto;background:var(--paper)}
+td.m{display:none}
+table{border-collapse:collapse;width:100%;font-size:14px;min-width:640px}
+th{font-family:var(--f-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);text-align:left;font-weight:500;padding:10px 12px;border-bottom:2px solid var(--ink);white-space:nowrap}
+td{padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+td.n,th.n{text-align:right;white-space:nowrap;font-family:var(--f-mono);font-variant-numeric:tabular-nums}
+td.c,th.c{text-align:center}
+tr.it td:first-child{font-family:var(--f-mono);color:var(--muted);font-size:13px;white-space:nowrap}
+details.group{border:1px solid var(--line);background:var(--paper);margin-bottom:-1px}
+details.group summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:44px 1fr auto 22px;gap:12px;align-items:center;padding:14px 16px}
+details.group summary::-webkit-details-marker{display:none}
+details.group summary .cn{font-family:var(--f-mono);color:var(--muted)}
+details.group summary .ct{font-weight:600}
+details.group summary .cv{font-family:var(--f-mono);font-variant-numeric:tabular-nums}
+details.group summary .chev{transition:transform .2s;color:var(--muted);text-align:center}
+details.group[open] summary .chev{transform:rotate(90deg)}
+details.group summary:hover{background:var(--soft)}
+details.group .tbl{border-top:1px solid var(--line)}
+.bar-mini{height:4px;background:var(--soft);margin-top:6px;border-radius:2px;overflow:hidden}
+.bar-mini span{display:block;height:100%;background:var(--accent)}
+.stack{display:flex;height:14px;border-radius:2px;overflow:hidden;margin:26px 0 8px;background:var(--soft)}
+.stack span{display:block;height:100%;transition:flex-grow .8s cubic-bezier(.2,.7,.2,1)}
+.stack-legend{display:flex;flex-wrap:wrap;gap:8px 16px;font-size:12.5px;color:var(--muted)}
+.stack-legend i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:6px}
+.grand{display:grid;grid-template-columns:1fr auto;gap:8px 20px;margin-top:18px;padding:18px 20px;background:var(--paper);border:1px solid var(--line)}
+.grand .r{font-family:var(--f-mono);text-align:right;font-variant-numeric:tabular-nums}
+.grand .t{font-weight:700;border-top:2px solid var(--ink);padding-top:10px}
+.grand .t.r{font-size:20px}
+.son{font-size:13px;color:var(--muted);margin-top:10px}
+
+/* especificaciones */
+.specs{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--line);background:var(--paper)}
+.spec{padding:22px;min-width:0;border-right:1px solid var(--line);border-bottom:1px solid var(--line)}
+.spec:nth-child(3n){border-right:0}
+.spec:nth-last-child(-n+3){border-bottom:0}
+.spec .tag{font-family:var(--f-mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent)}
+.spec h3{font-size:19px;font-weight:600;margin:8px 0 6px}
+.spec p{margin:0;color:var(--muted);font-size:14.5px}
+.spec .big{font-family:var(--f-mono);font-size:22px;color:var(--ink);margin:10px 0 0;display:block}
+.prof{display:block;width:100%;height:56px;margin-top:14px}
+.prof path,.prof polyline{fill:none;stroke:var(--ink);stroke-width:2;stroke-linejoin:round}
+
+/* programación */
+.gantt{border:1px solid var(--line);background:var(--paper);padding:18px 20px}
+.g-head,.g-row{display:grid;grid-template-columns:220px 1fr;gap:16px;align-items:center}
+.g-head{font-family:var(--f-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);padding-bottom:8px;border-bottom:2px solid var(--ink)}
+.g-weeks{display:grid;grid-template-columns:repeat(3,1fr)}
+.g-weeks span{border-left:1px solid var(--line);padding-left:8px}
+.g-row{padding:10px 0;border-bottom:1px solid var(--line)}
+.g-row:last-child{border-bottom:0}
+.g-row .lab{font-size:14px}
+.g-row .lab small{display:block;color:var(--muted);font-family:var(--f-mono);font-size:12px}
+.g-track{position:relative;height:22px;background:repeating-linear-gradient(90deg,transparent 0 calc(100%/18 - 1px),var(--soft) calc(100%/18 - 1px) calc(100%/18))}
+.g-bar{position:absolute;top:3px;bottom:3px;border-radius:2px;background:var(--accent);transform-origin:left;transition:transform .7s cubic-bezier(.2,.7,.2,1)}
+.g-bar.alt{background:var(--accent-2)}
+.g-bar.dark{background:var(--wall)}
+.pre .g-bar{transform:scaleX(0)}
+
+/* condiciones */
+.resp{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--line);background:var(--paper)}
+.resp > div{padding:20px;min-width:0}
+.resp > div + div{border-left:1px solid var(--line)}
+.resp h3{font-size:13px;font-family:var(--f-mono);font-weight:500;letter-spacing:.12em;text-transform:uppercase;margin-bottom:10px}
+.resp ul{margin:0;padding-left:18px}
+.resp li{margin-bottom:8px}
+.ph{font-family:var(--f-mono);background:var(--soft);padding:1px 6px;border-radius:2px}
+.cols2{display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-top:28px}
+.cols2 > *{min-width:0}
+
+.visit{border-top:1px solid var(--line);padding-block:44px}
+.visit-in{display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;background:var(--paper);border:1px solid var(--line);border-left:4px solid var(--ink);padding:26px 28px}
+.visit-in > div{min-width:0;flex:1 1 320px}
+.visit h3{font-size:clamp(20px,2.6vw,26px);font-weight:800;margin:6px 0 6px}
+.visit p{margin:0;color:var(--muted);max-width:56ch}
+a.go{display:inline-flex;align-items:center;gap:10px;background:var(--ink);color:var(--paper);text-decoration:none;font-weight:600;padding:14px 22px;border-radius:3px;white-space:nowrap}
+a.go:hover{background:var(--accent)}
+
+footer{background:var(--band);color:var(--band-ink);margin-top:40px}
+footer .wrap{padding-block:40px;display:grid;grid-template-columns:1.2fr 1fr;gap:28px;align-items:end}
+footer .firma{display:block;width:190px;height:auto;filter:invert(1);margin:22px 0 -6px}
+footer .sig{font-family:var(--f-display);font-weight:800;font-size:22px;letter-spacing:.02em;border-top:1px solid rgba(246,246,244,.4);padding-top:10px;display:inline-block;min-width:260px}
+footer .role{opacity:.75;font-size:14px}
+footer .contact{display:grid;gap:6px;font-family:var(--f-mono);font-size:14px}
+footer a{color:var(--band-ink)}
+.wa{display:inline-block;margin-top:14px;background:#1FA855;color:#fff !important;text-decoration:none;font-family:var(--f-body);font-weight:600;padding:10px 16px;border-radius:3px;justify-self:start}
+.fine{font-size:12px;opacity:.6;margin-top:18px;max-width:60ch}
+
+/* reveal: siempre visible en reposo; solo un desplazamiento leve */
+.rv{transition:transform .6s cubic-bezier(.2,.7,.2,1)}
+.js .rv.below{transform:translateY(14px)}
+
+.rail{display:none}
+@media (min-width:1400px){
+  .wrap{margin-left:calc(50% - 670px);margin-right:auto}
+  .rail{display:flex;flex-direction:column;gap:22px;position:fixed;z-index:5;top:calc(env(safe-area-inset-top,0px) + 96px);left:calc(50vw + 470px);width:200px;padding-left:28px;border-left:1px solid var(--line);transition:opacity .25s ease}
+  .rail.off{opacity:0;pointer-events:none}
+  .rail .logo{display:block;width:150px;height:auto}
+  .rail .proj{display:grid;gap:2px;padding-top:18px;border-top:3px solid var(--ink)}
+  .rail .proj .eyebrow{font-size:11px}
+  .rail .proj b{font-family:var(--f-display);font-size:17px;font-weight:800;letter-spacing:-.01em}
+  .rail .proj span.c{font-size:13px;color:var(--muted)}
+  .rail nav{display:grid;gap:2px}
+  .rail nav a{display:grid;grid-template-columns:26px 1fr;gap:6px;padding:6px 0;color:var(--muted);text-decoration:none;font-size:13.5px;line-height:1.3;border-left:2px solid transparent;margin-left:-29px;padding-left:27px}
+  .rail nav a span{font-family:var(--f-mono);font-size:11px;padding-top:2px}
+  .rail nav a:hover{color:var(--ink)}
+  .rail nav a.on{color:var(--ink);font-weight:600;border-left-color:var(--accent)}
+  .rail nav a.on span{color:var(--accent)}
+  .rail .fix{display:grid;gap:2px;font-size:12px;color:var(--muted)}
+  .rail .fix b{font-family:var(--f-mono);font-size:17px;font-weight:500;color:var(--ink)}
+}
+@media (max-width:820px){
+  .hero .wrap{grid-template-columns:1fr;padding-block:40px 28px;gap:28px}
+  .figs{grid-template-columns:1fr}
+  .fig+.fig{border-left:0;border-top:1px solid var(--line);padding-left:0}
+  .plan{grid-template-columns:1fr}
+  .plan-fig{border-right:0;border-bottom:1px solid var(--line)}
+  .specs{grid-template-columns:1fr 1fr}
+  .spec,.spec:nth-child(3n),.spec:nth-last-child(-n+3){border-right:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .spec:nth-child(2n){border-right:0}
+  .resp,.cols2{grid-template-columns:1fr}
+  .resp > div + div{border-left:0;border-top:1px solid var(--line)}
+  footer .wrap{grid-template-columns:1fr}
+  .band .doc{display:none}
+  .g-head,.g-row{grid-template-columns:150px 1fr;gap:10px}
+}
+@media (max-width:640px){
+  body{font-size:15px}
+  .hero h1{font-size:44px}
+  .meta{grid-template-columns:1fr;gap:2px}
+  .meta dd{margin-bottom:10px}
+  .fig .v{white-space:normal;font-size:26px}
+  .sec-head{gap:10px}
+  .sec-head h2{font-size:22px}
+  section.sec{padding-block:36px}
+  .plan-fig{padding:10px}
+  .zone-panel{padding:16px}
+  .specs{grid-template-columns:1fr}
+  .spec,.spec:nth-child(n){border-right:0;border-bottom:1px solid var(--line)}
+  .spec:last-child{border-bottom:0}
+  .tabs{flex-wrap:wrap;border-bottom:0;gap:6px;margin-bottom:10px}
+  .tabs button{border:1px solid var(--line);border-radius:3px;margin:0;padding:8px 10px;background:var(--paper);font-size:13px}
+  .tabs button[aria-selected="true"]{border-color:var(--ink);background:var(--ink);color:var(--paper)}
+  .sheet{border-top:1px solid var(--line)}
+  .sheet-scroll{max-height:60vh}
+  .sheet.zoom img{width:420%}
+  .tbl{overflow:visible}
+  table{min-width:0}
+  thead{display:none}
+  table,tbody,tr,td{display:block;width:100%}
+  tr.it{display:grid;grid-template-columns:1fr auto;column-gap:12px;row-gap:2px;border-bottom:1px solid var(--line);padding:10px 12px}
+  tr.it td{border:0;padding:0;width:auto;text-align:left}
+  tr.it td:first-child,tr.it td.d{grid-column:1 / -1}
+  tr.it td.d{font-weight:500;padding-bottom:4px}
+  tr.it td.c,tr.it td.n:not(.tot){display:none}
+  tr.it td.m{display:block;color:var(--muted);font-family:var(--f-mono);font-size:12.5px;align-self:center}
+  tr.it td.tot{font-weight:600;display:block;text-align:right}
+  details.group summary{grid-template-columns:26px 1fr 14px;row-gap:4px;padding:12px}
+  details.group summary .cv{grid-column:2;grid-row:2;font-size:14px}
+  details.group summary .chev{grid-column:3;grid-row:1}
+  .grand{padding:14px;gap:6px 12px}
+  .grand .t.r{font-size:17px}
+  .g-head{display:none}
+  .g-row{grid-template-columns:1fr;gap:6px}
+  .visit-in{padding:20px}
+  .visit-in a.go{width:100%;justify-content:center;white-space:normal}
+  footer .contact{font-size:13px;word-break:break-word}
+  footer .sig{min-width:0}
+}
+
+/* descarga de la cotización */
+.dlbox{display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;margin-top:22px;padding:18px 20px;background:var(--paper);border:1px solid var(--line);border-left:4px solid var(--accent)}
+.dlbox > div{min-width:0;flex:1 1 300px}
+.dlbox b{font-family:var(--f-display);font-size:18px;font-weight:800;display:block}
+.dlbox span{font-size:13.5px;color:var(--muted)}
+a.dl{display:inline-flex;align-items:center;gap:10px;background:var(--accent);color:#fff;text-decoration:none;font-weight:600;padding:12px 18px;border-radius:3px;white-space:nowrap;cursor:pointer}
+a.dl:hover{background:var(--ink)}
+a.dl svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:2}
+.dl-msg{font-size:13px;color:var(--muted);flex-basis:100%;margin:0}
+@media (max-width:640px){a.dl{width:100%;justify-content:center}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}.js .rv.below{transform:none}.pre .g-bar{transform:none}}
+</style></head><body>
+
+<aside class="rail" aria-label="Índice de la cotización">
+  <img class="logo" alt="Intura Grupo Constructor" src="img/logo.png">
+  <div class="proj"><span class="eyebrow">Cotización de cubierta</span><b>Cumbres de Monserrate · Casa 4</b><span class="c">ARQ PROJECT SAS · Santa Rosa de Cabal</span></div>
+  <nav>
+    <a href="#alcance"><span>01</span>Alcance por cubierta</a>
+    <a href="#planos"><span>02</span>Planos</a>
+    <a href="#presupuesto"><span>03</span>Presupuesto</a>
+    <a href="#especificaciones"><span>04</span>Especificaciones</a>
+    <a href="#programacion"><span>05</span>Programación</a>
+    <a href="#condiciones"><span>06</span>Condiciones</a>
+  </nav>
+  <div class="fix"><span>Valor total</span><b id="r-total">$ 22.325.825</b></div>
+  <a class="dl" href="docs/Cotizacion_Cubierta_Casa4_Cumbres_Monserrate.pdf" target="_blank" rel="noopener" data-dl download="Cotizacion_Cubierta_Casa4_Cumbres_Monserrate.pdf" style="padding:10px 12px;font-size:13px"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12M7 10l5 5 5-5M4 20h16"/></svg>PDF</a>
+</aside>
+
+<header class="band"><div class="wrap">
+  <div class="brand">INTURA<span>GRUPO CONSTRUCTOR</span></div>
+  <div class="doc">Cotización de cubierta · 29 oct 2026</div>
+</div></header>
+
+<section class="hero"><div class="wrap">
+  <div>
+    <div class="eyebrow">Cotización · suministro e instalación a todo costo</div>
+    <h1>Cubierta Casa 4<em>Proyecto Cumbres de Monserrate</em></h1>
+  </div>
+  <dl class="meta">
+    <dt>Cliente</dt><dd>ARQ PROJECT SAS</dd>
+    <dt>Ubicación</dt><dd>Santa Rosa de Cabal, Risaralda</dd>
+    <dt>Fecha</dt><dd>29 de octubre de 2026</dd>
+    <dt>Elaboró</dt><dd>Ing. Daniel García Tamayo</dd>
+  </dl>
+</div></section>
+
+<div class="wrap">
+  <div class="figs">
+    <div class="fig main"><span class="k">Valor total de la cotización</span><span class="v" data-count="22325825" data-fmt="money">$ 22.325.825</span><span class="s">Incluye AIU e IVA sobre la utilidad</span></div>
+    <div class="fig"><span class="k">Área de cubierta</span><span class="v" data-count="57.7" data-fmt="m2">57,7 m²</span><span class="s">Principal, balcón y patio de ropas</span></div>
+    <div class="fig"><span class="k">Plazo de ejecución</span><span class="v">3 semanas</span><span class="s">Con coordinador de trabajo en alturas</span></div>
+  </div>
+  <div class="dlbox">
+    <div><b>Cotización en PDF</b><span>Documento formal con portada, alcance, presupuesto por capítulos y actividades, forma de pago y firma.</span></div>
+    <a class="dl" href="docs/Cotizacion_Cubierta_Casa4_Cumbres_Monserrate.pdf" target="_blank" rel="noopener" data-dl download="Cotizacion_Cubierta_Casa4_Cumbres_Monserrate.pdf"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12M7 10l5 5 5-5M4 20h16"/></svg>Descargar cotización (PDF)</a>
+    <p class="dl-msg" aria-live="polite" hidden></p>
+  </div>
+</div>
+
+<main class="wrap">
+
+<section class="sec" id="alcance">
+  <div class="sec-head"><span class="no">01</span><h2>Alcance por cubierta</h2></div>
+  <p class="lead">La cotización cubre tres cubiertas de la casa. Toque cada una en la planta para ver sus cantidades de teja, canal, flanche y alfajía.</p>
+  <div class="plan rv">
+    <div class="plan-fig">
+      <svg viewBox="0 0 1160 760" role="img" aria-label="Esquema de la planta de cubiertas con las tres zonas cotizadas">
+        <defs>
+          <pattern id="rib-h" width="20" height="18" patternUnits="userSpaceOnUse"><line x1="0" y1="9" x2="20" y2="9" class="ribs"/></pattern>
+          <pattern id="rib-v" width="18" height="20" patternUnits="userSpaceOnUse"><line x1="9" y1="0" x2="9" y2="20" class="ribs"/></pattern>
+          <marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#3A64B8"/></marker>
+        </defs>
+        <!-- muros -->
+        <rect class="wall" x="155.7" y="35" width="860" height="700"/>
+        <rect class="wall" x="41.2" y="35" width="114.5" height="574"/>
+        <rect class="wall" x="1015.7" y="414" width="100.5" height="321"/>
+        <!-- balcón -->
+        <g class="zone" data-z="1" tabindex="0" role="button" aria-label="Cubierta del balcón">
+          <rect class="roof" x="76.2" y="60" width="79.5" height="514"/>
+          <rect x="76.2" y="60" width="79.5" height="514" fill="url(#rib-v)"/>
+          <rect class="canal" x="76.2" y="302" width="79.5" height="30"/>
+          <path class="arrow flow" d="M116 120 L116 290"/><path class="arrow flow" d="M116 515 L116 345"/>
+        </g>
+        <!-- principal -->
+        <g class="zone on" data-z="0" tabindex="0" role="button" aria-label="Cubierta principal">
+          <rect class="roof" x="190.7" y="65" width="790" height="640"/>
+          <rect x="190.7" y="65" width="790" height="640" fill="url(#rib-h)"/>
+          <rect class="canal" x="640.6" y="65" width="30" height="640"/>
+          <rect class="transl" x="454.2" y="79.1" width="70" height="62"/>
+          <rect class="transl" x="524.4" y="615.7" width="70" height="62"/>
+          <rect class="transl" x="304.5" y="610" width="70" height="62"/>
+          <path class="arrow flow" d="M260 385 L620 385"/><path class="arrow flow" d="M950 385 L692 385"/>
+          <text class="lbl" x="300" y="360">20 %</text><text class="lbl" x="840" y="360">20 %</text>
+        </g>
+        <!-- patio -->
+        <g class="zone" data-z="2" tabindex="0" role="button" aria-label="Cubierta del patio de ropas">
+          <rect class="roof" x="1015.7" y="430" width="85.5" height="290"/>
+          <rect x="1015.7" y="430" width="85.5" height="290" fill="url(#rib-h)"/>
+          <rect class="canal" x="1086" y="430" width="15.2" height="290"/>
+          <path class="arrow flow" d="M1022 575 L1080 575"/>
+        </g>
+        <text class="lbl s" x="640" y="30" text-anchor="middle">CANAL CENTRAL · 6,60 ml</text>
+        <text class="lbl s" x="116" y="604" text-anchor="middle">BALCÓN</text>
+        <text class="lbl s" x="1066" y="752" text-anchor="middle">PATIO</text>
+        <text class="lbl s" x="585" y="752" text-anchor="middle">8,60 m entre caras exteriores de muros</text>
+      </svg>
+      <div class="plan-legend"><span><i style="background:var(--teja)"></i>Teja UPVC</span><span><i style="background:var(--canal)"></i>Canal</span><span><i style="background:#fff;border:1.5px dashed var(--accent)"></i>Teja traslúcida</span><span><i style="background:var(--wall)"></i>Muro de cuchilla</span><span>→ sentido de la pendiente</span></div>
+    </div>
+    <div>
+      <div class="zone-tabs" role="tablist" id="ztabs">
+        <button role="tab" type="button" id="zt-0" aria-selected="true">Principal</button>
+        <button role="tab" type="button" id="zt-1" aria-selected="false">Balcón</button>
+        <button role="tab" type="button" id="zt-2" aria-selected="false">Patio de ropas</button>
+      </div>
+      <div class="zone-panel" id="zpanel" aria-live="polite"></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="planos">
+  <div class="sec-head"><span class="no">02</span><h2>Planos de referencia</h2></div>
+  <p class="lead">Las cantidades se tomaron directamente de los planos arquitectónico y estructural del proyecto. Toque el plano para ampliarlo.</p>
+  <div class="tabs" role="tablist" id="ptabs"></div>
+  <div class="sheet" id="sheet"><div class="sheet-scroll" id="sheet-scroll"><img id="plan-img" alt="" src="img/planta.png" width="2200" height="1640"></div></div>
+  <div class="sheet-bar"><span id="plan-cap"></span><button class="btn" id="zoom-btn" type="button">Ampliar plano</button></div>
+</section>
+
+<section class="sec" id="presupuesto">
+  <div class="sec-head"><span class="no">03</span><h2>Presupuesto</h2></div>
+  <p class="lead">Precios unitarios de suministro e instalación a todo costo. Cada precio incluye materiales, mano de obra, transporte a obra, equipo contra caídas del personal y limpieza y retiro de sobrantes. Toque cada capítulo para ver sus ítems.</p>
+  <div id="cd-groups"></div>
+  <div class="stack" id="stack" aria-hidden="true"></div>
+  <div class="stack-legend" id="stack-legend"></div>
+  <div class="grand" id="grand"></div>
+  <div class="dlbox" style="margin-top:22px"><div><b>Descargue la cotización formal</b><span>El mismo presupuesto en el formato de cotización de Intura, listo para archivar o imprimir.</span></div><a class="dl" href="docs/Cotizacion_Cubierta_Casa4_Cumbres_Monserrate.pdf" target="_blank" rel="noopener" data-dl download="Cotizacion_Cubierta_Casa4_Cumbres_Monserrate.pdf"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12M7 10l5 5 5-5M4 20h16"/></svg>Descargar PDF</a><p class="dl-msg" aria-live="polite" hidden></p></div>
+  <p class="son">Son: veintidós millones trescientos veinticinco mil ochocientos veinticinco pesos m/cte. Valores en pesos colombianos (COP).</p>
+</section>
+
+<section class="sec" id="especificaciones">
+  <div class="sec-head"><span class="no">04</span><h2>Especificaciones</h2></div>
+  <div class="specs rv">
+    <div class="spec"><span class="tag">Estructura</span><h3>Perlín C 150×60×2,0 mm</h3><p>Acero grado 50 (P-6-14 del plano estructural), con anticorrosivo y esmalte. Conexión a muro con ángulo 2"×2"×1/8" y pernos 3/8" A325 con anclaje químico.</p><svg class="prof" viewBox="0 0 120 56" aria-hidden="true"><polyline points="70,8 70,4 40,4 40,52 70,52 70,48"/></svg><span class="big">428,24 kg</span></div>
+    <div class="spec"><span class="tag">Teja</span><h3>Ecoroof 36 · 2 mm · blanca</h3><p>Teja UPVC en hojas de 0,92 × 5,90 m, fijada con tornillo autoperforante y arandela EPDM. Tres piezas de teja traslúcida del mismo perfil, cotizadas como global.</p><svg class="prof" viewBox="0 0 120 56" aria-hidden="true"><polyline points="2,40 14,40 22,16 34,16 42,40 54,40 62,16 74,16 82,40 94,40 102,16 114,16 118,28"/></svg><span class="big">56,37 m²</span></div>
+    <div class="spec"><span class="tag">Canales</span><h3>Lámina galvanizada cal. 20</h3><p>Canal central de 1,00 m de desarrollo (0,30 × 0,20 m con aletas) y canales de 0,80 m en balcón y patio, con soportes, sello y anticorrosivo interior.</p><svg class="prof" viewBox="0 0 120 56" aria-hidden="true"><polyline points="8,10 30,18 40,18 40,46 80,46 80,18 90,18 112,10"/></svg><span class="big">10,70 ml</span></div>
+    <div class="spec"><span class="tag">Flanches</span><h3>Lámina galvanizada cal. 26</h3><p>Flanche teja–muro de 0,40 m de desarrollo en todos los encuentros de la teja con los muros de cuchilla, fijado con chazos y sellado con poliuretano.</p><svg class="prof" viewBox="0 0 120 56" aria-hidden="true"><polyline points="40,4 40,40 100,52 104,48"/></svg><span class="big">44,23 ml</span></div>
+    <div class="spec"><span class="tag">Alfajías</span><h3>Prepintada negra cal. 24</h3><p>Lámina doblada de 0,68 m de desarrollo con goteros a ambos lados, sobre los muros de cuchilla, como lo indican las fachadas.</p><svg class="prof" viewBox="0 0 120 56" aria-hidden="true"><polyline points="20,44 24,44 24,14 96,14 96,44 100,44"/></svg><span class="big">42,14 ml</span></div>
+    <div class="spec"><span class="tag">Seguridad</span><h3>Trabajo en alturas</h3><p>Coordinador de trabajo en alturas durante toda la obra y equipo contra caídas (arnés, eslinga, línea de vida) para el personal, según la Resolución 4272 de 2021.</p><svg class="prof" viewBox="0 0 120 56" aria-hidden="true"><path d="M10 50 L10 10 L110 10"/><path d="M60 10 L60 30"/><circle cx="60" cy="36" r="6" style="fill:none;stroke:#111214;stroke-width:2"/></svg><span class="big">Global · 3 semanas</span></div>
+  </div>
+</section>
+
+<section class="sec" id="programacion">
+  <div class="sec-head"><span class="no">05</span><h2>Programación estimada</h2></div>
+  <p class="lead">Secuencia prevista para ejecutar la cubierta en 3 semanas de trabajo, de lunes a sábado. Las fechas se fijan al firmar la orden de inicio.</p>
+  <div class="gantt pre" id="gantt">
+    <div class="g-head"><span>Actividad</span><div class="g-weeks"><span>Semana 1</span><span>Semana 2</span><span>Semana 3</span></div></div>
+  </div>
+</section>
+
+<section class="sec" id="condiciones">
+  <div class="sec-head"><span class="no">06</span><h2>Condiciones</h2></div>
+  <div class="resp rv">
+    <div><h3>Incluye</h3><ul>
+      <li>Suministro, transporte a obra, montaje e instalación de la estructura metálica, la teja, los canales, los flanches y las alfajías de las tres cubiertas.</li>
+      <li>Coordinador de trabajo en alturas y equipo contra caídas del personal.</li>
+      <li>Limpieza final y retiro de sobrantes.</li></ul></div>
+    <div><h3>No incluye</h3><ul>
+      <li>Andamios, que los suministra el contratante.</li>
+      <li>Bajantes y red de aguas lluvias.</li>
+      <li>Impermeabilización de culatas, cielo raso y obras de mampostería o concreto.</li></ul></div>
+  </div>
+  <div class="cols2">
+    <ul style="margin:0;padding-left:18px;max-width:62ch">
+      <li style="margin-bottom:8px">Cantidades tomadas de los planos arquitectónico y estructural de la Casa 4. Se verifican en obra antes de fabricar.</li>
+      <li style="margin-bottom:8px">La estructura del patio de ropas (2 correas del mismo perfil) es una propuesta de Intura, porque no aparece en los planos estructurales.</li>
+      <li>Administración 10 %, imprevistos 2 % y utilidad 3 % sobre el costo directo. IVA del 19 % sobre la utilidad.</li>
+    </ul>
+    <dl class="meta">
+      <dt>Plazo</dt><dd>3 semanas</dd>
+      <dt>Forma de pago</dt><dd>50 % de anticipo · 50 % mediante actas de avance de obra</dd>
+      <dt>Validez</dt><dd><span class="ph">[Por definir]</span></dd>
+    </dl>
+  </div>
+</section>
+
+<section class="visit" id="intura">
+  <div class="visit-in">
+    <div>
+      <div class="eyebrow">Intura Grupo Constructor</div>
+      <h3>Conozca nuestra empresa</h3>
+      <p>Vea quiénes somos, cómo trabajamos y los proyectos que hemos realizado.</p>
+    </div>
+    <a class="go" href="https://inturagrupoconstructor.com/" target="_blank" rel="noopener">Ir a inturagrupoconstructor.com <span class="mono">→</span></a>
+  </div>
+</section>
+</main>
+
+<footer><div class="wrap">
+  <div>
+    <div class="brand">INTURA<span>GRUPO CONSTRUCTOR</span></div>
+    <img class="firma" src="img/firma.png" alt="Firma de Daniel García Tamayo" width="700" height="305">
+    <p style="margin:0" class="sig">Daniel García Tamayo</p>
+    <p class="role" style="margin:4px 0 0">Ingeniero Civil · M.P. 66202-331568<br>Director de Proyectos</p>
+    <p class="fine">Documento informativo. Las cantidades se confirman en obra antes de fabricar.</p>
+  </div>
+  <div class="contact">
+    <span>310 426 1875</span>
+    <span>gerencia@inturagrupoconstructor.com</span>
+    <span>@ingdanielgarciat · @inturagrupoconstructor</span>
+    <span><a href="https://www.inturagrupoconstructor.com" target="_blank" rel="noopener">www.inturagrupoconstructor.com</a></span>
+    <a class="wa" href="https://wa.me/573104261875?text=Hola%20Daniel%2C%20revis%C3%A9%20la%20cotizaci%C3%B3n%20de%20la%20cubierta%20Casa%204%20Cumbres%20de%20Monserrate" target="_blank" rel="noopener">Escribir por WhatsApp</a>
+  </div>
+</div></footer>
+
+<script>
+document.documentElement.classList.add('js');
+const D = {"chaps": [{"n": "01", "t": "SEGURIDAD EN ALTURAS", "v": 1000000, "items": [["1.01", "Coordinador de trabajo en alturas durante la ejecución de la obra, 3 semanas (Res. 4272 de 2021)", "glb", 1, 1000000, 1000000]]}, {"n": "02", "t": "ESTRUCTURA METÁLICA DE CUBIERTA", "v": 6851904, "items": [["2.01", "Estructura metálica de cubierta en perlín C 150×60×2,0 mm (P-6-14) acero grado 50, incluye conexiones correa–muro (ángulo 2\"×2\"×1/8\" + 2 pernos 3/8\" A325 con anclaje químico), templetes en varilla roscada 3/8\", soldadura E60, anticorrosivo y esmalte", "kg", 428.24, 16000, 6851904]]}, {"n": "03", "t": "CUBIERTA EN TEJA", "v": 4395974, "items": [["3.01", "Teja UPVC Ecoroof 36, 2 mm, blanca (0,92×5,90 m), suministro e instalación con fijaciones, incluye traslapos y cortes", "m²", 56.37, 70000, 3945974], ["3.02", "Teja traslúcida del mismo perfil, suministro e instalación (3 piezas, 1,30 m²)", "glb", 1, 450000, 450000]]}, {"n": "04", "t": "CANALES, FLANCHES Y ALFAJÍAS", "v": 7070133, "items": [["4.01", "Canal en lámina galvanizada cal. 20, desarrollo 1,00 m (0,30 × 0,20 + aletas), soportes, sello y anticorrosivo interior", "ml", 6.6, 140000, 924000], ["4.02", "Canal en lámina galvanizada cal. 20, desarrollo 0,80 m (cubiertas de balcón y patio de ropas), soportes, sello y anticorrosivo interior", "ml", 4.1, 140000, 574000], ["4.03", "Flanche teja–muro en lámina galvanizada cal. 26, desarrollo 0,40 m, fijado con chazos y sellado con poliuretano", "ml", 44.23, 45000, 1990233], ["4.04", "Alfajía en lámina galvanizada prepintada negra cal. 24, desarrollo 0,68 m con goteros, sobre muro de cuchilla", "ml", 42.14, 85000, 3581900]]}], "tot": {"COSTO DIRECTO": 19318011, "Administración": 1931801, "Imprevistos": 386360, "Utilidad": 579540, "IVA sobre la utilidad": 110113, "VALOR TOTAL DE LA COTIZACIÓN": 22325825, "Valor por m² de cubierta": 387110}, "q": {"B": 6.4, "L1": 4.509, "L2": 3.091, "p": 0.2, "f": 1.02, "v": 0.1, "A1": 50.883, "Bb": 0.8, "Lb": 5.14, "cb": 0.3, "pb": 0.08, "fb": 1.003, "Lab": 2.428, "A2": 4.012, "Bp": 2.9, "Lp": 0.855, "pp": 0.08, "fp": 1.003, "A3": 2.777, "nt": 3, "At": 1.302, "Au": 56.371, "Ac": 57.673, "nc": 8, "Lc": 6.7, "wc": 7.02, "Kc": 376.272, "ncp": 2, "Lcp": 2.9, "Kcp": 40.716, "Nx": 20, "wa": 2.46, "Ka": 6.888, "Nt": 6, "wt": 0.56, "Kt": 4.368, "Ke": 428.244, "Cc": 6.6, "Cb": 1, "Cp": 3.1, "C8": 4.1, "F1": 28.301, "F2": 11.311, "F3": 4.615, "Ft": 44.227, "Al1": 29.9, "Al2": 7.33, "Al3": 4.91, "Alt": 42.14}};
+const $ = s => document.querySelector(s);
+const money = v => '$ ' + Math.round(v).toLocaleString('es-CO').replace(/,/g,'.');
+const dec = (v,d=2) => Number(v).toLocaleString('es-CO',{minimumFractionDigits:d,maximumFractionDigits:d});
+const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const Q = D.q, T = D.tot;
+
+/* zonas de cubierta */
+const Z = [
+  {n:'Cubierta principal', d:'Dos aguas al 20 % hacia el canal central, entre los ejes 1 y 4. Ocho correas T1 de 6,70 m entre muros.',
+   r:[['Teja UPVC Ecoroof 36', Q.A1 - Q.At, 'm²'], ['Teja traslúcida', Q.At, 'm²'], ['Canal desarrollo 1,00 m', Q.Cc, 'ml'], ['Flanche teja–muro', Q.F1, 'ml'], ['Alfajía', Q.Al1, 'ml'], ['Correas perlín', Q.Kc, 'kg']]},
+  {n:'Cubierta del balcón', d:'Dos aguas al 8 % hacia un canal central de 0,30 m, frente al eje 1. Teja apoyada en las vigas de concreto.',
+   r:[['Teja UPVC Ecoroof 36', Q.A2, 'm²'], ['Canal desarrollo 0,80 m', Q.Cb, 'ml'], ['Flanche teja–muro', Q.F2, 'ml'], ['Alfajía', Q.Al2, 'ml']]},
+  {n:'Cubierta del patio de ropas', d:'Una agua al 8 % en el nivel 1, con canal en el borde exterior. Estructura propuesta: dos correas de 2,90 m.',
+   r:[['Teja UPVC Ecoroof 36', Q.A3, 'm²'], ['Canal desarrollo 0,80 m', Q.Cp, 'ml'], ['Flanche teja–muro', Q.F3, 'ml'], ['Alfajía', Q.Al3, 'ml'], ['Correas perlín', Q.Kcp, 'kg']]},
+];
+const MAXQ = {'m²': Q.A1, 'ml': Math.max(Q.F1, Q.Al1), 'kg': Q.Kc};
+const zones = [...document.querySelectorAll('.zone')], ztabs = [...document.querySelectorAll('#ztabs button')];
+function showZone(i){
+  zones.forEach(z => z.classList.toggle('on', +z.dataset.z === i));
+  ztabs.forEach((b,j) => b.setAttribute('aria-selected', j === i));
+  const z = Z[i];
+  $('#zpanel').innerHTML = `<h3>${z.n}</h3><p class="desc">${z.d}</p>` + z.r.map(([k,v,u]) =>
+    `<div class="qrow"><span>${k}</span><b>${dec(v)} ${u}</b><div class="bar"><span data-w="${Math.min(100, v / MAXQ[u] * 100).toFixed(1)}"></span></div></div>`).join('');
+  requestAnimationFrame(() => requestAnimationFrame(() => document.querySelectorAll('#zpanel .bar span').forEach(s => s.style.width = s.dataset.w + '%')));
+}
+zones.forEach(z => { z.addEventListener('click', () => showZone(+z.dataset.z)); z.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); showZone(+z.dataset.z); } }); });
+ztabs.forEach((b,i) => b.addEventListener('click', () => showZone(i)));
+showZone(0);
+
+/* planos */
+const P = [
+  ['planta','Planta de cubiertas','Planta de cubiertas · plano arquitectónico',2200,1640],
+  ['corte','Corte A','Corte A · niveles N +0,00 a N +7,30 y pendientes de cubierta',2200,1512],
+  ['fachada','Fachada principal','Fachada principal · alfajías en lámina doblada color negro',1998,1351],
+  ['estruc','Planta estructural','Planta de cubierta · plano estructural ES-01/04 · escala 1:25',2200,2891],
+  ['union','Detalle de unión','Detalle unión correa–muro y perlín P-6-14 · plano ES-01/04',2200,1200],
+];
+const img = $('#plan-img'), sheet = $('#sheet'), zb = $('#zoom-btn');
+$('#ptabs').innerHTML = P.map((p,i) => `<button role="tab" type="button" id="pt-${i}">${p[1]}</button>`).join('');
+const ptabs = [...document.querySelectorAll('#ptabs button')];
+function showPlan(i){
+  ptabs.forEach((b,j) => b.setAttribute('aria-selected', j === i));
+  const p = P[i];
+  if (sheet.classList.contains('zoom')) toggleZoom();
+  img.classList.add('fade');
+  setTimeout(() => { img.src = 'img/' + p[0] + '.png'; img.width = p[3]; img.height = p[4]; img.alt = p[2]; $('#plan-cap').textContent = p[2]; img.classList.remove('fade'); }, 160);
+  try { localStorage.setItem('c4-plan', i); } catch(e) {}
+}
+ptabs.forEach((b,i) => b.addEventListener('click', () => showPlan(i)));
+let p0 = 0; try { p0 = +(localStorage.getItem('c4-plan') || 0); } catch(e) {}
+ptabs.forEach((b,j) => b.setAttribute('aria-selected', j === (p0 >= 0 && p0 < P.length ? p0 : 0)));
+img.src = 'img/' + P[p0 >= 0 && p0 < P.length ? p0 : 0][0] + '.png'; img.alt = P[p0 >= 0 && p0 < P.length ? p0 : 0][2]; $('#plan-cap').textContent = img.alt;
+function toggleZoom(){ const z = sheet.classList.toggle('zoom'); zb.textContent = z ? 'Ver plano completo' : 'Ampliar plano';
+  if (z) { const s = $('#sheet-scroll'); requestAnimationFrame(() => { s.scrollLeft = (s.scrollWidth - s.clientWidth) * 0.4; s.scrollTop = (s.scrollHeight - s.clientHeight) * 0.3; }); } }
+zb.addEventListener('click', toggleZoom); img.addEventListener('click', toggleZoom);
+
+/* presupuesto */
+const CD = T['COSTO DIRECTO'];
+const head6 = `<thead><tr><th>Ítem</th><th>Descripción</th><th class="c">Und</th><th class="n">Cant.</th><th class="n">Vr. unitario</th><th class="n">Vr. parcial</th></tr></thead>`;
+const row = r => `<tr class="it"><td>${esc(r[0])}</td><td class="d">${esc(r[1])}</td><td class="m">${dec(r[3])} ${esc(r[2])} × ${money(r[4])}</td><td class="c">${esc(r[2])}</td><td class="n">${dec(r[3])}</td><td class="n">${money(r[4])}</td><td class="n tot">${money(r[5])}</td></tr>`;
+$('#cd-groups').innerHTML = D.chaps.map((g,i) => `<details class="group"${i === 1 ? ' open' : ''}><summary><span class="cn">${g.n}</span><span><span class="ct">${esc(g.t.charAt(0) + g.t.slice(1).toLowerCase())}</span><div class="bar-mini"><span style="width:${(g.v / CD * 100).toFixed(1)}%"></span></div></span><span class="cv">${money(g.v)}</span><span class="chev" aria-hidden="true">›</span></summary><div class="tbl"><table>${head6}<tbody>${g.items.map(row).join('')}</tbody></table></div></details>`).join('');
+const SEG = [['Costo directo', CD, '#2B2D33'], ['Administración 10 %', T['Administración'], '#3A64B8'], ['Imprevistos 2 %', T['Imprevistos'], '#7FA0DA'], ['Utilidad 3 %', T['Utilidad'], '#9BB3E0'], ['IVA s/ utilidad', T['IVA sobre la utilidad'], '#B9BEC9']];
+$('#stack').innerHTML = SEG.map(([n,v,c]) => `<span style="background:${c};flex-grow:${v}" title="${n}: ${money(v)}"></span>`).join('');
+$('#stack-legend').innerHTML = SEG.map(([n,v,c]) => `<span><i style="background:${c}"></i>${n} · <span class="mono">${money(v)}</span></span>`).join('');
+$('#grand').innerHTML = `<span>Costo directo</span><span class="r">${money(CD)}</span><span>Administración (10 %)</span><span class="r">${money(T['Administración'])}</span><span>Imprevistos (2 %)</span><span class="r">${money(T['Imprevistos'])}</span><span>Utilidad (3 %)</span><span class="r">${money(T['Utilidad'])}</span><span>IVA 19 % sobre la utilidad</span><span class="r">${money(T['IVA sobre la utilidad'])}</span><span class="t">Valor total de la cotización</span><span class="t r">${money(T['VALOR TOTAL DE LA COTIZACIÓN'])}</span>`;
+
+/* programación: día inicial, duración en días (18 días = 3 semanas) */
+const G = [
+  ['Coordinación de trabajo en alturas', 'Toda la obra', 0, 18, 'dark'],
+  ['Estructura metálica', '428 kg · correas, conexiones y templetes', 0, 6, ''],
+  ['Teja UPVC y traslúcida', '57,7 m²', 5, 4, 'alt'],
+  ['Canales', '10,70 ml', 7, 3, ''],
+  ['Flanches teja–muro', '44,23 ml', 9, 4, 'alt'],
+  ['Alfajías', '42,14 ml', 11, 5, ''],
+  ['Limpieza y entrega', 'Retiro de sobrantes', 16, 2, 'dark'],
+];
+$('#gantt').insertAdjacentHTML('beforeend', G.map(([a,s,d0,n,c],i) => `<div class="g-row"><div class="lab">${a}<small>${s}</small></div><div class="g-track"><div class="g-bar ${c}" style="left:${d0 / 18 * 100}%;width:${n / 18 * 100}%;transition-delay:${i * 90}ms" title="Días ${d0 + 1} a ${d0 + n}"></div></div></div>`).join(''));
+
+/* animaciones al entrar en pantalla (la página ya está completa en reposo) */
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+function countUp(el){
+  const to = +el.dataset.count, f = el.dataset.fmt, t0 = performance.now(), dur = 1100;
+  const fmtv = v => f === 'money' ? money(v) : dec(v, 1) + ' m²';
+  (function step(t){ const k = Math.min(1, (t - t0) / dur), e = 1 - Math.pow(1 - k, 3); el.textContent = fmtv(to * e); if (k < 1) requestAnimationFrame(step); else el.textContent = fmtv(to); })(t0);
+}
+if ('IntersectionObserver' in window && !reduce) {
+  const rvs = [...document.querySelectorAll('.rv')];
+  rvs.forEach(el => { if (el.getBoundingClientRect().top > innerHeight) el.classList.add('below'); });
+  const io = new IntersectionObserver(es => es.forEach(e => { if (!e.isIntersecting) return; const el = e.target;
+    if (el.classList.contains('rv')) el.classList.remove('below');
+    if (el.id === 'gantt') el.classList.remove('pre');
+    if (el.dataset.count) countUp(el);
+    io.unobserve(el); }), {threshold: .15});
+  const gt = $('#gantt'); if (gt.getBoundingClientRect().top > innerHeight) gt.classList.add('pre');
+  rvs.forEach(el => io.observe(el)); io.observe(gt);
+  document.querySelectorAll('[data-count]').forEach(el => io.observe(el));
+}
+
+
+/* descarga del PDF: en Claude usa la capacidad de descargas; si no está, el enlace abre el PDF */
+(async () => {
+  let dls = null;
+  try { dls = window.claude && window.claude.use ? await window.claude.use("downloads") : null; } catch(e) { dls = null; }
+  if (!dls) return;
+  document.querySelectorAll('[data-dl]').forEach(a => a.addEventListener('click', async ev => {
+    ev.preventDefault();
+    const msg = a.parentElement.querySelector('.dl-msg');
+    const say = t => { if (msg) { msg.textContent = t; msg.hidden = !t; } };
+    try {
+      const res = await fetch(a.getAttribute('href'));
+      if (!res.ok) throw {code:'fetch'};
+      const blob = await res.blob();
+      const r = await dls.save({filename: 'Cotizacion_Cubierta_Casa4_Cumbres_Monserrate.pdf', data: blob});
+      say(r && r.status === 'saved' ? 'Descarga iniciada.' : '');
+    } catch (e) {
+      const c = e && e.code;
+      if (c === 'declined') say('');
+      else if (c === 'rate_limited') say('Ya hay una descarga pendiente. Intente de nuevo en un momento.');
+      else { say('No se pudo descargar aquí. Abriendo el PDF…'); window.open(a.getAttribute('href'), '_blank', 'noopener'); }
+    }
+  }));
+})();
+
+/* índice lateral */
+const rail = document.querySelector('.rail');
+const links = [...document.querySelectorAll('.rail nav a')];
+const secs = links.map(a => document.querySelector(a.getAttribute('href')));
+function railUpdate(){
+  const y = innerHeight * 0.35; let cur = 0;
+  secs.forEach((sec,i) => { if (sec.getBoundingClientRect().top <= y) cur = i; });
+  links.forEach((a,i) => a.classList.toggle('on', i === cur));
+  const ft = document.querySelector('footer').getBoundingClientRect().top;
+  rail.classList.toggle('off', ft < rail.getBoundingClientRect().bottom + 24);
+}
+addEventListener('scroll', railUpdate, {passive:true}); addEventListener('resize', railUpdate); railUpdate();
+</script>
+</body></html>
