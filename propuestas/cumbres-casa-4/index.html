@@ -322,7 +322,7 @@ a.dl svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:2}
 <div class="wrap">
   <div class="figs">
     <div class="fig main"><span class="k">Valor total de la cotización</span><span class="v" data-count="30005070" data-fmt="money">$ 30.005.070</span><span class="s">Incluye AIU e IVA sobre la utilidad</span></div>
-    <div class="fig"><span class="k">Área de cubierta</span><span class="v" data-count="57.7" data-fmt="m2">57,7 m²</span><span class="s">Principal, balcón y patio de ropas</span></div>
+    <div class="fig"><span class="k">Área de cubierta</span><span class="v" data-count="57.7" data-fmt="m2">57,7 m²</span><span class="s">56,37 m² de teja UPVC + 1,30 m² de teja traslúcida</span></div>
     <div class="fig"><span class="k">Plazo de ejecución</span><span class="v">3 semanas</span><span class="s">Con coordinador de trabajo en alturas</span></div>
   </div>
   <div class="dlbox">
@@ -416,7 +416,7 @@ a.dl svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:2}
   <div class="specs rv">
     <div class="spec"><span class="tag">Estructura</span><h3>Perlín C 150×60×2,0 mm</h3><p>Acero grado 50 (P-6-14 del plano estructural), con anticorrosivo y esmalte. Incluye conexión a muro con ángulo 2"×2"×1/8" y pernos 3/8" A325 con anclaje químico, platinas de anclaje y templetes.</p><svg class="prof" viewBox="0 0 120 56" aria-hidden="true"><polyline points="70,8 70,4 40,4 40,52 70,52 70,48"/></svg><span class="big">469,94 kg</span></div>
     <div class="spec"><span class="tag">Teja</span><h3>Ecoroof 36 · 2 mm · blanca</h3><p>Teja UPVC en hojas de 0,92 × 5,90 m, fijada con tornillo autoperforante y arandela EPDM. Tres piezas de teja traslúcida del mismo perfil, cotizadas como global.</p><svg class="prof" viewBox="0 0 120 56" aria-hidden="true"><polyline points="2,40 14,40 22,16 34,16 42,40 54,40 62,16 74,16 82,40 94,40 102,16 114,16 118,28"/></svg><span class="big">56,37 m²</span></div>
-    <div class="spec"><span class="tag">Canales</span><h3>Lámina galvanizada cal. 20</h3><p>Canal central de 1,00 m de desarrollo (0,30 × 0,20 m con aletas) y canales de 0,80 m en balcón y patio, con soportes, sello y anticorrosivo interior.</p><svg class="prof" viewBox="0 0 120 56" aria-hidden="true"><polyline points="8,10 30,18 40,18 40,46 80,46 80,18 90,18 112,10"/></svg><span class="big">10,70 ml</span></div>
+    <div class="spec"><span class="tag">Canales</span><h3>Lámina galvanizada cal. 20</h3><p>Canal central de 1,00 m de desarrollo (0,30 × 0,20 m con aletas) y canales de 0,80 m en balcón y patio, con soportes, sello y anticorrosivo interior.</p><svg class="prof" viewBox="0 0 120 56" aria-hidden="true"><polyline points="8,10 30,18 40,18 40,46 80,46 80,18 90,18 112,10"/></svg><span class="big">6,60 + 4,10 ml</span></div>
     <div class="spec"><span class="tag">Flanches</span><h3>Lámina galvanizada cal. 26</h3><p>Flanche teja–muro de 0,40 m de desarrollo en todos los encuentros de la teja con los muros de cuchilla, fijado con chazos y sellado con poliuretano.</p><svg class="prof" viewBox="0 0 120 56" aria-hidden="true"><polyline points="40,4 40,40 100,52 104,48"/></svg><span class="big">44,23 ml</span></div>
     <div class="spec"><span class="tag">Alfajías</span><h3>Prepintada negra cal. 24</h3><p>Lámina doblada de 0,68 m de desarrollo con goteros a ambos lados, sobre los muros de cuchilla, como lo indican las fachadas.</p><svg class="prof" viewBox="0 0 120 56" aria-hidden="true"><polyline points="20,44 24,44 24,14 96,14 96,44 100,44"/></svg><span class="big">42,14 ml</span></div>
     <div class="spec"><span class="tag">Seguridad</span><h3>Trabajo en alturas</h3><p>Coordinador de trabajo en alturas durante toda la obra y equipo contra caídas (arnés, eslinga, línea de vida) para el personal, según la Resolución 4272 de 2021.</p><svg class="prof" viewBox="0 0 120 56" aria-hidden="true"><path d="M10 50 L10 10 L110 10"/><path d="M60 10 L60 30"/><circle cx="60" cy="36" r="6" style="fill:none;stroke:#111214;stroke-width:2"/></svg><span class="big">Global · 3 semanas</span></div>
@@ -498,7 +498,7 @@ const Q = D.q, T = D.tot;
 /* zonas de cubierta */
 const Z = [
   {n:'Cubierta principal', d:'Dos aguas al 20 % hacia el canal central, entre los ejes 1 y 4. Ocho correas T1 de 6,70 m entre muros.',
-   r:[['Teja UPVC Ecoroof 36', Q.A1 - Q.At, 'm²'], ['Teja traslúcida', Q.At, 'm²'], ['Canal desarrollo 1,00 m', Q.Cc, 'ml'], ['Flanche teja–muro', Q.F1, 'ml'], ['Alfajía', Q.Al1, 'ml'], ['Correas perlín', Q.Kc, 'kg']]},
+   r:[['Teja UPVC Ecoroof 36', Q.A1 - Q.At, 'm²'], ['Teja traslúcida', Q.At, 'm²'], ['Canal desarrollo 1,00 m', Q.Cc, 'ml'], ['Flanche teja–muro', Q.F1, 'ml'], ['Alfajía', Q.Al1, 'ml'], ['Correas perlín', Q.Kc, 'kg'], ['Conexiones, platinas de anclaje y templetes (toda la casa)', Q.Ke - Math.round(Q.Kc*100)/100 - Math.round(Q.Kcp*100)/100, 'kg']]},
   {n:'Cubierta del balcón', d:'Dos aguas al 8 % hacia un canal central de 0,30 m, frente al eje 1. Teja apoyada en las vigas de concreto.',
    r:[['Teja UPVC Ecoroof 36', Q.A2, 'm²'], ['Canal desarrollo 0,80 m', Q.Cb, 'ml'], ['Flanche teja–muro', Q.F2, 'ml'], ['Alfajía', Q.Al2, 'ml']]},
   {n:'Cubierta del patio de ropas', d:'Una agua al 8 % en el nivel 1, con canal en el borde exterior. Estructura propuesta: dos correas de 2,90 m.',
@@ -558,9 +558,9 @@ $('#grand').innerHTML = `<span>Costo directo</span><span class="r">${money(CD)}<
 /* programación: día inicial, duración en días (18 días = 3 semanas) */
 const G = [
   ['Coordinación de trabajo en alturas', 'Toda la obra', 0, 18, 'dark'],
-  ['Estructura metálica', '470 kg · correas, conexiones, platinas y templetes', 0, 6, ''],
-  ['Teja UPVC y traslúcida', '57,7 m²', 5, 4, 'alt'],
-  ['Canales', '10,70 ml', 7, 3, ''],
+  ['Estructura metálica', '469,94 kg · correas, conexiones, platinas y templetes', 0, 6, ''],
+  ['Teja UPVC y traslúcida', '56,37 m² UPVC + 3 tejas traslúcidas', 5, 4, 'alt'],
+  ['Canales', '6,60 ml (desarrollo 1,00 m) + 4,10 ml (0,80 m)', 7, 3, ''],
   ['Flanches teja–muro', '44,23 ml', 9, 4, 'alt'],
   ['Alfajías', '42,14 ml', 11, 5, ''],
   ['Limpieza y entrega', 'Retiro de sobrantes', 16, 2, 'dark'],
