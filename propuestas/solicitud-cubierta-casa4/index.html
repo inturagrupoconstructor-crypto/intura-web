@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Solicitud Cotización Cubierta</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F6F6F4; --paper:#FFFFFF; --ink:#111214; --muted:#5E6066; --line:#D9D9D5; --soft:#ECECE8;
+  --band:#0B0B0C; --band-ink:#F6F6F4; --accent:#3A64B8; --accent-soft:#E3EAF7;
+  --f-display:"Archivo",system-ui,sans-serif; --f-body:"IBM Plex Sans",system-ui,sans-serif; --f-mono:"IBM Plex Mono",ui-monospace,monospace;
+  color-scheme:light;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.55}
+img{max-width:100%;display:block}
+a{color:var(--accent)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.wrap{max-width:1080px;margin:0 auto;padding-inline:24px}
+h1,h2,h3{font-family:var(--f-display);text-wrap:balance}
+.band{background:var(--band);color:var(--band-ink)}
+.band .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:14px}
+.brand{font-family:var(--f-display);font-weight:800;letter-spacing:.32em;font-size:15px}
+.brand span{font-weight:400;letter-spacing:.24em;opacity:.7;margin-left:10px;font-size:11px}
+.band .doc{font-family:var(--f-mono);font-size:12px;opacity:.75;text-align:right}
+.eyebrow{font-family:var(--f-mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.hero .wrap{padding-block:56px 32px;display:grid;grid-template-columns:1.3fr 1fr;gap:40px;align-items:end}
+.hero h1{font-size:clamp(38px,6.5vw,68px);font-weight:800;line-height:.98;letter-spacing:-.02em;margin-top:12px}
+.hero h1 em{font-style:normal;display:block;font-weight:400;color:var(--muted);font-size:.36em;letter-spacing:.06em;margin-top:16px;text-transform:uppercase;line-height:1.25}
+.meta{display:grid;grid-template-columns:auto 1fr;gap:6px 18px;font-size:15px;border-top:3px solid var(--ink);padding-top:16px}
+.meta dt{font-family:var(--f-mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);padding-top:2px}
+.dl{background:var(--paper);border:1px solid var(--line);border-left:4px solid var(--accent);padding:24px;display:grid;grid-template-columns:1fr auto;gap:20px;align-items:center;margin-bottom:56px}
+.dl h2{font-size:22px}
+.dl p{color:var(--muted);font-size:15px;margin-top:4px}
+.btn{display:inline-flex;align-items:center;gap:10px;background:var(--ink);color:#fff;border:0;font:600 15px var(--f-body);padding:14px 22px;cursor:pointer;text-decoration:none;white-space:nowrap}
+.btn:hover{background:var(--accent)}
+.btn svg{width:18px;height:18px}
+.msg{font-family:var(--f-mono);font-size:12px;color:var(--muted);grid-column:1/-1;min-height:1em}
+section{margin-bottom:64px}
+.sh{display:flex;align-items:baseline;gap:16px;border-bottom:3px solid var(--ink);padding-bottom:10px;margin-bottom:20px}
+.sh .k{font-family:var(--f-mono);color:var(--accent);font-size:14px}
+.sh h2{font-size:clamp(24px,3.4vw,32px);font-weight:800;letter-spacing:-.01em}
+.lead{color:var(--muted);max-width:68ch;margin-bottom:20px}
+.tbl{width:100%;border-collapse:collapse;background:var(--paper);font-size:15px}
+.tbl th{font-family:var(--f-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);text-align:left;padding:10px 12px;border-bottom:1px solid var(--ink);font-weight:500}
+.tbl td{padding:12px;border-bottom:1px solid var(--line);vertical-align:top}
+.tbl .ch td{background:var(--soft);font-family:var(--f-display);font-weight:600;font-size:14px;letter-spacing:.04em}
+.tbl .ch td:first-child{color:var(--accent);font-weight:800}
+.tbl .c{font-family:var(--f-mono);color:var(--muted);font-size:13px;white-space:nowrap}
+.tbl .u{text-align:center;white-space:nowrap}
+.tbl .n,.tbl th.n{text-align:right;font-family:var(--f-mono);white-space:nowrap;font-variant-numeric:tabular-nums}
+.tbl th.u{text-align:center}
+.inc{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+.inc div{background:var(--paper);padding:18px 20px}
+.inc h3{font-size:16px;margin-bottom:4px}
+.inc p{font-size:14px;color:var(--muted)}
+.inc .no{background:var(--accent-soft);grid-column:span 2}
+@media (max-width:900px){.inc{grid-template-columns:1fr 1fr}}
+.ret{background:var(--paper);border:1px solid var(--line);padding:24px}
+.bar{display:flex;height:46px;margin:18px 0 10px;font-family:var(--f-mono);font-size:13px}
+.bar div{display:flex;align-items:center;padding:0 14px;color:#fff}
+.bar .a{flex:9;background:var(--ink)}
+.bar .b{flex:1;background:var(--accent);justify-content:center;min-width:64px}
+.legend{display:grid;grid-template-columns:9fr 1fr;gap:0;font-size:14px;color:var(--muted)}
+.legend span:last-child{text-align:right;min-width:150px}
+.ret ol{margin:18px 0 0 20px;display:grid;gap:6px}
+.planos{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.planos figure{background:var(--paper);border:1px solid var(--line);padding:12px}
+.planos figcaption{font-family:var(--f-mono);font-size:12px;color:var(--muted);margin-top:8px}
+.steps{counter-reset:s;display:grid;gap:10px;max-width:72ch}
+.steps li{list-style:none;counter-increment:s;padding-left:44px;position:relative}
+.steps li::before{content:counter(s,decimal-leading-zero);position:absolute;left:0;font-family:var(--f-mono);color:var(--accent)}
+footer{background:var(--band);color:var(--band-ink);padding-block:36px;font-size:14px}
+footer .wrap{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap}
+footer a{color:var(--band-ink)}
+footer .m{opacity:.7;font-family:var(--f-mono);font-size:12px}
+@media (max-width:760px){
+  .hero .wrap{grid-template-columns:1fr;gap:28px;padding-block:36px 24px}
+  .dl{grid-template-columns:1fr}
+  .planos{grid-template-columns:1fr}
+  .inc{grid-template-columns:1fr}.inc .no{grid-column:auto}
+  .wrap{padding-inline:16px}
+  .tbl{font-size:14px}
+  .tbl td{padding:10px 8px}
+  .legend{grid-template-columns:1fr auto;gap:12px}.legend span:last-child{min-width:0}
+}
+</style>
+</head>
+<body>
+<div class="band"><div class="wrap"><div class="brand">INTURA<span>GRUPO CONSTRUCTOR</span></div><div class="doc">SOLICITUD DE COTIZACIÓN<br>29 OCT 2026</div></div></div>
+
+<header class="hero"><div class="wrap">
+  <div>
+    <div class="eyebrow">Para contratistas · Cubierta</div>
+    <h1>Cumbres de Monserrate<em>Casa 4 · Estructura metálica, teja UPVC, canales, flanches y alfajías</em></h1>
+  </div>
+  <dl class="meta">
+    <dt>Contratante</dt><dd>Intura Grupo Constructor SAS</dd>
+    <dt>Obra</dt><dd>Santa Rosa de Cabal, Risaralda</dd>
+    <dt>Ítems</dt><dd>8 actividades en 4 capítulos</dd>
+    <dt>Plazo</dt><dd>3 semanas (estimado)</dd>
+  </dl>
+</div></header>
+
+<main class="wrap">
+  <div class="dl">
+    <div>
+      <h2>Formato de cotización en Excel</h2>
+      <p>Llene solo las celdas en azul: sus datos y el valor unitario de cada ítem. El total, el IVA (si aplica) y la retención se calculan solos.</p>
+    </div>
+    <a class="btn" href="Solicitud_Cotizacion_Cubierta_Casa4_Cumbres.xlsx" download="Solicitud_Cotizacion_Cubierta_Casa4_Cumbres.xlsx"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12m0 0-5-5m5 5 5-5M4 21h16"/></svg>Descargar Excel</a>
+    
+  </div>
+
+  <section>
+    <div class="sh"><span class="k">01</span><h2>Actividades a cotizar</h2></div>
+    <p class="lead">Precios unitarios a todo costo. Las cantidades salen de los planos arquitectónico y estructural; puede verificarlas antes de cotizar.</p>
+    <table class="tbl">
+      <thead><tr><th>Ítem</th><th>Descripción</th><th class="u">Und</th><th class="n">Cantidad</th></tr></thead>
+      <tbody>
+<tr class="ch"><td>01</td><td colspan="3">SEGURIDAD EN ALTURAS</td></tr>
+<tr><td class="c">1.01</td><td>Coordinador de trabajo en alturas durante toda la obra (3 semanas), con certificación, curso y seguridad social al día (Res. 4272 de 2021)</td><td class="u">glb</td><td class="n">1,00</td></tr>
+<tr class="ch"><td>02</td><td colspan="3">ESTRUCTURA METÁLICA DE CUBIERTA</td></tr>
+<tr><td class="c">2.01</td><td>Estructura metálica de cubierta en perlín C 150×60×2,0 mm (P-6-14) acero grado 50, incluye conexiones correa–muro (ángulo 2"×2"×1/8" + 2 pernos 3/8" A325 con anclaje químico), platinas de anclaje a muros, templetes en varilla roscada 3/8", soldadura E60, anticorrosivo y esmalte</td><td class="u">kg</td><td class="n">469,94</td></tr>
+<tr class="ch"><td>03</td><td colspan="3">CUBIERTA EN TEJA</td></tr>
+<tr><td class="c">3.01</td><td>Teja UPVC Ecoroof 36, 2 mm, blanca (0,92×5,90 m), suministro e instalación con fijaciones, incluye traslapos y cortes</td><td class="u">m²</td><td class="n">56,37</td></tr>
+<tr><td class="c">3.02</td><td>Teja traslúcida del mismo perfil, suministro e instalación (3 piezas, 1,30 m²)</td><td class="u">glb</td><td class="n">1,00</td></tr>
+<tr class="ch"><td>04</td><td colspan="3">CANALES, FLANCHES Y ALFAJÍAS</td></tr>
+<tr><td class="c">4.01</td><td>Canal en lámina galvanizada cal. 20, desarrollo 1,00 m (0,30 × 0,20 + aletas), soportes, sello y anticorrosivo interior</td><td class="u">ml</td><td class="n">6,60</td></tr>
+<tr><td class="c">4.02</td><td>Canal en lámina galvanizada cal. 20, desarrollo 0,80 m (cubiertas de balcón y patio de ropas), soportes, sello y anticorrosivo interior</td><td class="u">ml</td><td class="n">4,10</td></tr>
+<tr><td class="c">4.03</td><td>Flanche teja–muro en lámina galvanizada cal. 26, desarrollo 0,40 m, fijado con chazos y sellado con poliuretano</td><td class="u">ml</td><td class="n">44,23</td></tr>
+<tr><td class="c">4.04</td><td>Alfajía en lámina galvanizada prepintada negra cal. 24, desarrollo 0,68 m con goteros, sobre muro de cuchilla</td><td class="u">ml</td><td class="n">42,14</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <div class="sh"><span class="k">02</span><h2>Qué debe incluir cada precio</h2></div>
+    <div class="inc">
+      <div><h3>Materiales y mano de obra</h3><p>Suministro e instalación, herramienta, equipo, transporte a la obra, limpieza y retiro de sobrantes.</p></div>
+      <div><h3>Seguridad social</h3><p>EPS, pensión y ARL de todo el personal, al día durante toda la obra.</p></div>
+      <div><h3>Elementos de protección personal</h3><p>Dotación y EPP completos para cada trabajador.</p></div>
+      <div><h3>Curso de alturas vigente</h3><p>Todo el personal con certificado de trabajo en alturas al día.</p></div>
+      <div><h3>Coordinador de alturas</h3><p>Con certificación, curso y seguridad social al día, presente durante la obra (ítem 1.01).</p></div>
+      <div><h3>Líneas de vida y equipo de alturas</h3><p>Puntos de anclaje, arneses, eslingas y demás elementos para trabajo en alturas.</p></div>
+      <div class="no"><h3>Andamios: los pone Intura</h3><p>Los andamios se suministran. No los incluya en sus precios.</p></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sh"><span class="k">03</span><h2>Forma de pago y retención</h2></div>
+    <div class="ret">
+      <p>A cada pago se le retiene el <strong>10 %</strong> como garantía. La suma de esas retenciones se paga al final.</p>
+      <div class="bar" role="img" aria-label="90 por ciento en cada pago, 10 por ciento retenido hasta el acta de entrega"><div class="a">90 % en cada pago</div><div class="b">10 %</div></div>
+      <div class="legend"><span>Se paga con cada acta o pago parcial</span><span>Retenido hasta el final</span></div>
+      <ol>
+        <li>La retención se devuelve con la firma del <strong>acta de entrega</strong> y recibo a satisfacción.</li>
+        <li>Plazo máximo para ese pago: <strong>1 a 2 meses</strong> después de firmada el acta.</li>
+      </ol>
+    </div>
+  </section>
+
+  <section>
+    <div class="sh"><span class="k">04</span><h2>Planos de referencia</h2></div>
+    <div class="planos">
+      <figure><img src="img/planta.png" alt="Planta de cubierta de la Casa 4" loading="lazy"><figcaption>Planta de cubierta</figcaption></figure>
+      <figure><img src="img/corte.png" alt="Corte de la cubierta de la Casa 4" loading="lazy"><figcaption>Corte</figcaption></figure>
+    </div>
+  </section>
+
+  <section>
+    <div class="sh"><span class="k">05</span><h2>Cómo enviar su cotización</h2></div>
+    <ol class="steps">
+      <li>Descargue el Excel y llene sus datos y los valores unitarios.</li>
+      <li>Indique el plazo que ofrece, la validez de la oferta y si su precio lleva IVA.</li>
+      <li>Firme y envíe el archivo a <a href="mailto:gerencia@inturagrupoconstructor.com">gerencia@inturagrupoconstructor.com</a> o por WhatsApp al 310 426 1875.</li>
+    </ol>
+  </section>
+</main>
+
+<footer><div class="wrap">
+  <div><strong>Intura Grupo Constructor SAS</strong><br>Daniel García Tamayo · Director de Proyectos</div>
+  <div class="m">310 426 1875<br><a href="mailto:gerencia@inturagrupoconstructor.com">gerencia@inturagrupoconstructor.com</a><br>www.inturagrupoconstructor.com</div>
+</div></footer>
+
+
+</body>
+</html>
