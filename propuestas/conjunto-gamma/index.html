@@ -1,0 +1,465 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Cotización Conjunto Gamma · Intura Grupo Constructor</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="color-scheme" content="light only">
+<meta name="theme-color" content="#0B0B0C">
+<link rel="icon" href="/img/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@300;400;600;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Cotización Conjunto Gamma: portada negra, valores globales, torre por torre. Solo tema claro (estándar Intura). Sin índice lateral. */
+:root{
+  --bg:#F6F6F4;--paper:#FFF;--ink:#111214;--muted:#5E6066;--line:#D9D9D5;--soft:#ECECE8;
+  --band:#0B0B0C;--band-ink:#F6F6F4;--band-muted:#A5A7AD;--accent:#3A64B8;--accent-2:#7FA0DA;
+  --f-display:"Archivo","Arial Narrow",Arial,sans-serif;
+  --f-body:"IBM Plex Sans","Segoe UI",Calibri,Arial,sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+  --ease:cubic-bezier(.2,.7,.2,1);
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer}
+a{color:inherit}
+h1,h2,h3,p,ul,dl,dd{margin:0;padding:0}
+ul{list-style:none}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+[hidden]{display:none!important}
+.wrap{max-width:1180px;margin:0 auto;padding-inline:max(24px,env(safe-area-inset-left,0px))}
+.eyebrow{font-family:var(--f-mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.num{font-family:var(--f-mono);font-variant-numeric:tabular-nums;white-space:nowrap}
+
+/* botón */
+.btn{display:inline-flex;align-items:center;gap:12px;min-height:50px;padding:0 24px;font-weight:600;font-size:15px;text-decoration:none;border:1px solid currentColor;transition:background .2s,color .2s,transform .16s var(--ease)}
+.btn:active{transform:scale(.98)}
+.btn svg{width:16px;height:16px}
+.btn.solid{background:var(--band-ink);color:var(--band);border-color:var(--band-ink)}
+.btn.ink{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+@media(hover:hover){.btn.solid:hover{background:transparent;color:var(--band-ink)}.btn.ink:hover{background:transparent;color:var(--ink)}}
+
+/* portada */
+.hero{position:relative;background:var(--band);color:var(--band-ink);min-height:min(100svh,860px);display:flex;flex-direction:column;overflow:hidden}
+.hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.34}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,11,12,.78) 0%,rgba(11,11,12,.2) 42%,rgba(11,11,12,.92) 100%)}
+.hero>.wrap{position:relative;z-index:1;width:100%}
+.hero-top{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:28px}
+.hero-top img{width:200px;height:auto}
+.hero-top span{font-family:var(--f-mono);font-size:12px;letter-spacing:.08em;color:var(--band-muted);text-align:right}
+.hero-main{margin-top:auto;padding-block:48px 56px;display:grid;grid-template-columns:1.1fr 1fr;gap:48px;align-items:end}
+.hero .eyebrow{color:var(--band-muted)}
+.hero h1{font-family:var(--f-display);font-weight:800;font-size:clamp(44px,7.4vw,92px);line-height:.96;letter-spacing:-.025em;margin-top:16px;text-wrap:balance}
+.hero h1 em{display:block;font-style:normal;font-weight:300;letter-spacing:-.015em}
+.hero-sum{border-top:1px solid rgba(246,246,244,.35);padding-top:20px}
+.hero-sum .v{display:block;font-family:var(--f-display);font-weight:300;font-size:clamp(38px,5.4vw,66px);line-height:1.1;letter-spacing:-.02em;font-variant-numeric:tabular-nums;margin-top:8px;white-space:nowrap}
+.hero-sum p{color:var(--band-muted);font-size:14px;margin:8px 0 24px}
+
+/* secciones */
+.sec{padding-block:88px}
+.sec-head{display:grid;grid-template-columns:1fr 1.4fr;gap:32px;align-items:end;margin-bottom:40px}
+.sec-head h2{font-family:var(--f-display);font-weight:800;font-size:clamp(30px,4.2vw,48px);line-height:1.04;letter-spacing:-.02em;margin-top:10px;text-wrap:balance}
+.sec-head p{color:var(--muted);max-width:56ch}
+
+/* valores por torre */
+.vals{border-top:2px solid var(--ink)}
+.val{display:grid;grid-template-columns:44px 1fr auto 168px;gap:24px;align-items:center;padding:22px 4px;border-bottom:1px solid var(--line)}
+.val .n{font-family:var(--f-mono);font-size:13px;color:var(--muted)}
+.val b{display:block;font-family:var(--f-display);font-weight:600;font-size:20px;letter-spacing:-.01em;line-height:1.2}
+.val small{display:block;font-size:14px;color:var(--muted)}
+.val .amt{font-family:var(--f-mono);font-size:19px;font-variant-numeric:tabular-nums;white-space:nowrap}
+.ver{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:44px;padding:0 16px;font-size:14px;font-weight:600;text-decoration:none;border:1px solid var(--ink);transition:background .2s,color .2s,transform .16s var(--ease)}
+.ver:active{transform:scale(.98)}
+@media(hover:hover){.ver:hover{background:var(--ink);color:var(--paper)}}
+.vals-total{display:flex;justify-content:space-between;align-items:baseline;gap:20px;flex-wrap:wrap;background:var(--band);color:var(--band-ink);padding:26px 28px;margin-top:24px}
+.vals-total span{font-family:var(--f-display);font-weight:600;font-size:18px}
+.vals-total b{font-family:var(--f-mono);font-weight:500;font-size:clamp(24px,3.2vw,32px);font-variant-numeric:tabular-nums;white-space:nowrap}
+.note{font-size:14px;color:var(--muted);margin-top:14px;max-width:80ch}
+
+/* selector de torres */
+.tabs-bar{position:sticky;top:0;z-index:10;background:var(--band);color:var(--band-ink)}
+.bar-in{display:flex;align-items:stretch}
+.volver{flex:none;display:flex;align-items:center;gap:8px;padding-right:22px;margin-right:6px;font-size:14px;font-weight:600;text-decoration:none;white-space:nowrap;border-right:1px solid rgba(246,246,244,.2)}
+.tabs{flex:1;min-width:0;display:flex;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.tabs::-webkit-scrollbar{display:none}
+.tabs button{flex:1 0 auto;min-height:62px;padding:10px 22px;text-align:left;border-bottom:3px solid transparent;color:var(--band-muted);transition:color .2s,border-color .2s;white-space:nowrap}
+.tabs button b{display:block;font-family:var(--f-display);font-weight:600;font-size:15px;line-height:1.25}
+.tabs button span{font-family:var(--f-mono);font-size:12px}
+.tabs button[aria-selected=true]{color:var(--band-ink);border-bottom-color:var(--accent-2)}
+@media(hover:hover){.tabs button:hover{color:var(--band-ink)}}
+
+/* torre */
+.torre{padding-block:64px 88px;animation:in .34s var(--ease)}
+@keyframes in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.t-head{display:flex;justify-content:space-between;align-items:flex-end;gap:32px;flex-wrap:wrap;padding-bottom:28px;border-bottom:2px solid var(--ink)}
+.t-head h2{font-family:var(--f-display);font-weight:800;font-size:clamp(36px,5.6vw,64px);line-height:1;letter-spacing:-.025em;margin-top:8px}
+.t-head h2 em{font-style:normal;font-weight:300}
+.t-val{text-align:right}
+.t-val .num{display:block;font-size:clamp(24px,3.2vw,34px);margin-top:4px}
+.sub{font-family:var(--f-display);font-weight:600;font-size:22px;letter-spacing:-.01em;margin:44px 0 18px;display:flex;justify-content:space-between;align-items:baseline;gap:16px}
+.sub span{font-family:var(--f-mono);font-size:13px;font-weight:400;color:var(--muted);white-space:nowrap}
+.pisos{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
+.piso{background:var(--paper);padding:24px}
+.piso h3{font-family:var(--f-display);font-weight:800;font-size:18px;letter-spacing:-.005em;margin-bottom:12px}
+.piso li{position:relative;padding:9px 0 9px 18px;font-size:15px;line-height:1.4;border-top:1px solid var(--soft)}
+.piso li::before{content:"";position:absolute;left:0;top:17px;width:6px;height:6px;background:var(--accent)}
+.piso li small{display:block;color:var(--muted);font-size:13px;margin-top:2px}
+.t-nav{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:56px;padding-top:24px;border-top:1px solid var(--line)}
+
+/* registro fotográfico */
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px 20px}
+.foto{min-width:0}
+.foto>button{display:block;width:100%;overflow:hidden;background:var(--soft);aspect-ratio:4/5;cursor:zoom-in}
+.foto img{width:100%;height:100%;object-fit:cover;transition:transform .5s var(--ease)}
+@media(hover:hover){.foto>button:hover img{transform:scale(1.03)}}
+.foto p{font-size:14px;line-height:1.4;margin-top:10px;color:var(--muted)}
+.foto p+p{margin-top:6px;color:var(--ink);font-weight:500}
+.foto p+p::before{content:"Se hará: ";font-family:var(--f-mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);font-weight:500}
+
+/* condiciones */
+.dark{background:var(--band);color:var(--band-ink)}
+.dark .eyebrow,.dark .sec-head p{color:var(--band-muted)}
+.conds{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(246,246,244,.16);border:1px solid rgba(246,246,244,.16)}
+.cond{background:var(--band);padding:28px}
+.cond h3{font-family:var(--f-display);font-weight:600;font-size:19px;margin-bottom:12px}
+.cond li,.cond p{font-size:15px;color:#D3D4D7;padding:5px 0}
+.cond .nota{font-size:13.5px;color:var(--band-muted);margin-top:8px;padding-top:12px;border-top:1px solid rgba(246,246,244,.16)}
+.cierre-sec{background:var(--paper);padding-block:64px}
+.cierre{display:flex;justify-content:space-between;gap:40px;flex-wrap:wrap;align-items:flex-end}
+.firma img{width:190px;height:auto;margin-bottom:6px}
+.firma b{display:block;font-family:var(--f-display);font-size:18px;font-weight:600}
+.firma span{display:block;font-size:14px;color:var(--muted)}
+.contacto{display:flex;flex-direction:column;gap:14px;align-items:flex-start}
+.contacto p{font-size:15px;color:var(--muted)}
+.contacto a{text-decoration:none}
+.contacto p a:hover{text-decoration:underline}
+footer{background:var(--paper);color:var(--muted);font-family:var(--f-mono);font-size:12px;padding-block:0 40px}
+footer .wrap{border-top:1px solid var(--line);padding-top:20px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+
+/* visor */
+dialog{width:100vw;height:100dvh;max-width:none;max-height:none;border:0;padding:0;margin:0;background:#070708;color:var(--band-ink)}
+dialog::backdrop{background:#070708}
+dialog[open]{display:grid;grid-template-columns:1fr 340px;animation:fade .2s ease}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+.lb-img{position:relative;min-width:0;min-height:0;display:flex;align-items:center;justify-content:center;padding:24px}
+.lb-img img{max-width:100%;max-height:100%;object-fit:contain}
+.lb-side{padding:32px 28px;border-left:1px solid rgba(246,246,244,.14);display:flex;flex-direction:column;gap:18px;overflow:auto}
+.lb-side .eyebrow{color:var(--band-muted)}
+.lb-side h3{font-family:var(--f-display);font-weight:600;font-size:21px;line-height:1.25}
+.lb-side p{font-size:15px;color:#D3D4D7}
+.lb-side .k{font-family:var(--f-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent-2);margin-bottom:6px}
+.lb-nav{display:flex;gap:8px;margin-top:auto}
+.lb-btn{width:48px;height:48px;display:grid;place-items:center;border:1px solid rgba(246,246,244,.3);transition:background .2s,transform .16s var(--ease)}
+.lb-btn:active{transform:scale(.96)}
+@media(hover:hover){.lb-btn:hover{background:rgba(246,246,244,.12)}}
+.lb-close{margin-left:auto}
+
+/* modo edición (?editar) */
+.ed{display:block;width:100%;font:inherit;font-size:14px;padding:8px;margin-top:8px;border:1px solid var(--line);background:#FFFBE6;resize:vertical}
+.ed-id{font-family:var(--f-mono);font-size:12px;margin-top:8px;display:flex;justify-content:space-between;gap:8px}
+.ed-bar{position:fixed;left:0;right:0;bottom:0;z-index:20;background:#FFE14D;color:#111;padding:12px 24px;display:flex;gap:16px;align-items:center;justify-content:space-between;flex-wrap:wrap;font-size:14px}
+.ed-bar button{background:#111;color:#fff;padding:10px 16px;font-weight:600}
+
+@media(max-width:1080px){.conds{grid-template-columns:1fr 1fr}}
+@media(max-width:860px){
+  .wrap{padding-inline:max(16px,env(safe-area-inset-left,0px))}
+  .hero-main{grid-template-columns:1fr;gap:32px;padding-block:32px 36px}
+  .sec{padding-block:60px}
+  .sec-head{grid-template-columns:1fr;gap:12px;margin-bottom:28px}
+  .hero-top img{width:156px}
+  .val{grid-template-columns:30px 1fr auto;gap:12px;padding:18px 0}
+  .val .amt{font-size:15px}
+  .ver{grid-column:2/-1}
+  .volver span{display:none}
+  .volver{padding-right:14px}
+  .val b{font-size:17px}
+  .grid{grid-template-columns:repeat(2,1fr);gap:22px 12px}
+  .foto p{font-size:13px}
+  .conds{grid-template-columns:1fr}
+  .cierre-sec{padding-block:44px}
+  .t-val{text-align:left}
+  .torre{padding-block:44px 60px}
+  dialog[open]{grid-template-columns:1fr;grid-template-rows:minmax(0,1fr) auto}
+  .lb-img{padding:12px}
+  .lb-side{border-left:0;border-top:1px solid rgba(246,246,244,.14);padding:18px 16px calc(18px + env(safe-area-inset-bottom,0px));gap:10px;max-height:44dvh}
+  .lb-side h3{display:none}
+}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+
+<div id="inicio">
+<header class="hero">
+  <img class="hero-img" src="img/hero.jpg" alt="" fetchpriority="high">
+  <div class="wrap hero-top">
+    <img src="img/logo-blanco.png" width="640" height="367" alt="Intura Grupo Constructor">
+    <span>Cotización · 4 de noviembre de 2026</span>
+  </div>
+  <div class="wrap hero-main">
+    <div>
+      <p class="eyebrow">Cotización de reparaciones</p>
+      <h1>Conjunto <em>Gamma</em></h1>
+    </div>
+    <div class="hero-sum">
+      <p class="eyebrow" style="margin:0">Valor total del presupuesto</p>
+      <span class="v" data-total></span>
+      <p>Cinco torres en los bloques 29, 32 y 34.</p>
+      <a class="btn solid" href="docs/Cotizacion_Reparaciones_Conjunto_Gamma.pdf" download>
+        Descargar cotización en PDF
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M8 2v9M4 7.5 8 11.5l4-4M2.5 14h11"/></svg>
+      </a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="sec" id="valores">
+    <div class="wrap">
+      <div class="sec-head">
+        <div><p class="eyebrow">Valores</p><h2>Valor por torre</h2></div>
+        <p>Cada valor ya incluye administración, utilidad e IVA sobre la utilidad. Use Ver detalles para conocer los trabajos de cada torre.</p>
+      </div>
+      <div class="vals" id="vals"></div>
+      <div class="vals-total"><span>Valor total del presupuesto</span><b data-total></b></div>
+      <p class="note">Valores en pesos colombianos (COP).</p>
+    </div>
+  </section>
+
+  <section class="sec dark" id="condiciones">
+    <div class="wrap">
+      <div class="sec-head">
+        <div><p class="eyebrow">Condiciones</p><h2>Condiciones de la cotización</h2></div>
+        <p>Las condiciones completas están en la cotización formal en PDF.</p>
+      </div>
+      <div class="conds">
+        <div class="cond">
+          <h3>Alcance</h3>
+          <ul>
+            <li>Actividades listadas piso por piso en cada torre.</li>
+            <li>Cantidades tomadas en la visita del 2 de noviembre de 2026.</li>
+          </ul>
+        </div>
+        <div class="cond">
+          <h3>No incluye</h3>
+          <ul>
+            <li>Actividades que no estén listadas en esta cotización.</li>
+          </ul>
+        </div>
+        <div class="cond">
+          <h3>Forma de pago</h3>
+          <ul>
+            <li>50 % de anticipo al inicio de la obra.</li>
+            <li>50 % mediante actas de avance de obra.</li>
+          </ul>
+        </div>
+        <div class="cond">
+          <h3>Plazo de ejecución</h3>
+          <p>Aproximadamente 30 días hábiles.</p>
+          <p class="nota">Se acordará y programará en conjunto con la administración en caso de ser aprobada la propuesta.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="cierre-sec">
+    <div class="wrap">
+      <div class="cierre">
+        <div class="firma">
+          <img src="img/firma.png" alt="Firma de Daniel García Tamayo">
+          <b>Daniel García Tamayo</b>
+          <span>Ingeniero Civil · M.P. 66202-331568</span>
+          <span>Director de Proyectos · Intura Grupo Constructor SAS</span>
+        </div>
+        <div class="contacto">
+          <p><a href="tel:+573104261875">310 426 1875</a> · <a href="mailto:gerencia@inturagrupoconstructor.com">gerencia@inturagrupoconstructor.com</a></p>
+          <a class="btn ink" href="docs/Cotizacion_Reparaciones_Conjunto_Gamma.pdf" download>
+            Descargar cotización en PDF
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M8 2v9M4 7.5 8 11.5l4-4M2.5 14h11"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+</div>
+
+<div id="detalle" hidden>
+  <div class="tabs-bar">
+    <div class="wrap bar-in">
+      <a class="volver" href="#valores">← <span>Volver a la cotización</span></a>
+      <div class="tabs" id="tabs" role="tablist" aria-label="Torres"></div>
+    </div>
+  </div>
+  <div class="wrap"><section id="torre" role="tabpanel" tabindex="-1"></section></div>
+</div>
+
+<footer><div class="wrap"><span>Intura Grupo Constructor SAS</span><a href="https://www.inturagrupoconstructor.com" style="text-decoration:none">www.inturagrupoconstructor.com</a></div></footer>
+
+<dialog id="lb" aria-label="Foto ampliada">
+  <div class="lb-img"><img id="lb-i" alt=""></div>
+  <div class="lb-side">
+    <p class="eyebrow" id="lb-c"></p>
+    <h3 id="lb-t"></h3>
+    <div id="lb-d"><p class="k">Daño observado</p><p></p></div>
+    <div id="lb-a"><p class="k">Qué se hará</p><p></p></div>
+    <div class="lb-nav">
+      <button class="lb-btn" id="lb-p" aria-label="Foto anterior">←</button>
+      <button class="lb-btn" id="lb-n" aria-label="Foto siguiente">→</button>
+      <button class="lb-btn lb-close" id="lb-x" aria-label="Cerrar">✕</button>
+    </div>
+  </div>
+</dialog>
+
+<script src="datos.js"></script>
+<script src="fotos.js"></script>
+<script>
+(() => {
+  const G = window.GAMMA, $ = s => document.querySelector(s);
+  const money = v => '$ ' + Math.round(v).toLocaleString('es-CO');
+  const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+  const EDIT = new URLSearchParams(location.search).has('editar');
+  const KEY = 'gamma-fotos';
+  let F = window.FOTOS;
+  if (EDIT) { try { F = Object.assign({}, F, JSON.parse(localStorage.getItem(KEY) || '{}')); } catch (e) {} }
+
+  document.querySelectorAll('[data-total]').forEach(e => e.textContent = money(G.total));
+  const nombre = t => `${t.bloque} · Aptos ${t.aptos}`;
+
+  $('#vals').innerHTML = G.torres.map((t, i) => `
+    <div class="val">
+      <span class="n">0${i + 1}</span>
+      <span><b>${t.bloque}</b><small>Apartamentos ${t.aptos.replace('–', ' a ')}</small></span>
+      <span class="amt">${money(t.valor)}</span>
+      <a class="ver" href="#torre-${i + 1}" aria-label="Ver detalles de ${t.bloque}, apartamentos ${t.aptos}">Ver detalles <span aria-hidden="true">→</span></a>
+    </div>`).join('');
+
+  $('#tabs').innerHTML = G.torres.map((t, i) => `
+    <button role="tab" id="tab-${i}" aria-controls="torre" data-i="${i}"><b>${t.bloque}</b><span>Aptos ${t.aptos}</span></button>`).join('');
+
+  const lb = $('#lb');
+  let cur = 0, lista = [], pos = 0;
+  const visibles = t => EDIT ? t.fotos : t.fotos.filter(id => !(F[id] && F[id].oculta));
+
+  function item(s) {
+    const [a, q] = s.split(' · ');
+    return `<li>${esc(a)}${q ? `<small>${esc(q)}</small>` : ''}</li>`;
+  }
+
+  function render(i) {
+    cur = i;
+    const t = G.torres[i];
+    lista = visibles(t);
+    document.querySelectorAll('#tabs button').forEach((b, n) => b.setAttribute('aria-selected', n === i));
+    const el = $('#torre');
+    el.setAttribute('aria-labelledby', 'tab-' + i);
+    el.innerHTML = `<div class="torre">
+      <div class="t-head">
+        <div><p class="eyebrow">Torre 0${i + 1} de 0${G.torres.length}</p><h2>${t.bloque} <em>· ${t.aptos}</em></h2></div>
+        <div class="t-val"><p class="eyebrow">Valor total de la torre</p><span class="num">${money(t.valor)}</span></div>
+      </div>
+      <h3 class="sub">Actividades piso por piso</h3>
+      <div class="pisos">${t.pisos.map(p => `<div class="piso"><h3>${esc(p.t)}</h3><ul>${p.items.map(item).join('')}</ul></div>`).join('')}</div>
+      <h3 class="sub">Registro fotográfico <span>${lista.length} fotos</span></h3>
+      <div class="grid">${lista.map((id, n) => {
+        const f = F[id] || {};
+        return `<figure class="foto" style="margin:0" data-id="${id}">
+          <button data-n="${n}" aria-label="Ampliar foto ${n + 1}"><img loading="lazy" decoding="async" src="img/fotos/${id}-t.jpg" alt="${esc(f.dano || 'Foto ' + (n + 1))}"></button>
+          ${EDIT ? `<div class="ed-id"><span>${id}</span><label><input type="checkbox" data-k="oculta" ${f.oculta ? 'checked' : ''}> Ocultar</label></div>
+            <textarea class="ed" rows="2" data-k="dano" placeholder="Daño observado">${esc(f.dano || '')}</textarea>
+            <textarea class="ed" rows="3" data-k="accion" placeholder="Qué se hará">${esc(f.accion || '')}</textarea>`
+          : `${f.dano ? `<p>${esc(f.dano)}</p>` : ''}${f.accion ? `<p>${esc(f.accion)}</p>` : ''}`}
+        </figure>`;
+      }).join('')}</div>
+      <div class="t-nav">
+        <a class="ver" href="#valores">← Volver a la cotización</a>
+        ${i < G.torres.length - 1 ? `<a class="ver" href="#torre-${i + 2}">Siguiente torre →</a>` : ''}
+      </div>
+    </div>`;
+  }
+
+  /* la cotización y el detalle de cada torre son dos vistas; el enlace #torre-N abre el detalle */
+  function ruta() {
+    const m = location.hash.match(/^#torre-(\d+)$/);
+    const i = m ? +m[1] - 1 : -1, ver = i >= 0 && i < G.torres.length;
+    if (lb.open) lb.close();
+    $('#inicio').hidden = ver;
+    $('#detalle').hidden = !ver;
+    if (ver) {
+      render(i);
+      window.scrollTo(0, 0);
+      $('#tab-' + i).scrollIntoView({block: 'nearest', inline: 'center'});
+    } else if (location.hash === '#valores') {
+      $('#valores').scrollIntoView({block: 'start'});
+    }
+  }
+  $('#tabs').addEventListener('click', e => { const b = e.target.closest('[data-i]'); if (b) location.hash = 'torre-' + (+b.dataset.i + 1); });
+  $('#tabs').addEventListener('keydown', e => {
+    const d = {ArrowRight: 1, ArrowLeft: -1}[e.key]; if (!d) return;
+    e.preventDefault();
+    const n = (cur + d + G.torres.length) % G.torres.length;
+    location.hash = 'torre-' + (n + 1); $('#tab-' + n).focus();
+  });
+
+  /* visor */
+  function show(n) {
+    pos = (n + lista.length) % lista.length;
+    const id = lista[pos], f = F[id] || {}, t = G.torres[cur];
+    $('#lb-i').src = `img/fotos/${id}.jpg`;
+    $('#lb-i').alt = f.dano || '';
+    $('#lb-c').textContent = `Foto ${pos + 1} de ${lista.length}`;
+    $('#lb-t').textContent = nombre(t);
+    $('#lb-d').hidden = !f.dano; $('#lb-d p:last-child').textContent = f.dano || '';
+    $('#lb-a').hidden = !f.accion; $('#lb-a p:last-child').textContent = f.accion || '';
+    [1, -1].forEach(d => { const im = new Image(); im.src = `img/fotos/${lista[(pos + d + lista.length) % lista.length]}.jpg`; });
+  }
+  $('#torre').addEventListener('click', e => {
+    const b = e.target.closest('button[data-n]'); if (!b) return;
+    show(+b.dataset.n); lb.showModal();
+  });
+  $('#lb-p').onclick = () => show(pos - 1);
+  $('#lb-n').onclick = () => show(pos + 1);
+  $('#lb-x').onclick = () => lb.close();
+  lb.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight') show(pos + 1);
+    if (e.key === 'ArrowLeft') show(pos - 1);
+  });
+  let x0 = null;
+  lb.addEventListener('touchstart', e => { x0 = e.touches[0].clientX; }, {passive: true});
+  lb.addEventListener('touchend', e => {
+    if (x0 === null) return;
+    const dx = e.changedTouches[0].clientX - x0; x0 = null;
+    if (Math.abs(dx) > 50) show(pos + (dx < 0 ? 1 : -1));
+  }, {passive: true});
+
+  /* modo edición: www.../conjunto-gamma/?editar */
+  if (EDIT) {
+    const bar = document.createElement('div');
+    bar.className = 'ed-bar';
+    bar.innerHTML = '<span>Modo edición. Sus cambios quedan guardados en este navegador.</span><button id="ed-dl">Descargar fotos.js</button>';
+    document.body.append(bar);
+    document.body.style.paddingBottom = '70px';
+    $('#torre').addEventListener('input', e => {
+      const k = e.target.dataset.k, fig = e.target.closest('[data-id]'); if (!k || !fig) return;
+      const id = fig.dataset.id;
+      F[id] = Object.assign({}, F[id], {[k]: k === 'oculta' ? e.target.checked : e.target.value});
+      try { localStorage.setItem(KEY, JSON.stringify(F)); } catch (err) {}
+    });
+    $('#ed-dl').onclick = () => {
+      const blob = new Blob(['window.FOTOS = ' + JSON.stringify(F, null, 2) + ';\n'], {type: 'text/javascript'});
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob); a.download = 'fotos.js'; a.click();
+      setTimeout(() => URL.revokeObjectURL(a.href), 1000);
+    };
+  }
+
+  addEventListener('hashchange', ruta);
+  ruta();
+})();
+</script>
+</body>
+</html>
