@@ -36,9 +36,17 @@ h1,h2,h3{text-wrap:balance}
 .company{margin:0 0 30px;border-radius:12px;padding:18px 20px;border:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
 .company a{color:var(--paper);background:var(--ink);text-decoration:none;padding:9px 14px;border-radius:8px;font-weight:500;font-size:14px}
 footer.blk{background:#0a0a0b;color:#c9ccd1;margin:0 calc(-1*max(16px,env(safe-area-inset-left,0px)));padding:28px max(16px,env(safe-area-inset-right,0px)) calc(36px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px))}
-footer.blk .in{max-width:860px;margin:0 auto;display:flex;gap:18px;flex-wrap:wrap;justify-content:space-between;align-items:center;font-size:13.5px}
-footer.blk b{color:#fff}
-footer.blk a{color:#fff}
+footer.blk .in{max-width:860px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.3fr);gap:28px;align-items:start}
+footer.blk .nm{font-family:var(--display);font-weight:600;font-size:18px;color:#fff;line-height:1.25}
+footer.blk .rl{font-size:13.5px;color:#c9ccd1;margin-top:4px}
+footer.blk .co{font-size:13px;color:#8f949c;margin-top:2px}
+footer.blk .ct{margin:0;display:grid;gap:12px}
+footer.blk .ct div{display:grid;grid-template-columns:170px minmax(0,1fr);gap:12px;align-items:baseline;border-bottom:1px solid #26292f;padding-bottom:10px}
+footer.blk .ct div:last-child{border-bottom:0;padding-bottom:0}
+footer.blk dt{white-space:nowrap;font-size:11.5px;letter-spacing:.07em;text-transform:uppercase;color:#8f949c;font-weight:600}
+footer.blk dd{margin:0;color:#fff;font-size:14px;overflow-wrap:anywhere}
+footer.blk a{color:#fff;text-decoration:none;border-bottom:1px solid #5a5f68}
+@media (max-width:620px){footer.blk .in{grid-template-columns:1fr;gap:20px}footer.blk .ct div{grid-template-columns:1fr;gap:2px}}
 .side{display:none}
 @media (max-width:560px){.bar-in{flex-wrap:nowrap;gap:10px}.bar .prog{min-width:0}#pSave,.lg{display:none}.bar .logo{height:26px}#waTop{padding:7px 10px;white-space:nowrap}}
 @media (min-width:1400px){.side{display:block;position:fixed;top:96px;right:max(24px,calc((100vw - 860px)/2 - 290px));width:230px;font-size:13px}
@@ -211,8 +219,16 @@ footer b{color:var(--ink);font-weight:600}
   <div class="company"><div><b>Intura Grupo Constructor</b><br><span style="color:var(--mute);font-size:14px">Conozca nuestra empresa</span></div><a href="https://inturagrupoconstructor.com" target="_blank" rel="noopener">inturagrupoconstructor.com</a></div>
 </div>
 <footer class="blk"><div class="in">
-  <div><b>Daniel García Tamayo</b> · Ingeniero Civil · Director de Proyectos<br>Intura Grupo Constructor SAS</div>
-  <div>310 426 1875 · gerencia@inturagrupoconstructor.com</div>
+  <div class="who">
+    <div class="nm">Daniel García Tamayo</div>
+    <div class="rl">Ingeniero Civil · Director de Proyectos</div>
+    <div class="co">Intura Grupo Constructor SAS</div>
+  </div>
+  <dl class="ct">
+    <div><dt>Celular · WhatsApp</dt><dd>310 426 1875</dd></div>
+    <div><dt>Correo</dt><dd>gerencia@inturagrupoconstructor.com</dd></div>
+    <div><dt>Sitio web</dt><dd><a href="https://inturagrupoconstructor.com" target="_blank" rel="noopener">inturagrupoconstructor.com</a></dd></div>
+  </dl>
 </div></footer>
 <aside class="side" aria-label="Índice"><img class="logo-k" src="logo.png" alt=""><div class="t">Revisión estructural<br>Casa campestre · Lote 3 Pavas</div><nav id="sideNav"></nav></aside>
 
