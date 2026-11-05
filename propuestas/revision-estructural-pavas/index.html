@@ -1,0 +1,397 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="color-scheme" content="light only">
+<meta name="robots" content="noindex,nofollow">
+<title>Revisión Estructural Pavas</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+html{color-scheme:light}
+/* Layout: a single reading column; sticky progress bar; each point is a numbered row that opens into finding, request and reply. */
+:root{
+  --paper:#ffffff; --panel:#f6f7f9; --ink:#15171a; --mute:#646a73; --line:#e3e6ea;
+  --accent:#3b63b5; --accent-soft:#e9effa;
+  --ok:#2f7a57; --ok-soft:#e5f2eb; --warn:#a8691a; --warn-soft:#fbf0de; --fix:#3b63b5; --fix-soft:#e9effa; --ask:var(--warn);
+  --shadow:0 1px 2px rgba(20,24,30,.06),0 8px 24px rgba(20,24,30,.06);
+  --display:"Archivo","Helvetica Neue",Arial,sans-serif;
+  --body:"IBM Plex Sans","Segoe UI",system-ui,-apple-system,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
+}
+*{box-sizing:border-box}
+body{padding-top:env(safe-area-inset-top,0px);background:var(--paper);color:var(--ink);font-family:var(--body);font-size:15px;line-height:1.55;margin:0;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--paper)}
+.wrap{max-width:860px;margin:0 auto}
+h1,h2,h3{text-wrap:balance}
+.logo{height:34px;width:auto;display:block}
+.bar .logo{filter:invert(1)}
+.btn.wa{background:#25d366;border-color:#25d366;color:#0a0a0b;font-weight:600}
+.btn.wa:hover{background:#1fbd5a}
+.send{margin:6px 0 34px;border:1px solid var(--line);border-radius:12px;padding:20px;background:var(--panel);display:flex;gap:16px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+.send h3{font-family:var(--display);margin:0 0 4px;font-size:19px}
+.send p{margin:0;color:var(--mute);font-size:14px;max-width:52ch}
+.send .acts{display:flex;gap:8px;flex-wrap:wrap}
+.company{margin:0 0 30px;border-radius:12px;padding:18px 20px;border:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.company a{color:var(--paper);background:var(--ink);text-decoration:none;padding:9px 14px;border-radius:8px;font-weight:500;font-size:14px}
+footer.blk{background:#0a0a0b;color:#c9ccd1;margin:0 calc(-1*max(16px,env(safe-area-inset-left,0px)));padding:28px max(16px,env(safe-area-inset-right,0px)) calc(36px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px))}
+footer.blk .in{max-width:860px;margin:0 auto;display:flex;gap:18px;flex-wrap:wrap;justify-content:space-between;align-items:center;font-size:13.5px}
+footer.blk b{color:#fff}
+footer.blk a{color:#fff}
+.side{display:none}
+@media (max-width:560px){.bar-in{flex-wrap:nowrap;gap:10px}.bar .prog{min-width:0}#pSave,.lg{display:none}.bar .logo{height:26px}#waTop{padding:7px 10px;white-space:nowrap}}
+@media (min-width:1400px){.side{display:block;position:fixed;top:96px;right:max(24px,calc((100vw - 860px)/2 - 290px));width:230px;font-size:13px}
+.side .logo-k{height:46px;width:auto;margin-bottom:16px}
+.side .t{font-family:var(--display);font-weight:600;font-size:15px;line-height:1.25;margin-bottom:12px}
+.side a{display:flex;justify-content:space-between;gap:8px;color:var(--mute);text-decoration:none;padding:5px 0;border-bottom:1px solid var(--line)}
+.side a:hover{color:var(--accent)}
+.side a span{font-variant-numeric:tabular-nums}}
+
+/* sticky bar */
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:#0a0a0b;color:#f2f3f5;margin:0 calc(-1*max(16px,env(safe-area-inset-left,0px)))}
+.bar-in{max-width:860px;margin:0 auto;padding:10px max(16px,env(safe-area-inset-right,0px)) 10px max(16px,env(safe-area-inset-left,0px));display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.bar .prog{flex:1;min-width:160px}
+.prog-txt{font-size:12.5px;color:#a9adb4;display:flex;justify-content:space-between;gap:8px}
+.prog-txt b{color:#fff;font-weight:600;font-variant-numeric:tabular-nums}
+.track{height:5px;border-radius:3px;background:#2b2f36;margin-top:6px;overflow:hidden;display:flex}
+.track span{display:block;height:100%;transition:width .3s}
+.btn{font:inherit;font-size:13.5px;font-weight:500;border:1px solid var(--line);background:var(--panel);color:var(--ink);border-radius:8px;padding:8px 13px;cursor:pointer}
+.btn:hover{border-color:var(--mute)}
+.btn:focus-visible,.opt:focus-visible,.row-head:focus-visible,textarea:focus-visible,.chip:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.btn.primary{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+
+/* hero */
+header.hero{padding:44px 0 26px}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--mute)}
+.hero h1{font-family:var(--display);font-weight:600;font-size:clamp(30px,6vw,46px);line-height:1.08;margin:12px 0 10px;letter-spacing:-.01em}
+.hero .to{font-size:16px;color:var(--mute);margin:0}
+.hero .to b{color:var(--ink);font-weight:600}
+.how{margin-top:22px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.how div{border:1px solid var(--line);border-radius:10px;padding:12px 13px;font-size:13.5px;color:var(--mute)}
+.how b{display:block;color:var(--ink);font-weight:600;margin-bottom:2px;font-size:14px}
+.how i{font-style:normal;display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:6px;vertical-align:1px}
+@media (max-width:620px){.how{grid-template-columns:1fr}}
+
+/* key asks */
+.keys{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:8px 0 30px}
+.key{background:var(--panel);border-radius:12px;padding:18px 18px 16px;border:1px solid var(--line)}
+.key .n{font-family:var(--mono);font-size:12px;color:var(--accent)}
+.key h3{font-family:var(--display);font-weight:600;font-size:19px;margin:6px 0 6px;line-height:1.25}
+.key p{margin:0;color:var(--mute);font-size:14px}
+@media (max-width:620px){.keys{grid-template-columns:1fr}}
+
+/* figure */
+figure.plan{margin:0 0 34px;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:#fff}
+.plan-img{display:block;width:100%;height:auto;cursor:zoom-in}
+figcaption{background:var(--panel);border-top:1px solid var(--line);padding:10px 14px;font-size:13px;color:var(--mute);display:flex;gap:10px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+.legend{display:flex;gap:14px;flex-wrap:wrap}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.sw{width:12px;height:12px;border-radius:3px;display:inline-block}
+
+/* filters */
+.filters{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:0 0 14px}
+.chip{font:inherit;font-size:13px;border:1px solid var(--line);background:transparent;color:var(--mute);border-radius:999px;padding:5px 12px;cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.notice{font-size:13px;color:var(--mute);margin-left:auto}
+
+/* sections */
+section.grp{margin:0 0 30px}
+.grp-h{display:flex;align-items:baseline;gap:12px;border-bottom:2px solid var(--ink);padding-bottom:8px;margin-bottom:4px}
+.grp-h .num{font-family:var(--mono);color:var(--mute);font-size:20px}
+.grp-h h2{font-family:var(--display);font-weight:600;font-size:21px;margin:0;flex:1}
+.grp-h .cnt{font-size:12.5px;color:var(--mute);font-variant-numeric:tabular-nums;white-space:nowrap}
+.grp-sub{font-size:13.5px;color:var(--mute);margin:8px 0 6px}
+
+.row{border-bottom:1px solid var(--line)}
+.row-head{display:grid;grid-template-columns:44px 1fr auto;gap:12px;align-items:center;width:100%;text-align:left;background:none;border:0;color:inherit;font:inherit;padding:13px 2px;cursor:pointer}
+.code{font-family:var(--mono);font-size:13px;color:var(--mute)}
+.ttl{font-weight:500;font-size:15px;min-width:0}
+.ttl small{display:block;color:var(--mute);font-size:12.5px;font-weight:400;margin-top:1px}
+.pill{font-size:12px;font-weight:500;padding:3px 9px;border-radius:999px;white-space:nowrap;border:1px solid var(--line);color:var(--mute)}
+.pill.fix{background:var(--fix-soft);color:var(--fix);border-color:transparent}
+.pill.ok{background:var(--ok-soft);color:var(--ok);border-color:transparent}
+.pill.ask{background:var(--warn-soft);color:var(--warn);border-color:transparent}
+.row.prio .code{color:var(--accent);font-weight:600}
+.body{padding:2px 0 18px 56px;display:none}
+.row.open .body{display:block}
+@media (max-width:560px){.body{padding-left:0}.row-head{grid-template-columns:38px 1fr}.row-head .pill{grid-column:2;justify-self:start}}
+.lbl{font-size:11.5px;letter-spacing:.07em;text-transform:uppercase;color:var(--mute);font-weight:600;margin:10px 0 4px}
+.body p{margin:0 0 6px;max-width:66ch}
+.body ul{margin:4px 0 6px;padding-left:18px;max-width:66ch}
+.body li{margin:3px 0}
+.ask-box{background:var(--accent-soft);border-radius:8px;padding:10px 13px;margin-top:6px;max-width:66ch}
+.mini{border-collapse:collapse;font-size:13.5px;margin:6px 0;width:100%;max-width:620px}
+.mini th{font-size:11.5px;text-transform:uppercase;letter-spacing:.06em;color:var(--mute);text-align:left;font-weight:600;border-bottom:1px solid var(--line);padding:5px 8px 5px 0}
+.mini td{border-bottom:1px solid var(--line);padding:6px 8px 6px 0;vertical-align:top}
+.mini td:first-child{white-space:nowrap}
+.mini s{color:var(--mute)}
+.tblwrap{overflow-x:auto}
+
+/* reply */
+.reply{margin-top:14px;border-top:1px dashed var(--line);padding-top:12px}
+.opts{display:flex;gap:8px;flex-wrap:wrap}
+.opt{font:inherit;font-size:13.5px;border:1px solid var(--line);background:var(--paper);color:var(--ink);border-radius:8px;padding:7px 12px;cursor:pointer;display:inline-flex;align-items:center;gap:7px}
+.opt i{width:9px;height:9px;border-radius:50%;display:inline-block}
+.opt[aria-pressed="true"].fix{border-color:var(--fix);background:var(--fix-soft)}
+.opt[aria-pressed="true"].ok{border-color:var(--ok);background:var(--ok-soft)}
+.opt[aria-pressed="true"].ask{border-color:var(--warn);background:var(--warn-soft)}
+textarea{width:100%;max-width:640px;min-height:64px;margin-top:10px;font:inherit;font-size:14px;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:9px 11px;resize:vertical;display:block}
+.saved{font-size:12px;color:var(--mute);margin-top:6px;min-height:16px}
+
+footer{border-top:1px solid var(--line);padding:22px 0 40px;margin-top:10px;font-size:13.5px;color:var(--mute);display:flex;gap:18px;flex-wrap:wrap;justify-content:space-between;align-items:center}
+footer b{color:var(--ink);font-weight:600}
+.sel{user-select:all}
+
+/* viewer */
+.viewer{position:fixed;inset:0;z-index:50;background:rgba(10,12,15,.92);display:flex;flex-direction:column}
+.viewer[hidden]{display:none!important}
+.v-top{display:flex;gap:8px;align-items:center;justify-content:flex-end;padding:calc(10px + env(safe-area-inset-top,0px)) max(12px,env(safe-area-inset-right,0px)) 10px max(12px,env(safe-area-inset-left,0px));color:#dfe3e8;font-size:13px}
+.v-top .hint{margin-right:auto;opacity:.75}
+.v-top button{font:inherit;font-size:14px;background:#262a31;color:#eef0f3;border:1px solid #3a3f48;border-radius:8px;padding:6px 12px;cursor:pointer;min-width:38px}
+.v-stage{flex:1;overflow:hidden;position:relative;touch-action:none;cursor:grab;background:#fff}
+.v-stage img{position:absolute;left:0;top:0;transform-origin:0 0;user-select:none;-webkit-user-drag:none;max-width:none}
+.toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:var(--paper);padding:9px 16px;border-radius:8px;font-size:13.5px;z-index:60}
+@media (prefers-reduced-motion:reduce){.track span{transition:none}}
+</style>
+
+</head><body>
+<div class="bar">
+  <div class="bar-in">
+    <img class="logo" src="logo.png" alt="Intura Grupo Constructor">
+    <div class="prog">
+      <div class="prog-txt"><span><b id="pDone">0</b> de <b id="pTot">0</b> puntos respondidos</span><span id="pSave"></span></div>
+      <div class="track" aria-hidden="true"><span id="tFix" style="background:var(--fix);width:0"></span><span id="tOk" style="background:var(--ok);width:0"></span><span id="tAsk" style="background:var(--warn);width:0"></span></div>
+    </div>
+    <button class="btn wa" id="waTop" type="button"><span class="lg">Enviar por </span>WhatsApp</button>
+  </div>
+</div>
+
+<div class="wrap">
+  <header class="hero">
+    <div class="eyebrow">Planos EST001–EST005 · Rev. 01 · 26/10/2026</div>
+    <h1>Revisión estructural<br>Casa campestre · Lote 3 Pavas</h1>
+    <p class="to">Para <b>Ing. Mateo Cardona Márquez</b> · Intura Grupo Constructor · 4 de noviembre de 2026</p>
+    <div class="how">
+      <div><b><i style="background:var(--fix)"></i>Se corregirá</b>El punto quedará resuelto en la nueva versión.</div>
+      <div><b><i style="background:var(--ok)"></i>No requiere ajuste</b>Considera que el punto no aplica; si puede, explique por qué.</div>
+      <div><b><i style="background:var(--warn)"></i>Requiere aclaración</b>Necesita más información o prefiere conversarlo.</div>
+    </div>
+  </header>
+
+  <div class="keys">
+    <div class="key"><div class="n">Prioridad 1 · punto 02</div><h3>Planos nuevos desde la cimentación, 100 % fieles al arquitectónico</h3><p>El diseño no incluye las piscinas, la sala de máquinas ni todas las cubiertas, y la cimentación choca con ellas.</p></div>
+    <div class="key"><div class="n">Prioridad 2 · punto 03</div><h3>Cómo se construyen los muros</h3><p>Plano de muros y dovelas, y si las dovelas se anclan a las vigas de cimentación o a la placa de contrapiso.</p></div>
+  </div>
+
+  <figure class="plan">
+    <img class="plan-img" id="planImg" src="plano.jpg" alt="Planta de vigas de cimentación EST002 con las piscinas y la sala de máquinas superpuestas" width="3600" height="3943">
+    <figcaption>
+      <div class="legend">
+        <span><i class="sw" style="background:#9fb6e4;border:2px solid #4472c4"></i>Piscinas y jacuzzi</span>
+        <span><i class="sw" style="background:#e8b7b0;border:2px solid #c0392b"></i>Sala de máquinas N −2.52</span>
+      </div>
+      <button class="btn" id="zoomBtn" type="button">Ampliar plano</button>
+    </figcaption>
+  </figure>
+
+  <div class="filters" role="group" aria-label="Filtrar puntos">
+    <button class="chip" type="button" data-f="all" aria-pressed="true">Todos</button>
+    <button class="chip" type="button" data-f="pend" aria-pressed="false">Pendientes</button>
+    <button class="chip" type="button" data-f="done" aria-pressed="false">Respondidos</button>
+    <span class="notice" id="modeNote"></span>
+  </div>
+
+  <main id="list"></main>
+
+  <div class="send">
+    <div><h3>Enviar respuestas</h3><p>Sus respuestas se guardan en este equipo mientras trabaja. Al terminar, o cuando quiera, envíelas a Intura con uno de estos botones. Puede enviarlas varias veces.</p></div>
+    <div class="acts"><button class="btn wa" id="waBtn" type="button">Enviar por WhatsApp</button><button class="btn" id="mailBtn" type="button">Enviar por correo</button><button class="btn" id="copyBtn" type="button">Copiar texto</button></div>
+  </div>
+  <div class="company"><div><b>Intura Grupo Constructor</b><br><span style="color:var(--mute);font-size:14px">Conozca nuestra empresa</span></div><a href="https://inturagrupoconstructor.com" target="_blank" rel="noopener">inturagrupoconstructor.com</a></div>
+</div>
+<footer class="blk"><div class="in">
+  <div><b>Daniel García Tamayo</b> · Ingeniero Civil · Director de Proyectos<br>Intura Grupo Constructor SAS</div>
+  <div>310 426 1875 · gerencia@inturagrupoconstructor.com</div>
+</div></footer>
+<aside class="side" aria-label="Índice"><img class="logo-k" src="logo.png" alt=""><div class="t">Revisión estructural<br>Casa campestre · Lote 3 Pavas</div><nav id="sideNav"></nav></aside>
+
+<div class="viewer" id="viewer" hidden>
+  <div class="v-top">
+    <span class="hint">Arrastre para mover · rueda o pellizco para acercar</span>
+    <button type="button" id="vOut" aria-label="Alejar">−</button>
+    <button type="button" id="vIn" aria-label="Acercar">+</button>
+    <button type="button" id="vFit">Ajustar</button>
+    <button type="button" id="vClose">Cerrar</button>
+  </div>
+  <div class="v-stage" id="vStage"><img id="vImg" src="plano.jpg" alt="Plano ampliado"></div>
+</div>
+
+<script>
+const GROUPS=[
+ {id:"02",title:"El diseño no corresponde al arquitectónico",sub:"Lo más importante. Pedimos un diseño nuevo y completo, no ajustes puntuales.",points:[
+  {id:"2",code:"02",prio:1,title:"Nuevo juego de planos estructurales desde la cimentación",sheet:"EST001 · EST002 · EST003",
+   find:["<b>Piscina interior</b> (10.93 × 2.00 m, eje A entre 4′ y 7): la atraviesan VC7 (eje 5) y VC8 (eje 5′); VC5 coincide con su muro; las zapatas A-5 y A-5′ quedan con media zapata dentro del vaso y la A-7 en su extremo.","<b>Piscina, jacuzzi y hogar de la terraza</b> (C–D, ejes 5′–6): la viga diagonal VC8 pasa por dentro del vaso.","<b>Sala de máquinas a N −2.52</b> (4.88 × 2.74 m, ejes 6–7 contra el eje E, con escalera exterior): no aparece; las zapatas E-6 y E-7 (−1.50) quedan sobre su muro y el piso superior queda como placa aérea.","<b>Cubiertas</b>: parqueaderos y acceso (oeste del eje 4) y terraza exterior cubierta (ejes 5–5′) sin estructura; franja sin correas sobre la piscina interior."],
+   ask:"Un nuevo juego de planos estructurales, completo desde la cimentación y 100 % fiel al arquitectónico, que incluya todas las áreas de la casa: piscinas, jacuzzi, hogar, sala de máquinas con su escalera, sala deprimida y todas las cubiertas."}
+ ]},
+ {id:"03",title:"Muros de la casa",sub:"No sabemos cómo construirlos. EST005 está dibujado contra columnas de concreto, no contra la estructura metálica.",points:[
+  {id:"3",code:"03",prio:1,title:"Plano de muros y dovelas",sheet:"EST004 · EST005",
+   find:["EST005 propone Ladriblock 14 (f′m 9.5 MPa), mortero tipo H de 22 MPa y grout de 15 MPa, con dovelas y columnetas, pero contra columnas de concreto.","Según los alzados quedan cerca de 0.70 m sin definir entre la placa de contrapiso y la cara superior de las vigas de cimentación."],
+   askList:["<b>Plano de dovelas</b>: localización, diámetro, separación y longitud.","<b>¿Las dovelas se anclan a las vigas de cimentación o a la placa de contrapiso?</b>","Arranque del muro: sobrecimiento de ±0.70 m (material, refuerzo) o apoyo sobre el contrapiso.","Material y espesor de los muros (confirmar Ladriblock 14 u otro).","Unión con las columnas metálicas: junta y anclajes que permitan la deriva.","Unión superior con las vigas y acabado sobre los perfiles."]}
+ ]},
+ {id:"04",title:"Cimentación: niveles y amarres",points:[
+  {id:"4.1",code:"4.1",title:"Espesor de zapatas",sheet:"EST001",find:["El corte típico dibuja la zapata de 0.50 m; el cuadro indica 0.35 m (Z1) y 0.40 m (Z2)."],ask:"Unificar el espesor."},
+  {id:"4.2",code:"4.2",title:"Cota del pedestal PD-1",sheet:"EST001",find:["La cota de 1.500 va de N+0.00 a «ZAPATA» sin indicar la cara. Entendemos que es la cara inferior (coherente con Df = 1.50).","Con esa lectura el pedestal libre mide 1.15 m (Z1) o 1.10 m (Z2), pero el despiece indica 15E#3@90 (≈1.35 m)."],ask:"Acotar la cara de referencia y ajustar flejes y longitudes por tipo de zapata."},
+  {id:"4.3",code:"4.3",title:"Nivel de las vigas de cimentación",sheet:"EST001 · EST002 · EST004",find:["La planta indica N −0.15; el corte típico las ubica entre −0.60 y −1.00, y los alzados junto a la zapata (cara inferior ≈ −1.15)."],ask:"Definir un único nivel."},
+  {id:"4.4",code:"4.4",title:"Remate del pedestal",sheet:"EST001",find:["El pedestal remata en N+0.00 (piso acabado): placa base, tuercas y grout quedarían sobre el piso."],ask:"Rematar más abajo para que el contrapiso cubra platina y pernos y el acabado sea continuo."},
+  {id:"4.5",code:"4.5",title:"Amarre N-S en E-4′ y A-4′",sheet:"EST002",find:["Solo tienen viga de amarre E-W, y en ellos arrancan las riostras."],ask:"Confirmar la necesidad de amarre en sentido N-S."},
+  {id:"4.6",code:"4.6",title:"Zapatas de los pórticos arriostrados",sheet:"EST001",find:["El pórtico del eje E se apoya en Z-2 (1.20 m) y el del eje A en Z-1 (1.00 m)."],ask:"Confirmar el tipo de zapata en ambos."},
+  {id:"4.7",code:"4.7",title:"Capacidad portante «22.44 m2»",sheet:"EST001",find:["Las unidades no corresponden."],ask:"Indicar unidades y verificar contra el estudio de suelos (suelo tipo E)."},
+  {id:"4.8",code:"4.8",title:"Concreto de pedestales",sheet:"EST001",find:["El despiece indica f′c 21 MPa; la nota general, «columnas y vigas f′c 28 MPa»."],ask:"Aclarar cuál aplica."}
+ ]},
+ {id:"05",title:"Despieces de vigas de cimentación",sub:"Para que no se repitan en la nueva versión.",points:[
+  {id:"5.1",code:"5.1",title:"VC3: total de flejes",sheet:"EST002",find:["Indica 82#3 L=900; la suma por tramos es 31 + 22 + 39 = 92."],ask:"Corregir."},
+  {id:"5.2",code:"5.2",title:"VC8: total de flejes",sheet:"EST002",find:["Indica 131#3 L=1000; la suma es 54 + 45 + 36 = 135 (131 es el total de la VC7)."],ask:"Corregir."},
+  {id:"5.3",code:"5.3",title:"Ganchos de 200 mm en vigas de 300 mm",sheet:"EST002",find:["En VC1, VC2, VC4 y VC6, con 7.5 cm de recubrimiento arriba y abajo quedan 150 mm libres: el gancho no cabe. En las de 350 mm queda justo."],ask:"Ajustar la longitud del gancho o la sección."},
+  {id:"5.4",code:"5.4",title:"VC8 quebrada",sheet:"EST002",find:["Recorre eje 6, diagonal D-6 → C-5′ y eje 5′, pero se despieza recta."],ask:"Detallar el doblado o traslapo en los quiebres."},
+  {id:"5.5",code:"5.5",title:"VC3 y VC5: longitudes",sheet:"EST002",find:["Longitud neta de 15.20 m arriba frente a 15.30 m abajo."],ask:"Verificar."},
+  {id:"5.6",code:"5.6",title:"Separación de flejes",sheet:"EST002",find:["VC7 @130 y VC3, VC5 @150 (todas 300×350); VC8 @130 y VC9 @150 (ambas 300×400)."],ask:"Confirmar el criterio."},
+  {id:"5.7",code:"5.7",title:"Unidades en planta de zapatas",sheet:"EST001",find:["Dice «h=350m» y «h=400m»."],ask:"Corregir a mm."}
+ ]},
+ {id:"06",title:"Rótulos en los alzados",points:[
+  {id:"6.1",code:"6.1",title:"Rótulos de VC que no coinciden con la planta",sheet:"EST004",table:[["Ejes 1-2-3-6","VC5-300X300","VC6 (1, 2, 3) y VC8 (6)"],["Eje 5′","VC7-300X400","VC8-300X400"],["Eje 4","VC6-300X350","VC7-300X350"],["Eje 5","VC6-300X350","VC7-300X350"],["Eje B","VC3-300X300","VC4-300X300"],["Eje A","VC4-300X350","VC5-300X350 · el eje «4» aparece dos veces"]],ask:"Corregir según la planta EST002."}
+ ]},
+ {id:"07",title:"Detalles faltantes y por adaptar",points:[
+  {id:"7.1",code:"7.1",prio:1,title:"Placa base y pernos de anclaje",sheet:"Ninguna plancha",find:["No hay detalle de placa base, pernos, tuercas de nivelación ni grout.","Se contemplan 6 pernos de 1″ × 50 cm, pero el PD-1 (400 × 500) lleva 12#5, 15 ganchos #3 L=600 y 30 #3 L=500 cruzando el núcleo: no vemos por dónde alojarlos."],ask:"Detalle coordinado: placa, posición de pernos frente a las barras, redistribución de ganchos, anclaje, distancia a bordes, plantilla, nivelación y grout."},
+  {id:"7.2",code:"7.2",title:"Columna con vigas en dos direcciones",sheet:"EST003",find:["M-I y M-II solo muestran la viga llegando al ala; la mayoría de columnas reciben vigas por el alma también."],ask:"Detalle de la conexión al alma (eje débil del IPE)."},
+  {id:"7.3",code:"7.3",title:"Riostras PIPE 4″ al pedestal",sheet:"EST003 · EST004",find:["Las riostras de los ejes E y A arrancan en los pedestales; solo existe el nudo central C-2."],ask:"Detalle de llegada a columna y pedestal (cartela, placa, anclaje)."},
+  {id:"7.4",code:"7.4",title:"Conexión viga–viga",sheet:"EST003",find:["Hay vigas IPE180 que se apoyan sobre otras vigas."],ask:"Detalle de esa conexión."},
+  {id:"7.5",code:"7.5",title:"M-II con «COLUMNA IPE 330»",sheet:"EST003",find:["Ese perfil no existe en el proyecto (columnas IPE200, 220, 240 y HEA220)."],ask:"Actualizar con los perfiles de esta casa."},
+  {id:"7.6",code:"7.6",title:"Detalles de EST005 para concreto",sheet:"EST005",find:["Columna de 8 barras, nudos confinados y anclajes con epóxico a concreto."],ask:"Ajustar a la estructura metálica o indicar si no aplican."}
+ ]},
+ {id:"08",title:"Consultas sobre el sistema estructural",sub:"Para conocer su concepto.",points:[
+  {id:"8.1",code:"8.1",title:"Sistema de resistencia sísmica",sheet:"EST001 · EST004",find:["La nota declara pórticos resistentes a momento de acero DMI, pero los ejes E y A tienen riostras en X (PIPE 4″) entre 4 y 4′, y en N-S no hay riostras."],ask:"¿El análisis consideró las riostras? Si es así, ¿el sistema y R deberían declararse por dirección?"},
+  {id:"8.2",code:"8.2",title:"Coeficiente R",sheet:"EST001",find:["φa 0.80 × φp 1.00 × φr 0.75 × R₀ 1.50 = 0.90, pero la nota indica R = 1.20."],ask:"Confirmar R, el sistema de la Tabla A.3-3 al que corresponde R₀ = 1.50 y si DMI es admisible en zona de amenaza alta."},
+  {id:"8.3",code:"8.3",title:"Irregularidades",sheet:"EST001",find:["Planta en L con esquinas entrantes y φp = 1.00; φa = 0.80 en una edificación de un piso."],ask:"Confirmar la evaluación."},
+  {id:"8.4",code:"8.4",title:"Conexiones a momento",sheet:"EST003",find:["M-I y M-II: platina de 12.7 mm con pernos Ø1/2″ A325."],ask:"¿Son precalificadas o están justificadas por cálculo para el nivel de disipación (NSR-10, Título F)?"},
+  {id:"8.5",code:"8.5",title:"Cubierta: geometría y correas",sheet:"EST003 · EST004",find:["Eje 5 horizontal entre A y C, mientras los ejes 5′ y 7 están inclinados y las correas drenan hacia A.","Pendiente ≈ 8.7 % frente a 7 % del arquitectónico; alturas +3.80 / +3.35 frente a NE +4.20.","Correas P8 cal. 14 con luces de 5.1 a 5.2 m."],ask:"Coordinar y confirmar."}
+ ]},
+ {id:"09",title:"Observaciones menores",points:[
+  {id:"9.1",code:"9.1",title:"Tornillería",sheet:"EST001–EST004",find:["«A325 Fu = 510 MPa» (debe ser 825 MPa); en EST003 aparece «A306» (A307)."],ask:"Corregir."},
+  {id:"9.2",code:"9.2",title:"Tamaño de soldadura",sheet:"EST002 · EST003",find:["Filete de 3/16″ (4.76 mm) en platinas de 12.7 mm; la tabla F.2.10.2-4 del plano exige 5 mm."],ask:"Unificar."},
+  {id:"9.3",code:"9.3",title:"Malla de contrapiso",sheet:"EST001",find:["Ø5 mm c/15 = 131 mm²/m, menor que 0.0018·b·h = 216 mm²/m."],ask:"Confirmar si se considera no estructural."},
+  {id:"9.4",code:"9.4",title:"Corte típico de cimentación",sheet:"EST001",find:["Dibuja una columna de concreto."],ask:"Mostrar pedestal, placa base y columna metálica."},
+  {id:"9.5",code:"9.5",title:"Columneta y unidades en EST005",sheet:"EST005",find:["Columneta 15 × 25 en el detalle y 0.08 × 0.15 en la leyenda; «niveles en m» con alzados en mm."],ask:"Unificar."},
+  {id:"9.6",code:"9.6",title:"Presentación",sheet:"EST001 · EST002",find:["Recuadro vacío en EST001; texto «RIOSTRA 4″ SCH40» encimado en el despiece de la VC7."],ask:"Limpiar."},
+  {id:"9.7",code:"9.7",title:"Nombre del condominio",sheet:"Rótulo",find:["«Condominio El Samán – Lote 3 Hacienda Pavas» frente a «Condominio Pavas – Lote 3» en el arquitectónico."],ask:"Unificar para la radicación."}
+ ]}
+];
+const ST={fix:{lbl:"Se corregirá",cls:"fix"},ok:{lbl:"No requiere ajuste",cls:"ok"},ask:{lbl:"Requiere aclaración",cls:"ask"}};
+const ALL=GROUPS.flatMap(g=>g.points);
+let answers={}; // id -> {estado, comentario, fecha}
+let filter="all"; const openSet=new Set(["2","3"]);
+const LS="pavas-revision-respuestas";
+function lsGet(){try{return JSON.parse(localStorage.getItem(LS)||"{}")}catch(e){return{}}}
+function lsSet(){try{localStorage.setItem(LS,JSON.stringify(answers))}catch(e){}}
+function esc(s){return String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]))}
+
+function render(){
+  const list=document.getElementById("list"); list.innerHTML="";
+  GROUPS.forEach(g=>{
+    const pts=g.points.filter(p=>filter==="all"||(filter==="done"?answers[p.id]?.estado:!answers[p.id]?.estado));
+    if(!pts.length)return;
+    const done=g.points.filter(p=>answers[p.id]?.estado).length;
+    const s=document.createElement("section"); s.className="grp"; s.id="g"+g.id;
+    s.innerHTML=`<div class="grp-h"><span class="num">${g.id}</span><h2>${esc(g.title)}</h2><span class="cnt">${done}/${g.points.length}</span></div>${g.sub?`<p class="grp-sub">${esc(g.sub)}</p>`:""}`;
+    pts.forEach(p=>s.appendChild(rowEl(p)));
+    list.appendChild(s);
+  });
+  if(!list.children.length){list.innerHTML=`<p class="grp-sub">No hay puntos en este filtro.</p>`}
+  progress();
+}
+function rowEl(p){
+  const a=answers[p.id]||{}; const st=ST[a.estado];
+  const r=document.createElement("div"); r.className="row"+(p.prio?" prio":"")+(openSet.has(p.id)?" open":"");
+  const pill=st?`<span class="pill ${st.cls}">${st.lbl}</span>`:`<span class="pill">Pendiente</span>`;
+  let body="";
+  if(p.find){body+=`<div class="lbl">Qué encontramos</div>`+(p.find.length>1?`<ul>${p.find.map(f=>`<li>${f}</li>`).join("")}</ul>`:`<p>${p.find[0]}</p>`)}
+  if(p.table){body+=`<div class="lbl">Qué encontramos</div><div class="tblwrap"><table class="mini"><thead><tr><th>Alzado</th><th>Dice</th><th>Según planta</th></tr></thead><tbody>${p.table.map(t=>`<tr><td>${t[0]}</td><td><s>${t[1]}</s></td><td>${t[2]}</td></tr>`).join("")}</tbody></table></div>`}
+  body+=`<div class="lbl">Qué solicitamos</div><div class="ask-box">${p.askList?`<ul>${p.askList.map(x=>`<li>${x}</li>`).join("")}</ul>`:p.ask}</div>`;
+  body+=`<div class="reply"><div class="opts" role="group" aria-label="Respuesta al punto ${p.code}">${Object.entries(ST).map(([k,v])=>`<button type="button" class="opt ${v.cls}" data-k="${k}" aria-pressed="${a.estado===k}"><i style="background:var(--${v.cls})"></i>${v.lbl}</button>`).join("")}</div>
+    <textarea id="c-${p.id.replace('.','-')}" placeholder="Comentario (opcional)">${esc(a.comentario||"")}</textarea><div class="saved"></div></div>`;
+  r.innerHTML=`<button type="button" class="row-head" aria-expanded="${openSet.has(p.id)}"><span class="code">${p.code}</span><span class="ttl">${esc(p.title)}<small>${esc(p.sheet)}</small></span>${pill}</button><div class="body">${body}</div>`;
+  r.querySelector(".row-head").onclick=()=>{ if(openSet.has(p.id))openSet.delete(p.id); else openSet.add(p.id); r.classList.toggle("open"); r.querySelector(".row-head").setAttribute("aria-expanded",r.classList.contains("open")); };
+  const saved=r.querySelector(".saved"); const ta=r.querySelector("textarea");
+  r.querySelectorAll(".opt").forEach(b=>b.onclick=()=>{
+    const k=b.dataset.k; const cur=answers[p.id]||{};
+    const next={...cur,estado:cur.estado===k?"":k,comentario:ta.value};
+    save(p.id,next,saved,true);
+  });
+  let t; ta.oninput=()=>{clearTimeout(t); saved.textContent="Escribiendo…"; t=setTimeout(()=>{const cur=answers[p.id]||{}; save(p.id,{...cur,comentario:ta.value},saved,false)},900)};
+  return r;
+}
+function save(id,data,savedEl,rerender){
+  data.fecha=new Date().toISOString();
+  answers[id]=data; lsSet();
+  if(rerender){render()} else progress();
+  flashSave("Guardado en este equipo"); if(!rerender&&savedEl)savedEl.textContent="Guardado";
+}
+function flashSave(t){const s=document.getElementById("pSave"); s.textContent=t}
+function progress(){ try{sideNav()}catch(e){}
+  const tot=ALL.length; const c={fix:0,ok:0,ask:0};
+  ALL.forEach(p=>{const e=answers[p.id]?.estado; if(c[e]!==undefined)c[e]++});
+  const done=c.fix+c.ok+c.ask;
+  document.getElementById("pDone").textContent=done; document.getElementById("pTot").textContent=tot;
+  document.getElementById("tFix").style.width=(c.fix/tot*100)+"%";
+  document.getElementById("tOk").style.width=(c.ok/tot*100)+"%";
+  document.getElementById("tAsk").style.width=(c.ask/tot*100)+"%";
+  document.querySelectorAll(".grp").forEach(s=>{const g=GROUPS.find(x=>"g"+x.id===s.id); if(g){s.querySelector(".cnt").textContent=g.points.filter(p=>answers[p.id]?.estado).length+"/"+g.points.length}});
+}
+function modeNote(){
+  document.getElementById("modeNote").textContent="Sus respuestas se guardan en este equipo. Al final, envíelas por WhatsApp.";
+}
+document.querySelectorAll(".chip").forEach(c=>c.onclick=()=>{filter=c.dataset.f; document.querySelectorAll(".chip").forEach(x=>x.setAttribute("aria-pressed",x===c)); render()});
+
+function summary(){
+  let out="RESPUESTAS · Revisión estructural Casa campestre Lote 3 Pavas\nIng. Mateo Cardona Márquez\n";
+  GROUPS.forEach(g=>{out+=`\n${g.id} ${g.title.toUpperCase()}\n`; g.points.forEach(p=>{const a=answers[p.id]||{}; out+=`${p.code} ${p.title}: ${a.estado?ST[a.estado].lbl:"Pendiente"}${a.comentario?` — ${a.comentario}`:""}\n`})});
+  return out;
+}
+function toast(t){const d=document.createElement("div"); d.className="toast"; d.textContent=t; document.body.appendChild(d); setTimeout(()=>d.remove(),2400)}
+document.getElementById("copyBtn").onclick=async()=>{
+  const txt=summary();
+  try{await navigator.clipboard.writeText(txt); toast("Texto copiado.")}
+  catch(e){const ta=document.createElement("textarea"); ta.value=txt; ta.style.position="fixed"; ta.style.top="20%"; ta.style.left="5%"; ta.style.width="90%"; ta.style.height="50%"; ta.style.zIndex=70; document.body.appendChild(ta); ta.select(); toast("Seleccione y copie el texto"); ta.onblur=()=>ta.remove();}
+};
+
+/* viewer */
+const viewer=document.getElementById("viewer"), stage=document.getElementById("vStage"), vImg=document.getElementById("vImg");
+let sc=1,tx=0,ty=0; const pts=new Map(); let pinch=null;
+function apply(){vImg.style.transform=`translate(${tx}px,${ty}px) scale(${sc})`}
+function fit(){const W=stage.clientWidth,H=stage.clientHeight,iw=3600,ih=3943; sc=Math.min(W/iw,H/ih); tx=(W-iw*sc)/2; ty=(H-ih*sc)/2; apply()}
+function zoomAt(f,cx,cy){const ns=Math.min(Math.max(sc*f,0.05),3); tx=cx-(cx-tx)*(ns/sc); ty=cy-(cy-ty)*(ns/sc); sc=ns; apply()}
+function openV(){viewer.hidden=false; requestAnimationFrame(fit)}
+document.getElementById("zoomBtn").onclick=openV; document.getElementById("planImg").onclick=openV;
+document.getElementById("vClose").onclick=()=>viewer.hidden=true;
+document.getElementById("vFit").onclick=fit;
+document.getElementById("vIn").onclick=()=>zoomAt(1.5,stage.clientWidth/2,stage.clientHeight/2);
+document.getElementById("vOut").onclick=()=>zoomAt(1/1.5,stage.clientWidth/2,stage.clientHeight/2);
+document.addEventListener("keydown",e=>{if(e.key==="Escape"&&!viewer.hidden)viewer.hidden=true});
+stage.addEventListener("wheel",e=>{e.preventDefault(); const r=stage.getBoundingClientRect(); zoomAt(e.deltaY<0?1.15:1/1.15,e.clientX-r.left,e.clientY-r.top)},{passive:false});
+stage.addEventListener("pointerdown",e=>{stage.setPointerCapture(e.pointerId); pts.set(e.pointerId,{x:e.clientX,y:e.clientY}); if(pts.size===2){const [a,b]=[...pts.values()]; pinch={d:Math.hypot(a.x-b.x,a.y-b.y)}}});
+stage.addEventListener("pointermove",e=>{ if(!pts.has(e.pointerId))return; const prev=pts.get(e.pointerId); const cur={x:e.clientX,y:e.clientY}; pts.set(e.pointerId,cur);
+  if(pts.size===1){tx+=cur.x-prev.x; ty+=cur.y-prev.y; apply()}
+  else if(pts.size===2&&pinch){const [a,b]=[...pts.values()]; const d=Math.hypot(a.x-b.x,a.y-b.y); const r=stage.getBoundingClientRect(); zoomAt(d/pinch.d,(a.x+b.x)/2-r.left,(a.y+b.y)/2-r.top); pinch.d=d}});
+["pointerup","pointercancel"].forEach(ev=>stage.addEventListener(ev,e=>{pts.delete(e.pointerId); if(pts.size<2)pinch=null}));
+window.addEventListener("resize",()=>{if(!viewer.hidden)fit()});
+
+/* envío */
+const WA="573104261875";
+function sendWA(){window.open("https://wa.me/"+WA+"?text="+encodeURIComponent(summary()),"_blank")}
+document.getElementById("waTop").onclick=sendWA; document.getElementById("waBtn").onclick=sendWA;
+document.getElementById("mailBtn").onclick=()=>{location.href="mailto:gerencia@inturagrupoconstructor.com?subject="+encodeURIComponent("Respuestas revisión estructural Casa Lote 3 Pavas")+"&body="+encodeURIComponent(summary())};
+function sideNav(){const n=document.getElementById("sideNav"); if(!n)return; n.innerHTML=GROUPS.map(g=>`<a href="#g${g.id}">${g.id} ${esc(g.title)}<span>${g.points.filter(p=>answers[p.id]?.estado).length}/${g.points.length}</span></a>`).join("")}
+/* boot */
+answers=lsGet(); render(); modeNote(); sideNav();
+</script>
+</body></html>
