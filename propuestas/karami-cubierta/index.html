@@ -1,0 +1,779 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Cotización Cubierta y Terraza · Edificio Karami</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="color-scheme" content="light only">
+<meta name="description" content="Intura Grupo Constructor · Cotización de la reparación de la cubierta general y la terraza del Edificio Karami.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_CO">
+<meta property="og:site_name" content="Intura Grupo Constructor">
+<meta property="og:title" content="Cotización: Cubierta y terraza · Edificio Karami">
+<meta property="og:description" content="Reparación de daños por sismo en la cubierta general y la terraza · Intura Grupo Constructor">
+<meta property="og:url" content="https://inturagrupoconstructor.com/propuestas/karami-cubierta/">
+<meta property="og:image" content="https://inturagrupoconstructor.com/propuestas/karami-cubierta/og.jpg">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@300;400;500;700;800;900&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+
+/* Concepto: expediente post-sismo. Portada a pantalla completa con la fachada en penumbra y un sismograma que se dibuja;
+   el edificio como mapa navegable del presupuesto; el registro fotográfico como visor con puntos de daño señalados. */
+:root{
+  --paper:#FFFFFF; --bone:#F5F4F0; --ink:#0B0C0E; --muted:#5C5E66; --concrete:#8A8B85;
+  --line:#E2E1DC; --soft:#EEEDE8; --dark:#0B0C0E; --dark2:#15171B; --on-dark:#F3F2EE; --on-dark-muted:#9B9DA3; --dark-line:rgba(243,242,238,.14);
+  --priv:#3A64B8; --priv-soft:#E3EAF7; --priv-ink:#2A4C92; --com:#1F7A6B; --com-soft:#DCEFEA; --com-ink:#155A4F;
+  --accent:#3A64B8; --accent-2:#5B85D6; --accent-soft:#E6ECF8; --accent-ink:#2A4C92; --alert:#E0A43A;
+  --f-display:"Archivo","Arial Narrow",Arial,sans-serif;
+  --f-body:"IBM Plex Sans","Segoe UI",Calibri,Arial,sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+  --nav-h:68px; --ease:cubic-bezier(.2,.7,.2,1);
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:calc(var(--nav-h) + 8px)}
+body{background:var(--paper);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:70;background:var(--dark)}
+.wrap{max-width:1200px;margin:0 auto;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+h1,h2,h3,h4{font-family:var(--f-display);margin:0;text-wrap:balance}
+p{margin:0}
+img{max-width:100%;display:block}
+button{font:inherit;color:inherit}
+.mono{font-family:var(--f-mono);font-variant-numeric:tabular-nums}
+.lbl{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.18em;text-transform:uppercase}
+:focus-visible{outline:2px solid var(--accent-2);outline-offset:3px}
+[hidden]{display:none!important}
+
+/* ---------- barra superior ---------- */
+.nav{position:fixed;left:0;right:0;top:env(safe-area-inset-top,0px);z-index:60;transition:background .35s var(--ease),border-color .35s;border-bottom:1px solid transparent}
+.nav .wrap{height:var(--nav-h);display:flex;align-items:center;gap:24px}
+.nav .logo{position:relative;display:block;height:34px;width:59px;flex:none}
+.nav .logo img{position:absolute;inset:0;height:34px;width:auto;transition:opacity .3s}
+.nav .logo .lk{opacity:0}
+.nav ul{list-style:none;margin:0 0 0 auto;padding:0;display:flex;gap:2px}
+.nav ul a{display:block;text-decoration:none;color:rgba(243,242,238,.78);font-size:14px;font-weight:500;padding:8px 13px;border-radius:999px;transition:color .2s,background .2s}
+.nav ul a:hover{color:#fff;background:rgba(255,255,255,.08)}
+.nav ul a.on{color:#fff;background:rgba(255,255,255,.12)}
+.nav.solid{background:rgba(255,255,255,.92);backdrop-filter:saturate(1.5) blur(14px);-webkit-backdrop-filter:saturate(1.5) blur(14px);border-color:var(--line)}
+.nav.solid .logo .lw{opacity:0}.nav.solid .logo .lk{opacity:1}
+.nav.solid ul a{color:var(--muted)}
+.nav.solid ul a:hover{color:var(--ink);background:var(--soft)}
+.nav.solid ul a.on{color:var(--accent);background:var(--accent-soft)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;font-size:14px;font-weight:600;text-decoration:none;border-radius:999px;padding:12px 20px;cursor:pointer;border:1px solid transparent;transition:background .2s,color .2s,border-color .2s,transform .2s var(--ease);white-space:nowrap}
+.btn:active{transform:scale(.97)}
+.btn svg{width:16px;height:16px;flex:none}
+.btn-w{background:#fff;color:var(--ink)}
+.btn-w:hover{background:var(--accent-soft)}
+.btn-o{background:transparent;color:#fff;border-color:rgba(255,255,255,.35)}
+.btn-o:hover{border-color:#fff;background:rgba(255,255,255,.06)}
+.nav .pdf{padding:10px 18px;background:#fff;color:var(--ink)}
+.nav.solid .pdf{background:var(--ink);color:#fff}
+.nav.solid .pdf:hover{background:var(--accent)}
+.menu-btn{display:none;margin-left:auto;font-size:14px;font-weight:600;background:transparent;border:1px solid rgba(255,255,255,.35);color:#fff;border-radius:999px;padding:9px 16px;cursor:pointer}
+.nav.solid .menu-btn{border-color:var(--line);color:var(--ink);background:var(--paper)}
+
+/* ---------- portada ---------- */
+.hero{position:relative;min-height:100svh;background:var(--dark);color:var(--on-dark);display:flex;flex-direction:column;overflow:hidden;isolation:isolate}
+.hero .bg{position:absolute;inset:0;z-index:-2}
+.hero .bg img{width:100%;height:100%;object-fit:cover;object-position:55% 40%;transform:scale(1.08);filter:grayscale(.25) contrast(1.05);transition:transform 2.4s var(--ease)}
+.hero.in .bg img{transform:scale(1)}
+.hero::after{content:"";position:absolute;inset:0;z-index:-1;background:
+  linear-gradient(90deg,rgba(8,9,11,.94) 0%,rgba(8,9,11,.78) 38%,rgba(8,9,11,.35) 75%,rgba(8,9,11,.5) 100%),
+  linear-gradient(0deg,rgba(8,9,11,.96) 0%,rgba(8,9,11,0) 42%)}
+.hero .wrap{width:100%;flex:1;display:flex;flex-direction:column;justify-content:flex-end;padding-top:calc(var(--nav-h) + 60px);padding-bottom:28px}
+.hero .kick{display:flex;flex-wrap:wrap;align-items:center;gap:14px;color:var(--on-dark-muted)}
+.hero .kick .dot{width:7px;height:7px;border-radius:50%;background:var(--alert);animation:ping 2.4s infinite}
+@keyframes ping{0%{box-shadow:0 0 0 0 rgba(224,164,58,.55)}70%{box-shadow:0 0 0 10px rgba(224,164,58,0)}100%{box-shadow:0 0 0 0 rgba(224,164,58,0)}}
+.hero h1{font-weight:900;font-size:clamp(58px,12.5vw,176px);line-height:.84;letter-spacing:-.045em;margin-top:22px}
+.hero h1 span{display:block}
+.hero h1 .thin{font-weight:300;color:rgba(243,242,238,.55);letter-spacing:-.03em}
+.hero .lead{font-family:var(--f-display);font-size:clamp(19px,2.1vw,25px);line-height:1.32;max-width:34ch;margin-top:28px;color:rgba(243,242,238,.9)}
+.hero .ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
+.hero .meta{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px;margin-top:56px;padding-top:22px;border-top:1px solid var(--dark-line)}
+.hero .meta div{min-width:0}
+.hero .meta .lbl{color:var(--on-dark-muted);font-size:10.5px}
+.hero .meta p{font-size:14.5px;margin-top:6px;color:var(--on-dark)}
+.seismo{display:block;width:100%;height:56px;margin-top:22px}
+.seismo path{fill:none;stroke:var(--alert);stroke-width:1.4;stroke-linejoin:round;stroke-dasharray:3200;stroke-dashoffset:3200;vector-effect:non-scaling-stroke}
+.hero.in .seismo path{animation:draw 3.2s .5s var(--ease) forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
+.seismo-l{display:flex;justify-content:space-between;gap:12px;color:var(--on-dark-muted);font-size:10.5px;margin-top:6px}
+.reveal-h > *{opacity:0;transform:translateY(22px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
+.hero.in .reveal-h > *{opacity:1;transform:none}
+.hero.in .reveal-h > *:nth-child(2){transition-delay:.08s}.hero.in .reveal-h > *:nth-child(3){transition-delay:.16s}
+.hero.in .reveal-h > *:nth-child(4){transition-delay:.24s}.hero.in .reveal-h > *:nth-child(5){transition-delay:.32s}
+
+/* ---------- cifras ---------- */
+.figs{background:var(--dark);color:var(--on-dark);border-top:1px solid var(--dark-line)}
+.figs .wrap{display:grid;grid-template-columns:repeat(4,minmax(0,1fr))}
+.fig{padding:34px 24px 38px 0;min-width:0}
+.fig + .fig{border-left:1px solid var(--dark-line);padding-left:28px}
+.fig .v{font-family:var(--f-display);font-weight:800;font-size:clamp(34px,4.6vw,60px);letter-spacing:-.035em;line-height:1;font-variant-numeric:tabular-nums;white-space:nowrap}
+.fig .v small{font-size:.34em;font-weight:500;color:var(--on-dark-muted);letter-spacing:0;margin-left:6px}
+.fig .k{font-size:14px;color:var(--on-dark-muted);margin-top:12px;max-width:24ch}
+
+/* ---------- secciones ---------- */
+.sec{padding-block:clamp(80px,11vw,140px)}
+.sec.bone{background:var(--bone)}
+.sec.dark{background:var(--dark);color:var(--on-dark)}
+.sh{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:40px;align-items:end;margin-bottom:clamp(40px,6vw,72px)}
+.sh .lbl{color:var(--accent);display:flex;gap:12px;align-items:center}
+.sh .lbl::after{content:"";height:1px;width:48px;background:currentColor;opacity:.5}
+.sh h2{font-weight:800;font-size:clamp(38px,5.8vw,78px);line-height:.95;letter-spacing:-.04em;margin-top:18px}
+.sh p{color:var(--muted);font-size:18px;max-width:46ch;justify-self:end}
+.dark .sh p{color:var(--on-dark-muted)}
+.dark .sh .lbl{color:var(--accent-2)}
+.rv{opacity:0;transform:translateY(28px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
+.rv.in{opacity:1;transform:none}
+
+/* 01 contexto */
+.ctx{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(32px,6vw,96px)}
+.ctx .big{font-family:var(--f-display);font-weight:500;font-size:clamp(24px,2.7vw,34px);line-height:1.22;letter-spacing:-.02em}
+.ctx .big b{font-weight:800}
+.ctx .small{color:var(--muted);font-size:16.5px;margin-top:22px;max-width:52ch}
+.tl{list-style:none;margin:0;padding:0;position:relative}
+.tl::before{content:"";position:absolute;left:15px;top:10px;bottom:10px;width:2px;background:var(--line)}
+.tl .fill{position:absolute;left:15px;top:10px;width:2px;background:var(--ink);height:0;transition:height 1.6s var(--ease)}
+.tl li{position:relative;display:grid;grid-template-columns:32px minmax(0,1fr);gap:22px;padding:0 0 30px}
+.tl li:last-child{padding-bottom:0}
+.tl .pt{width:32px;height:32px;border-radius:50%;background:var(--paper);border:2px solid var(--line);display:grid;place-items:center;font-family:var(--f-mono);font-size:11px;color:var(--concrete);position:relative;z-index:1;transition:border-color .5s,background .5s,color .5s}
+.tl li.on .pt{border-color:var(--ink);color:var(--ink)}
+.tl li.us .pt{background:var(--accent);border-color:var(--accent);color:#fff;box-shadow:0 0 0 6px var(--accent-soft)}
+.tl .when{font-family:var(--f-mono);font-size:12px;color:var(--concrete);letter-spacing:.06em}
+.tl h3{font-size:19px;font-weight:700;letter-spacing:-.01em;margin-top:2px}
+.tl p{color:var(--muted);font-size:15px;margin-top:4px}
+.tl li.us .card{background:var(--accent-soft);border-radius:10px;padding:16px 18px;margin:-12px 0 0 -4px}
+.tl li.us h3{color:var(--accent-ink)}
+.tag{display:inline-block;font-family:var(--f-mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;padding:3px 8px;border-radius:4px;background:var(--ink);color:#fff;margin-left:6px;vertical-align:3px;font-weight:500}
+.tag.y{background:var(--alert);color:var(--ink)}
+
+/* 04 alcance */
+.scope{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(32px,6vw,96px);align-items:start}
+.steps{list-style:none;margin:0;padding:0}
+.steps li{display:grid;grid-template-columns:56px minmax(0,1fr);gap:18px;padding:22px 0;border-top:1px solid var(--line);opacity:.3;transform:translateX(-8px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.steps li.in{opacity:1;transform:none}
+.steps li:last-child{border-bottom:1px solid var(--line)}
+.steps .n{font-family:var(--f-display);font-weight:800;font-size:30px;letter-spacing:-.03em;color:var(--accent);line-height:1}
+.steps h3{font-size:20px;font-weight:700;letter-spacing:-.015em}
+.steps p{color:var(--muted);font-size:15px;margin-top:4px}
+.zones{position:sticky;top:calc(var(--nav-h) + 32px)}
+.zones .lbl{color:var(--muted)}
+.zones h3{font-size:clamp(26px,3vw,36px);font-weight:800;letter-spacing:-.03em;line-height:1.05;margin-top:12px}
+.zgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:24px}
+.z{background:var(--bone);border-radius:12px;padding:18px;min-width:0}
+.z .v{font-family:var(--f-display);font-weight:800;font-size:40px;letter-spacing:-.03em;line-height:1}
+.z p{font-size:14px;color:var(--muted);margin-top:8px}
+.z.wide{grid-column:span 2;display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.z.wide span{font-size:13.5px;padding:6px 12px;border-radius:999px;background:var(--paper);border:1px solid var(--line)}
+.out{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin-top:clamp(56px,8vw,96px)}
+.out div{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:24px;min-width:0;transition:transform .3s var(--ease),box-shadow .3s,opacity .9s var(--ease)}
+.out div:hover{transform:translateY(-4px);box-shadow:0 24px 40px -28px rgba(11,12,14,.35)}
+.out svg{width:34px;height:34px;color:var(--accent)}
+.out h4{font-size:18px;font-weight:700;margin-top:18px;letter-spacing:-.01em}
+.out p{font-size:14.5px;color:var(--muted);margin-top:6px}
+
+/* 05 inversión */
+.inv{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:20px}
+.card{background:var(--dark2);border:1px solid var(--dark-line);border-radius:18px;padding:clamp(24px,3.4vw,40px);min-width:0}
+.price .top{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
+.price .lbl,.card > .lbl{color:var(--on-dark-muted)}
+.seg{display:inline-flex;background:#000;border:1px solid var(--dark-line);border-radius:999px;padding:4px}
+.seg button{border:0;background:transparent;color:var(--on-dark-muted);font-size:13px;font-weight:600;padding:7px 14px;border-radius:999px;cursor:pointer;transition:background .2s,color .2s}
+.seg button[aria-pressed="true"]{background:#fff;color:var(--ink)}
+.amount{font-family:var(--f-display);font-weight:800;font-size:clamp(42px,7vw,92px);letter-spacing:-.045em;line-height:1;margin-top:26px;font-variant-numeric:tabular-nums;white-space:nowrap}
+.amount small{font-size:.24em;font-weight:500;letter-spacing:0;color:var(--on-dark-muted);margin-left:10px}
+.price .what{color:var(--on-dark-muted);font-size:15px;margin-top:16px;max-width:60ch}
+.rows{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:12px 0;margin-top:30px;padding-top:22px;border-top:1px solid var(--dark-line);font-size:15px}
+.rows .r{font-family:var(--f-mono);text-align:right}
+.rows .t{font-weight:600;padding-top:12px;border-top:1px solid var(--dark-line)}
+.son{font-size:12.5px;color:var(--on-dark-muted);margin-top:16px}
+.side{display:grid;gap:20px;min-width:0}
+.ring{display:grid;grid-template-columns:132px minmax(0,1fr);gap:22px;align-items:center;margin-top:20px}
+.ring svg{width:132px;height:132px;transform:rotate(-90deg)}
+.ring circle{fill:none;stroke-width:14}
+.ring .a{stroke:#fff;stroke-dasharray:0 400;transition:stroke-dasharray 1.6s var(--ease)}
+.ring .b{stroke:#3A3C42}
+.pays{display:grid;gap:14px;min-width:0}
+.pay .p{font-family:var(--f-display);font-weight:800;font-size:26px;letter-spacing:-.02em;display:flex;align-items:center;gap:10px}
+.pay .p i{width:10px;height:10px;border-radius:50%;background:#fff}
+.pay:last-child .p i{background:#5A5C63}
+.pay .a{font-family:var(--f-mono);font-size:14px;margin-top:2px}
+.pay .w{font-size:13px;color:var(--on-dark-muted);margin-top:2px}
+.days{display:grid;grid-template-columns:repeat(15,minmax(0,1fr));gap:4px;margin-top:22px}
+.days span{height:30px;border-radius:4px;background:#2A2C31;transition:background .3s}
+.days span.on{background:var(--accent-2)}
+.days span.last.on{background:var(--alert)}
+.days-l{display:flex;justify-content:space-between;font-size:12.5px;color:var(--on-dark-muted);margin-top:10px;gap:10px}
+.dnote{font-size:13px;color:var(--on-dark-muted);margin-top:16px;padding-top:14px;border-top:1px solid var(--dark-line);line-height:1.5}
+.big15{font-family:var(--f-display);font-weight:800;font-size:44px;letter-spacing:-.03em;line-height:1;margin-top:16px}
+.big15 small{font-size:.38em;font-weight:500;color:var(--on-dark-muted);letter-spacing:0;margin-left:6px}
+.note{font-size:14px;color:var(--on-dark-muted);border-left:2px solid var(--accent-2);padding:2px 0 2px 14px;margin-top:28px;max-width:80ch}
+.fine{font-size:12.5px;color:var(--on-dark-muted);margin-top:20px;max-width:90ch;opacity:.8}
+
+/* cierre */
+.close{position:relative;background:var(--dark);color:var(--on-dark);overflow:hidden;isolation:isolate}
+.close .bg{position:absolute;inset:0;z-index:-2}
+.close .bg img{width:100%;height:100%;object-fit:cover;filter:grayscale(.4)}
+.close::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(8,9,11,.8),rgba(8,9,11,.97) 62%)}
+.close .wrap{padding-block:clamp(90px,12vw,150px) 36px}
+.close .msg{font-family:var(--f-display);font-weight:800;font-size:clamp(36px,6vw,80px);line-height:.98;letter-spacing:-.04em;max-width:16ch}
+.close .msg span{color:rgba(243,242,238,.5);font-weight:300}
+.close .ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:36px}
+.sign{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:40px;align-items:end;margin-top:clamp(64px,9vw,110px);padding-top:32px;border-top:1px solid var(--dark-line)}
+.sign .who img{height:66px;width:auto;filter:invert(1);opacity:.9;margin-bottom:8px}
+.sign .who b{display:block;font-size:17px}
+.sign .who span{display:block;font-size:14px;color:var(--on-dark-muted)}
+.contact{display:grid;gap:10px;min-width:0}
+.contact div{display:grid;gap:2px}
+.contact .lbl{color:var(--on-dark-muted);font-size:10.5px}
+.contact .mono{font-size:15px;overflow-wrap:anywhere}
+.web{justify-self:end;text-align:right;min-width:0}
+.web a{font-family:var(--f-display);font-weight:700;font-size:20px;color:#fff;text-decoration:none;border-bottom:1px solid rgba(255,255,255,.35);padding-bottom:4px;transition:border-color .2s;overflow-wrap:anywhere}
+.web a:hover{border-color:#fff}
+.web p{font-size:13px;color:var(--on-dark-muted);margin-top:8px}
+.foot{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-top:56px;color:var(--on-dark-muted)}
+
+/* ---------- responsive ---------- */
+@media (max-width:1020px){
+  .nav ul{display:none;position:absolute;left:0;right:0;top:var(--nav-h);flex-direction:column;gap:0;background:var(--paper);border-bottom:1px solid var(--line);padding:6px max(20px,env(safe-area-inset-right,0px)) 14px max(20px,env(safe-area-inset-left,0px));box-shadow:0 24px 40px -24px rgba(11,12,14,.35)}
+  .nav ul.open{display:flex}
+  .nav ul a,.nav.solid ul a{color:var(--ink);padding:14px 4px;border-radius:0;border-bottom:1px solid var(--line);font-size:16px;background:none}
+  .nav ul a.on,.nav.solid ul a.on{color:var(--accent);background:none}
+  .menu-btn{display:inline-flex}
+  .nav .wrap{gap:10px}
+  .sh{grid-template-columns:minmax(0,1fr);gap:18px}
+  .sh p{justify-self:start}
+  .ctx,.scope,.method,.inv,.viewer{grid-template-columns:minmax(0,1fr)}
+  .bldwrap,.zones{position:static}
+  .bldwrap{max-width:420px;width:100%;margin-inline:auto}
+  .out,.chain{grid-template-columns:1fr 1fr}
+  .split{grid-template-columns:minmax(0,1fr)}
+  .privs{grid-template-columns:repeat(6,minmax(0,1fr))}
+  .chain div:nth-child(3){border-left:0}
+  .chain div:nth-child(n+3){border-top:1px solid var(--line)}
+  .sign{grid-template-columns:minmax(0,1fr);gap:28px}
+  .web{justify-self:start;text-align:left}
+}
+@media (max-width:760px){
+  .hero .meta{grid-template-columns:1fr 1fr;row-gap:18px}
+  .figs .wrap{grid-template-columns:1fr 1fr}
+  .fig:nth-child(3){border-left:0;padding-left:0}
+  .fig:nth-child(n+3){border-top:1px solid var(--dark-line)}
+  .thumbs{grid-template-columns:repeat(4,minmax(0,1fr))}
+}
+@media (max-width:560px){
+  :root{--nav-h:60px}
+  .nav .logo{height:28px;width:49px}.nav .logo img{height:28px}
+  .nav .pdf .t{display:none}
+  .nav .pdf{padding:10px 12px}
+  .hero h1{font-size:clamp(54px,18vw,84px)}
+  .hero .ctas .btn{flex:1 1 100%}
+  .fig .v{font-size:34px}
+  .stage{aspect-ratio:1/1}
+  .stage .nav-a{width:40px;height:40px;top:auto;bottom:12px;transform:none}
+  .out,.chain{grid-template-columns:minmax(0,1fr)}
+  .chain div + div{border-left:0;border-top:1px solid var(--line)}
+  .pbody{padding:22px 18px}
+  .crumbs{padding:12px 12px}
+  .opts{grid-template-columns:1fr 1fr}
+  .privs{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .uses-txt{grid-template-columns:minmax(0,1fr)}
+  .bfilter button{padding:7px 10px;font-size:12.5px}
+  .mode button{padding:8px 12px;font-size:13px}
+  .bt th:nth-child(1),.bt td:nth-child(1){display:none}
+  .bt{font-size:13px}
+  .bt td,.bt th{padding:10px 9px}
+  .ring{grid-template-columns:96px minmax(0,1fr);gap:16px}
+  .ring svg{width:96px;height:96px}
+  .seismo{height:40px}
+  .seismo-l span:last-child{display:none}
+  .amount{font-size:40px}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{transition:none!important;animation:none!important}
+  .rv,.reveal-h > *,.steps li{opacity:1!important;transform:none!important}
+  .seismo path{stroke-dashoffset:0}
+}
+
+/* cadena */
+.chain{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));margin-top:clamp(48px,7vw,80px);border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--paper)}
+.chain div{padding:24px 24px;min-width:0;position:relative}
+.chain div + div{border-left:1px solid var(--line)}
+.chain .lbl{color:var(--accent)}
+.chain h4{font-size:19px;font-weight:700;margin-top:10px;letter-spacing:-.01em}
+.chain p{font-size:14px;color:var(--muted);margin-top:6px}
+
+/* 02 la obra: corte de cubierta + capítulos */
+.works{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,5fr);gap:clamp(24px,4vw,56px);align-items:start}
+.cutwrap{position:sticky;top:calc(var(--nav-h) + 24px);min-width:0}
+.cutwrap .hint{display:flex;align-items:center;gap:10px;font-size:14px;color:var(--muted);margin-bottom:14px}
+.cutwrap .hint b{display:inline-grid;place-items:center;width:22px;height:22px;border-radius:50%;background:var(--accent);color:#fff;font-size:12px;animation:nudge 1.8s infinite}
+@keyframes nudge{50%{transform:scale(1.15)}}
+.cutbox{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:14px 10px 6px;box-shadow:0 30px 60px -40px rgba(11,12,14,.35)}
+svg.cut{width:100%;height:auto;display:block;overflow:visible}
+.cut .sky{fill:var(--paper)}
+.cut .conc{fill:#D9D8D3;stroke:#8A8B85;stroke-width:1}
+.cut .wall{fill:#E6E5E0;stroke:#8A8B85;stroke-width:1}
+.cut .teja{fill:none;stroke:#5C5E66;stroke-width:5;stroke-linecap:round}
+.cut .rib{stroke:#9B9DA3;stroke-width:1}
+.cut .z{transition:fill .3s,stroke .3s,opacity .3s}
+.cut .lab{font-family:var(--f-mono);font-size:10px;letter-spacing:.08em;fill:var(--concrete);text-transform:uppercase}
+.cut .hot{cursor:pointer;outline:none}
+.cut .hot circle.r{fill:var(--paper);stroke:var(--accent);stroke-width:2;transition:fill .25s}
+.cut .hot circle.p{fill:none;stroke:var(--accent);stroke-width:2;transform-box:fill-box;transform-origin:center;animation:ring 2.2s infinite var(--ease)}
+@keyframes ring{0%{transform:scale(.7);opacity:1}100%{transform:scale(1.7);opacity:0}}
+.cut .hot text{font-family:var(--f-mono);font-size:12px;font-weight:500;fill:var(--accent);text-anchor:middle;pointer-events:none}
+.cut .hot:hover circle.r,.cut .hot:focus-visible circle.r{fill:var(--accent-soft)}
+.cut .hot.on circle.r{fill:var(--accent)}
+.cut .hot.on text{fill:#fff}
+.cut .hot.on circle.p{display:none}
+.cut [data-z]{opacity:.9}
+.cut.sel [data-z]{opacity:.35}
+.cut.sel [data-z].on{opacity:1}
+.cut .z1.on,.cut .z1.on *{stroke:var(--accent)!important}
+.cut rect[data-z].on,.cut path[data-z].on{stroke:var(--accent)}
+.cut rect.wall.on{fill:var(--accent-soft)}
+.cut .hl{fill:var(--accent-soft);stroke:var(--accent);stroke-width:2}
+.cut .hl.line{fill:none;stroke-width:4}
+.cut .water{fill:none;stroke:#5B85D6;stroke-width:1.6;stroke-dasharray:3 5;opacity:.0}
+.cut.flow .water{opacity:.85;animation:flow 1.2s linear infinite}
+@keyframes flow{to{stroke-dashoffset:-16}}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:16px}
+.chips button{border:1px solid var(--line);background:var(--paper);border-radius:999px;padding:7px 12px;font-size:13px;font-weight:600;color:var(--muted);cursor:pointer;display:flex;gap:8px;align-items:center;transition:background .2s,color .2s,border-color .2s}
+.chips button b{font-family:var(--f-mono);font-weight:500;font-size:11px;color:var(--accent)}
+.chips button:hover{border-color:var(--accent);color:var(--ink)}
+.chips button[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:#fff}
+.chips button[aria-pressed="true"] b{color:#9DB8EC}
+.cpanel{background:var(--paper);border:1px solid var(--line);border-radius:16px;min-width:0;overflow:hidden;box-shadow:0 30px 60px -40px rgba(11,12,14,.35)}
+.cphead{padding:24px 26px 20px;border-bottom:1px solid var(--line);background:var(--bone)}
+.cphead .lbl{color:var(--accent)}
+.cphead h3{font-size:clamp(24px,2.6vw,32px);font-weight:800;letter-spacing:-.03em;margin-top:8px;line-height:1.08}
+.cpv{display:flex;align-items:baseline;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-top:16px}
+.cpv .v{font-family:var(--f-display);font-weight:800;font-size:clamp(30px,3.6vw,44px);letter-spacing:-.03em;line-height:1;font-variant-numeric:tabular-nums;white-space:nowrap}
+.cpv .pc{font-family:var(--f-mono);font-size:13px;color:var(--muted)}
+.share{height:6px;border-radius:3px;background:var(--line);margin-top:14px;overflow:hidden}
+.share i{display:block;height:100%;background:var(--accent);width:0;transition:width .8s var(--ease)}
+.items{list-style:none;margin:0;padding:6px 26px 14px}
+.items li{display:grid;grid-template-columns:44px minmax(0,1fr) auto;gap:4px 14px;padding:16px 0;border-bottom:1px solid var(--line)}
+.items li:last-child{border-bottom:0}
+.items .c{font-family:var(--f-mono);font-size:12px;color:var(--concrete);padding-top:2px}
+.items .d{font-size:14.5px;line-height:1.5}
+.items .m{grid-column:2;font-family:var(--f-mono);font-size:12.5px;color:var(--muted)}
+.items .t{grid-row:1 / span 2;grid-column:3;font-family:var(--f-mono);font-size:14px;font-weight:500;text-align:right;white-space:nowrap;align-self:start;padding-top:1px}
+.stack{margin-top:clamp(48px,7vw,80px)}
+.stack .top{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap}
+.stack .lbl{color:var(--accent)}
+.stack h3{font-size:clamp(24px,3vw,36px);font-weight:800;letter-spacing:-.03em;line-height:1.05;margin-top:10px}
+.stack .tot{font-family:var(--f-mono);font-size:14px;color:var(--muted)}
+.bar{display:flex;gap:3px;height:56px;margin-top:22px;border-radius:10px;overflow:hidden}
+.bar button{border:0;padding:0 0 0 10px;cursor:pointer;background:#C9D7F1;color:var(--accent-ink);font-family:var(--f-mono);font-size:12px;text-align:left;min-width:0;overflow:hidden;white-space:nowrap;transition:background .25s,color .25s,flex-grow .9s var(--ease);flex-grow:0;flex-basis:0}
+.bar button:nth-child(even){background:#B4C7EC}
+.bar button:hover{background:#9DB8EC}
+.bar button[aria-pressed="true"]{background:var(--accent);color:#fff}
+.blegend{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px 20px;margin-top:18px}
+.blegend button{display:grid;grid-template-columns:28px minmax(0,1fr) auto;gap:8px;align-items:baseline;border:0;background:none;padding:6px 0;border-bottom:1px solid var(--line);cursor:pointer;text-align:left;font-size:13.5px;color:var(--ink);min-width:0}
+.blegend button b{font-family:var(--f-mono);font-weight:500;font-size:11.5px;color:var(--accent)}
+.blegend button span{min-width:0}
+.blegend button em{font-style:normal;font-family:var(--f-mono);font-size:12px;color:var(--muted)}
+.blegend button[aria-pressed="true"] span{color:var(--accent-ink);font-weight:600}
+
+/* inversión */
+.aiu{display:flex;height:12px;border-radius:6px;overflow:hidden;margin-top:26px;gap:2px}
+.aiu i{display:block;height:100%}
+.aiu .cd{background:#fff}
+.aiu .a1{background:var(--accent-2)}
+.aiu .a2{background:#8FA9DD}
+.aiu .a3{background:#B9CAEA}
+.aiu .a4{background:var(--alert)}
+.aiu-l{display:flex;flex-wrap:wrap;gap:6px 16px;margin-top:10px;font-size:12px;color:var(--on-dark-muted)}
+.aiu-l span{display:flex;align-items:center;gap:6px}
+.aiu-l i{width:9px;height:9px;border-radius:2px;display:inline-block}
+.rows .sub{color:var(--on-dark-muted)}
+.days{grid-template-columns:repeat(15,minmax(0,1fr))}
+.days span{height:24px}
+
+@media (max-width:1020px){
+  .works{grid-template-columns:minmax(0,1fr)}
+  .cutwrap{position:static}
+  .blegend{grid-template-columns:1fr 1fr}
+  .chain{grid-template-columns:1fr 1fr}
+  .chain div:nth-child(3){border-left:0}
+  .chain div:nth-child(n+3){border-top:1px solid var(--line)}
+}
+@media (max-width:560px){
+  .chain{grid-template-columns:minmax(0,1fr)}
+  .chain div + div{border-left:0;border-top:1px solid var(--line)}
+  .cphead{padding:20px 18px 18px}
+  .items{padding:4px 18px 10px}
+  .items li{grid-template-columns:minmax(0,1fr) auto;gap:6px 12px}
+  .items .c{grid-column:1}
+  .items .d{grid-column:1 / span 2}
+  .items .m{grid-column:1}
+  .items .t{grid-row:3;grid-column:2;padding-top:0;align-self:end}
+  .bar{height:44px}
+  .bar button{font-size:0;padding:0}
+  .blegend{grid-template-columns:minmax(0,1fr)}
+  .chips button{padding:7px 10px;font-size:12.5px}
+  .cut .lab{display:none}
+  .cut .hot circle{r:21px}
+  .cut .hot text{font-size:20px;transform:translateY(3px)}
+  .cutbox{padding:10px 6px 4px}
+}
+
+</style>
+</head>
+<body>
+
+<nav class="nav" id="nav" aria-label="Secciones">
+  <div class="wrap">
+    <a class="logo" href="#inicio" aria-label="Intura Grupo Constructor, inicio">
+      <img class="lw" src="img/logo-blanco.png" alt="Intura Grupo Constructor" width="480" height="277">
+      <img class="lk" src="img/logo.png" alt="" width="480" height="277">
+    </a>
+    <ul id="menu">
+      <li><a href="#contexto">Contexto</a></li>
+      <li><a href="#obra">La obra</a></li>
+      <li><a href="#alcance">Alcance</a></li>
+      <li><a href="#inversion">Inversión</a></li>
+    </ul>
+    <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menu">Menú</button>
+    <a class="btn pdf" href="docs/Cotizacion_Cubierta_Terraza_Edificio_Karami.pdf" download aria-label="Descargar PDF">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M8 2v8m0 0L4.8 6.8M8 10l3.2-3.2M3 13h10"/></svg><span class="t">Descargar PDF</span>
+    </a>
+  </div>
+</nav>
+
+<header class="hero" id="inicio">
+  <div class="bg"><img src="img/foto1.jpg" alt="" width="1280" height="853" fetchpriority="high"></div>
+  <div class="wrap">
+    <div class="reveal-h">
+      <div class="kick lbl"><span class="dot" aria-hidden="true"></span>Cotización de obra · Post-sismo 10 ago 2026</div>
+      <h1><span>Cubierta</span><span class="thin">y terraza</span></h1>
+      <p class="lead">Reparación de daños por sismo en la cubierta general y la terraza del Edificio Karami: canales, flanches, tejas, impermeabilización, alfajías y elementos metálicos.</p>
+      <div class="ctas">
+        <a class="btn btn-w" href="#obra">Ver la propuesta</a>
+        <a class="btn btn-o" href="docs/Cotizacion_Cubierta_Terraza_Edificio_Karami.pdf" download><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M8 2v8m0 0L4.8 6.8M8 10l3.2-3.2M3 13h10"/></svg>Descargar PDF</a>
+      </div>
+      <div class="meta">
+        <div><span class="lbl">Cliente</span><p>Edificio Karami Propiedad Horizontal</p></div>
+        <div><span class="lbl">Dirección</span><p>Calle 5 # 14-54, Pereira</p></div>
+        <div><span class="lbl">Fecha</span><p>13 de noviembre de 2026</p></div>
+        <div><span class="lbl">Elaboró</span><p>Ing. Daniel García Tamayo</p></div>
+      </div>
+    </div>
+    <svg class="seismo" viewBox="0 0 1200 56" preserveAspectRatio="none" aria-hidden="true"><path id="seis" d="M0 28"/></svg>
+    <div class="seismo-l lbl" aria-hidden="true"><span>Sismograma · ilustrativo</span><span>Intura Grupo Constructor</span></div>
+  </div>
+</header>
+
+<div class="figs">
+  <div class="wrap">
+    <div class="fig"><div class="v"><span data-count="8">8</span><small>capítulos</small></div><div class="k">de obra en la cubierta y la terraza</div></div>
+    <div class="fig"><div class="v"><span data-count="204.79" data-dec="2">204,79</span><small>m²</small></div><div class="k">de cubierta en teja por revisar y fijar</div></div>
+    <div class="fig"><div class="v"><span data-count="30">30</span><small>días hábiles</small></div><div class="k">de plazo de ejecución</div></div>
+    <div class="fig"><div class="v">$<span data-count="35.5" data-dec="1">35,5</span><small>millones</small></div><div class="k">valor total con AIU</div></div>
+  </div>
+</div>
+
+<main>
+<section class="sec" id="contexto">
+  <div class="wrap">
+    <div class="sh rv"><div><span class="lbl">01 · Contexto</span><h2>Devolverle a la cubierta su función</h2></div><p>Después del sismo, la cubierta general y la terraza necesitan reparación y mantenimiento para volver a evacuar el agua y proteger el edificio.</p></div>
+    <div class="ctx">
+      <div class="rv">
+        <p class="big">El Edificio Karami, de <b>seis niveles y penthouse</b>, requiere obras en <b>canales, bajantes, flanches, tejas, cuchillas, alfajías, elementos metálicos y la losa de terraza.</b></p>
+        <p class="small">Las cantidades se tomaron del Plano 4/7 Arquitectónico, planta de cubiertas a escala 1:50, del levantamiento del edificio. La propuesta incluye materiales, mano de obra, trasiego vertical y retiro de escombros a escombrera autorizada.</p>
+      </div>
+      <ol class="tl rv" id="tl">
+        <li><span class="pt">1</span><div><span class="when">10 ago 2026</span><h3>Sismo</h3><p>Daños en la cubierta general y en la terraza del edificio.</p></div></li>
+        <li><span class="pt">2</span><div><span class="when">Levantamiento del edificio</span><h3>Plano 4/7 · Planta de cubiertas</h3><p>Base para medir las cantidades de cada actividad.</p></div></li>
+        <li class="us"><span class="pt">3</span><div class="card"><span class="when">Esta propuesta</span><h3>Ejecución de la obra <span class="tag">Intura</span></h3><p>Ocho capítulos de reparación, con presupuesto por actividad y AIU.</p></div></li>
+        <li><span class="pt">4</span><div><span class="when">30 días hábiles</span><h3>Cubierta y terraza reparadas</h3><p>Pago del saldo mediante actas de avance de obra.</p></div></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section class="sec bone" id="obra">
+  <div class="wrap">
+    <div class="sh rv"><div><span class="lbl">02 · La obra</span><h2>Capítulo por capítulo</h2></div><p>Toque un punto del corte de la cubierta o un capítulo para ver sus actividades, cantidades y valores del presupuesto.</p></div>
+    <div class="works">
+      <div class="cutwrap rv">
+        <p class="hint"><b>↓</b>Toque los puntos numerados</p>
+        <div class="cutbox">
+          <svg class="cut" id="cut" viewBox="0 0 620 400" role="group" aria-label="Corte esquemático de la cubierta y la terraza">
+            <!-- cuchilla izquierda -->
+            <rect class="wall z" data-z="4" x="20" y="96" width="28" height="200"/>
+            <rect class="z" data-z="5" x="14" y="88" width="40" height="9" fill="#8A8B85"/>
+            <!-- canal y bajante -->
+            <path class="z" data-z="1" d="M50 180 L50 204 Q50 210 56 210 L92 210 Q98 210 98 204 L98 176" fill="none" stroke="#5C5E66" stroke-width="4" stroke-linejoin="round"/>
+            <rect class="z" data-z="1" x="66" y="210" width="14" height="150" fill="#E6E5E0" stroke="#8A8B85"/>
+            <path class="water" d="M60 202 L88 202 M73 214 L73 356"/>
+            <rect class="z" data-z="1" x="52" y="168" width="44" height="5" fill="none" stroke="#9B9DA3" stroke-dasharray="2 3"/>
+            <!-- losa inferior -->
+            <rect class="conc" x="20" y="296" width="290" height="14"/>
+            <!-- teja -->
+            <g class="z" data-z="3">
+              <line class="teja" x1="70" y1="190" x2="292" y2="96"/>
+              <line class="rib" x1="120" y1="169" x2="120" y2="296"/><line class="rib" x1="190" y1="139" x2="190" y2="296"/><line class="rib" x1="260" y1="110" x2="260" y2="296"/>
+              <circle cx="130" cy="164" r="3" fill="#0B0C0E"/><circle cx="170" cy="147" r="3" fill="#0B0C0E"/><circle cx="210" cy="130" r="3" fill="#0B0C0E"/><circle cx="250" cy="113" r="3" fill="#0B0C0E"/>
+            </g>
+            <!-- muro central y flanche -->
+            <rect class="wall" x="292" y="50" width="44" height="246"/>
+            <path class="z" data-z="2" d="M262 106 L292 92 L292 74" fill="none" stroke="#5C5E66" stroke-width="4" stroke-linejoin="round"/>
+            <rect class="z" data-z="5" x="287" y="42" width="54" height="9" fill="#8A8B85"/>
+            <!-- puerta metálica -->
+            <g class="z" data-z="6"><rect x="336" y="196" width="34" height="104" fill="#5C5E66"/><rect x="341" y="202" width="24" height="92" fill="none" stroke="#9B9DA3"/><circle cx="362" cy="250" r="2.5" fill="#E0A43A"/></g>
+            <!-- terraza -->
+            <rect class="conc" x="336" y="300" width="270" height="16"/>
+            <path class="z" data-z="7" d="M370 300 L572 300" stroke="#3A64B8" stroke-width="4" fill="none"/>
+            <path class="z" data-z="7" d="M572 300 L572 286 Q572 300 558 300 Z" fill="#B4C7EC" stroke="#3A64B8"/>
+            <path class="z" data-z="7" d="M572 300 L572 280" stroke="#3A64B8" stroke-width="4"/>
+            <rect class="wall z" data-z="4" x="572" y="214" width="26" height="86"/>
+            <rect class="z" data-z="5" x="566" y="206" width="38" height="9" fill="#8A8B85"/>
+            <g class="z" data-z="6"><rect x="540" y="228" width="26" height="32" fill="#5C5E66"/><line x1="545" y1="236" x2="561" y2="236" stroke="#9B9DA3"/></g>
+            <!-- etiquetas -->
+            <text class="lab" x="22" y="78">Cuchilla</text>
+            <text class="lab" x="104" y="232">Canal</text>
+            <text class="lab" x="86" y="350">Bajante</text>
+            <text class="lab" x="150" y="190">Teja</text>
+            <text class="lab" x="196" y="86">Flanche</text>
+            <text class="lab" x="380" y="186">Puerta metálica</text>
+            <text class="lab" x="420" y="336">Losa de terraza</text>
+            <text class="lab" x="462" y="214">Muro y alfajía</text>
+            <!-- puntos -->
+            <g class="hot" data-ch="1" tabindex="0" role="button" aria-label="Capítulo 1, mantenimiento de canales"><circle class="p" cx="74" cy="252" r="13"/><circle class="r" cx="74" cy="252" r="13"/><text x="74" y="256">1</text></g>
+            <g class="hot" data-ch="2" tabindex="0" role="button" aria-label="Capítulo 2, reparación de flanches"><circle class="p" cx="270" cy="82" r="13"/><circle class="r" cx="270" cy="82" r="13"/><text x="270" y="86">2</text></g>
+            <g class="hot" data-ch="3" tabindex="0" role="button" aria-label="Capítulo 3, tornillería de tejas"><circle class="p" cx="196" cy="160" r="13"/><circle class="r" cx="196" cy="160" r="13"/><text x="196" y="164">3</text></g>
+            <g class="hot" data-ch="4" tabindex="0" role="button" aria-label="Capítulo 4, impermeabilización de cuchillas y muros"><circle class="p" cx="34" cy="140" r="13"/><circle class="r" cx="34" cy="140" r="13"/><text x="34" y="144">4</text></g>
+            <g class="hot" data-ch="5" tabindex="0" role="button" aria-label="Capítulo 5, alfajías en lámina galvanizada"><circle class="p" cx="585" cy="180" r="13"/><circle class="r" cx="585" cy="180" r="13"/><text x="585" y="184">5</text></g>
+            <g class="hot" data-ch="6" tabindex="0" role="button" aria-label="Capítulo 6, mantenimiento de elementos metálicos"><circle class="p" cx="353" cy="168" r="13"/><circle class="r" cx="353" cy="168" r="13"/><text x="353" y="172">6</text></g>
+            <g class="hot" data-ch="7" tabindex="0" role="button" aria-label="Capítulo 7, impermeabilización de losa de terraza"><circle class="p" cx="470" cy="278" r="13"/><circle class="r" cx="470" cy="278" r="13"/><text x="470" y="282">7</text></g>
+          </svg>
+        </div>
+        <div class="chips" id="chips" role="group" aria-label="Capítulos"></div>
+      </div>
+      <div class="cpanel rv" id="cpanel" aria-live="polite">
+        <div class="cphead">
+          <span class="lbl" id="cpN">Capítulo 01</span>
+          <h3 id="cpT"></h3>
+          <div class="cpv"><span class="v mono" id="cpV"></span><span class="pc" id="cpP"></span></div>
+          <div class="share"><i id="cpS"></i></div>
+        </div>
+        <ul class="items" id="cpI"></ul>
+      </div>
+    </div>
+    <div class="stack rv" id="stack">
+      <div class="top"><div><span class="lbl">Peso de cada capítulo</span><h3>Dónde está el costo directo</h3></div><span class="tot">Costo directo · $ 30.718.282</span></div>
+      <div class="bar" id="bar" role="group" aria-label="Participación de cada capítulo en el costo directo"></div>
+      <div class="blegend" id="blegend"></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="alcance">
+  <div class="wrap">
+    <div class="sh rv"><div><span class="lbl">03 · Alcance</span><h2>Lo que incluye la obra</h2></div><p>Suministro de materiales y mano de obra para los ocho capítulos, con trasiego vertical, retiro de escombros y aseo general.</p></div>
+    <div class="scope">
+      <ol class="steps" id="steps"><li><span class="n">01</span><div><h3>Mantenimiento de canales</h3><p>Limpieza manual y pintura anticorrosiva o impermeabilizante a 2 manos en 37,55 ml de canal, destaponamiento de 4 bajantes con prueba hidráulica, y reinstalación y reposición de malla tipo angeo.</p></div></li><li><span class="n">02</span><div><h3>Reparación de flanches</h3><p>Revisión, fijación y sellado de los existentes, flanche nuevo en lámina galvanizada cal. 22 donde se requiera y sellado de limatesas.</p></div></li><li><span class="n">03</span><div><h3>Tornillería de tejas</h3><p>Revisión, ajuste y reposición de tornillería y fijaciones en toda la cubierta, con sellado de perforaciones.</p></div></li><li><span class="n">04</span><div><h3>Cuchillas y muros de terraza</h3><p>Resane de fisuras e impermeabilizante elastomérico; en los muros de terraza, sellador y pintura para fachadas a 2 manos.</p></div></li><li><span class="n">05</span><div><h3>Alfajías en lámina galvanizada</h3><p>Alfajía cal. 20 sobre las alfajías de concreto existentes, con impermeabilización previa, sellado de juntas y pintura gris basalto.</p></div></li><li><span class="n">06</span><div><h3>Elementos metálicos</h3><p>Puertas de acceso y caja de comunicaciones: remoción de óxido, ajuste de bisagras y cerraduras, anticorrosivo y esmalte a 2 manos.</p></div></li><li><span class="n">07</span><div><h3>Losa de terraza</h3><p>Hidrolavado y resane, media caña en mortero impermeabilizado en los encuentros losa–muro y manto líquido con tela de refuerzo.</p></div></li><li><span class="n">08</span><div><h3>Generales</h3><p>Trasiego vertical, retiro de escombros a escombrera autorizada con disposición final, y aseo general de obra.</p></div></li></ol>
+      <div class="zones rv">
+        <span class="lbl">Cantidades principales</span>
+        <h3>Medidas sobre la planta de cubiertas</h3>
+        <div class="zgrid">
+          <div class="z"><div class="v">204,79</div><p>m² de cubierta en teja, revisión y ajuste de fijaciones</p></div>
+          <div class="z"><div class="v">93,50</div><p>ml de alfajía nueva en lámina galvanizada</p></div>
+          <div class="z"><div class="v">59,46</div><p>m² de impermeabilización en losa de terraza</p></div>
+          <div class="z"><div class="v">37,55</div><p>ml de canales en limpieza y pintura</p></div>
+          <div class="z wide"><span>Canales</span><span>4 bajantes</span><span>Flanches</span><span>Limatesas</span><span>Tejas</span><span>Cuchillas</span><span>Muros de terraza</span><span>Alfajías</span><span>Puertas y caja metálicas</span><span>Losa de terraza</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="chain rv">
+      <div><span class="lbl">Paso 1</span><h4>Anticipo</h4><p>50 % al inicio de la obra.</p></div>
+      <div><span class="lbl">Paso 2</span><h4>Ejecución</h4><p>Ocho capítulos en 30 días hábiles.</p></div>
+      <div><span class="lbl">Paso 3</span><h4>Actas de avance</h4><p>El saldo se paga según el avance de obra.</p></div>
+      <div><span class="lbl">Paso 4</span><h4>Entrega</h4><p>Cubierta y terraza reparadas, con aseo general.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec dark" id="inversion">
+  <div class="wrap">
+    <div class="sh rv"><div><span class="lbl">04 · Inversión</span><h2>Un valor claro, con AIU</h2></div><p>Costos directos por actividad, más administración, imprevistos y utilidad, con el IVA sobre la utilidad.</p></div>
+    <div class="inv">
+      <div class="card price rv">
+        <div class="top"><span class="lbl">Valor de la propuesta</span>
+          <div class="seg" role="group" aria-label="Mostrar valor"><button id="bCD" aria-pressed="false">Costo directo</button><button id="bTot" aria-pressed="true">Total con AIU</button></div>
+        </div>
+        <div class="amount" id="amount">$ 35.501.119<small>COP</small></div>
+        <p class="what">Reparación de daños por sismo en la cubierta general y la terraza del Edificio Karami, en ocho capítulos de obra, según el presupuesto de costos directos.</p>
+        <div class="aiu" aria-hidden="true"><i class="cd" style="flex:30718282"></i><i class="a1" style="flex:3071828"></i><i class="a2" style="flex:614366"></i><i class="a3" style="flex:921548"></i><i class="a4" style="flex:175094"></i></div>
+        <div class="aiu-l" aria-hidden="true"><span><i style="background:#fff"></i>Costo directo</span><span><i style="background:var(--accent-2)"></i>Administración</span><span><i style="background:#8FA9DD"></i>Imprevistos</span><span><i style="background:#B9CAEA"></i>Utilidad</span><span><i style="background:var(--alert)"></i>IVA</span></div>
+        <div class="rows">
+          <span>Costo directo</span><span class="r">$ 30.718.282</span>
+          <span class="sub">Administración (10 %)</span><span class="r sub">$ 3.071.828</span>
+          <span class="sub">Imprevistos (2 %)</span><span class="r sub">$ 614.366</span>
+          <span class="sub">Utilidad (3 %)</span><span class="r sub">$ 921.548</span>
+          <span class="sub">IVA 19 % sobre la utilidad</span><span class="r sub">$ 175.094</span>
+          <span class="t">Valor total</span><span class="t r">$ 35.501.119</span>
+        </div>
+        <p class="son">Son treinta y cinco millones quinientos un mil ciento diecinueve pesos m/cte.</p>
+      </div>
+      <div class="side">
+        <div class="card rv" id="payCard">
+          <span class="lbl">Forma de pago</span>
+          <div class="ring">
+            <svg viewBox="0 0 132 132" aria-hidden="true"><circle class="b" cx="66" cy="66" r="56"/><circle class="a" id="ringA" cx="66" cy="66" r="56"/></svg>
+            <div class="pays">
+              <div class="pay"><div class="p"><i></i>50 %</div><div class="a">$ 17.750.560</div><div class="w">Anticipo, al inicio de la obra</div></div>
+              <div class="pay"><div class="p"><i></i>50 %</div><div class="a">$ 17.750.559</div><div class="w">Saldo, mediante actas de avance de obra</div></div>
+            </div>
+          </div>
+        </div>
+        <div class="card rv" id="dayCard">
+          <span class="lbl">Plazo de ejecución</span>
+          <div class="big15">30<small>días hábiles</small></div>
+          <div class="days" id="days" aria-hidden="true"></div>
+          <div class="days-l"><span>Inicio de obra</span><span>Entrega</span></div>
+        </div>
+      </div>
+    </div>
+    <p class="fine">El valor de la propuesta ($ 35.501.119) es neto, libre de retenciones en la fuente y de cualquier otro impuesto o descuento; si el cliente está obligado a practicar alguna retención, esta deberá ser asumida por el cliente de manera adicional al valor pactado. Valores en pesos colombianos (COP).</p>
+  </div>
+</section>
+</main>
+
+<footer class="close">
+  <div class="bg"><img src="img/foto2.jpg" alt="" loading="lazy" width="1280" height="853"></div>
+  <div class="wrap">
+    <p class="msg rv">Listos para empezar la obra <span>cuando la copropiedad lo decida.</span></p>
+    <div class="ctas rv">
+      <a class="btn btn-w" href="docs/Cotizacion_Cubierta_Terraza_Edificio_Karami.pdf" download><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M8 2v8m0 0L4.8 6.8M8 10l3.2-3.2M3 13h10"/></svg>Descargar propuesta en PDF</a>
+      <a class="btn btn-o" href="https://inturagrupoconstructor.com" target="_blank" rel="noopener">Conocer Intura ↗</a>
+    </div>
+    <div class="sign">
+      <div class="who">
+        <img src="img/firma.png" alt="Firma de Daniel García Tamayo" width="600" height="261" loading="lazy">
+        <b>Daniel García Tamayo</b>
+        <span>Ingeniero Civil · M.P. 66202-331568</span>
+        <span>Director de Proyectos · Intura Grupo Constructor SAS</span>
+      </div>
+      <div class="contact">
+        <div><span class="lbl">Teléfono</span><span class="mono">310 426 1875</span></div>
+        <div><span class="lbl">Correo</span><span class="mono">gerencia@inturagrupoconstructor.com</span></div>
+        <div><span class="lbl">Instagram</span><span class="mono">@inturagrupoconstructor</span></div>
+      </div>
+      <div class="web">
+        <a href="https://inturagrupoconstructor.com" target="_blank" rel="noopener">inturagrupoconstructor.com ↗</a>
+        <p>Conozca nuestros proyectos</p>
+      </div>
+    </div>
+    <div class="foot lbl"><span>Intura Grupo Constructor SAS · Pereira, Risaralda</span><span>Cubierta y terraza · Edificio Karami · Nov 2026</span></div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var reduce = !!(window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches);
+  function $(id){return document.getElementById(id);}
+  function all(sel,root){return [].slice.call((root||document).querySelectorAll(sel));}
+  var CH=[{"n": "Mantenimiento de canales", "s": "Canales", "t": 4022570, "i": [["1.01", "Limpieza manual de canales: retiro de sedimentos, hojas, material vegetal y residuos, lavado final y verificación de pendientes; incluye empaque, trasiego vertical y retiro de residuos.", "ml", 37.55, 26100], ["1.02", "Preparación de superficie (lijado, desoxidado y limpieza) y aplicación de pintura anticorrosiva o impermeabilizante en canales, a 2 manos, donde aplique.", "ml", 37.55, 44800], ["1.03", "Destaponamiento de bajantes de aguas lluvias con sonda mecánica, revisión y sellado de reacoples en boca de bajante, y prueba hidráulica de funcionamiento.", "und", 4, 166400], ["1.04", "Desmonte, limpieza, reorganización y reinstalación de malla tipo angeo existente en buen estado sobre canales, para protección contra residuos que puedan taponar canales y bajantes.", "ml", 22.53, 14100], ["1.05", "Suministro e instalación de malla tipo angeo nueva sobre canales en reemplazo de la dañada, con fijación y traslapos, para protección contra residuos que puedan taponar canales y bajantes.", "ml", 15.02, 25100]]}, {"n": "Reparación de flanches", "s": "Flanches", "t": 2631566, "i": [["2.01", "Revisión de flanches existentes, ajuste y fijación mecánica, limpieza y sellado con sellante de poliuretano en encuentros teja–muro.", "ml", 39.59, 27800], ["2.02", "Suministro e instalación de flanche nuevo en lámina galvanizada cal. 22 (desarrollo 0.50 m) donde se requiera por daño o pérdida de funcionalidad; incluye desmonte del existente, fijación y sellado.", "ml", 11.88, 81800], ["2.03", "Revisión, ajuste de fijaciones y sellado de limatesas (caballetes) de cubierta.", "ml", 14.6, 38300]]}, {"n": "Tornillería de tejas", "s": "Tornillería de tejas", "t": 2416522, "i": [["3.01", "Revisión, ajuste y reposición de tornillería y fijaciones de tejas en toda el área de cubierta, con sellado de perforaciones.", "m²", 204.79, 11800]]}, {"n": "Impermeabilización de cuchillas y muros de terraza", "s": "Cuchillas y muros", "t": 4855596, "i": [["4.01", "Limpieza, resane de fisuras y aplicación de impermeabilizante elastomérico en cuchillas de cubierta (cara interior y corona).", "m²", 51.09, 44400], ["4.02", "Limpieza, resane de fisuras y aplicación de impermeabilizante elastomérico en muros de terraza.", "m²", 33.0, 44400], ["4.03", "Aplicación de sellador y pintura para fachadas a 2 manos como acabado sobre impermeabilizante en muros de terraza.", "m²", 33.0, 34000]]}, {"n": "Alfajías en lámina galvanizada", "s": "Alfajías", "t": 7059250, "i": [["5.01", "Suministro e instalación de alfajía en lámina galvanizada cal. 20 sobre alfajía de concreto existente, con impermeabilización previa, fijación, sellado de juntas y acabado en pintura gris basalto.", "ml", 93.5, 75500]]}, {"n": "Mantenimiento de elementos metálicos", "s": "Elementos metálicos", "t": 1760600, "i": [["6.01", "Mantenimiento de elementos metálicos oxidados en cubierta y terraza, como puertas de acceso y caja de comunicaciones: remoción de óxido, resanes, ajuste de bisagras y cerraduras, aplicación de pintura anticorrosiva y esmalte a 2 manos.", "glb", 1, 1760600]]}, {"n": "Impermeabilización de losa de terraza", "s": "Losa de terraza", "t": 6814978, "i": [["7.01", "Limpieza con hidrolavadora, retiro de material suelto, resane de fisuras y adecuación de la superficie para recibir impermeabilización.", "m²", 50.11, 24400], ["7.02", "Construcción de media caña en mortero impermeabilizado en encuentros losa–muro.", "ml", 46.74, 23600], ["7.03", "Aplicación de sistema de impermeabilización para losas tipo manto líquido con imprimante y tela de refuerzo, incluye subida de 0.20 m en muros.", "m²", 59.46, 75500]]}, {"n": "Generales", "s": "Generales", "t": 1157200, "i": [["8.01", "Trasiego vertical, cargue y retiro de escombros y sobrantes a escombrera autorizada (incluye disposición final), y aseo general de obra.", "glb", 1, 1157200]]}], CD=30718282;
+  function m(v){return '$ '+Math.round(v).toLocaleString('es-CO');}
+  function q(v){return v.toLocaleString('es-CO',{minimumFractionDigits:2,maximumFractionDigits:2});}
+  function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;');}
+
+  var nav=$('nav'), hero=$('inicio'), menu=$('menu'), mb=$('menuBtn');
+  function onScroll(){ if(!menu.classList.contains('open')) nav.classList.toggle('solid', window.scrollY > hero.offsetHeight - 90); }
+  window.addEventListener('scroll', onScroll, {passive:true}); onScroll();
+  function setMenu(o){menu.classList.toggle('open',o);mb.setAttribute('aria-expanded',o);mb.textContent=o?'Cerrar':'Menú';if(o)nav.classList.add('solid');else onScroll();}
+  mb.addEventListener('click',function(){setMenu(!menu.classList.contains('open'));});
+  menu.addEventListener('click',function(e){if(e.target.tagName==='A')setMenu(false);});
+  var links=all('a',menu);
+
+  (function(){
+    var d='M0 28', x=0, seed=7;
+    function rnd(){seed=(seed*9301+49297)%233280;return seed/233280;}
+    while(x<1200){ x+=4;
+      var env=Math.exp(-Math.pow((x-520)/120,2))*24+Math.exp(-Math.pow((x-610)/60,2))*8+1.2;
+      d+=' L'+x+' '+Math.max(2,Math.min(54,28+(rnd()-.5)*2*env)).toFixed(1);
+    }
+    $('seis').setAttribute('d',d);
+  })();
+  requestAnimationFrame(function(){requestAnimationFrame(function(){hero.classList.add('in');});});
+
+  function fmt(v,dec){return v.toLocaleString('es-CO',{minimumFractionDigits:dec,maximumFractionDigits:dec});}
+  function count(el){
+    var to=parseFloat(el.getAttribute('data-count')),dec=+(el.getAttribute('data-dec')||0);
+    if(reduce){el.textContent=fmt(to,dec);return;}
+    var t0=null;
+    function step(t){if(!t0)t0=t;var p=Math.min(1,(t-t0)/1600),e=1-Math.pow(1-p,4);el.textContent=fmt(to*e,dec);if(p<1)requestAnimationFrame(step);}
+    requestAnimationFrame(step);
+  }
+  function fillTl(){all('#tl li').forEach(function(li,i){setTimeout(function(){li.classList.add('on');},reduce?0:i*320);});}
+  var days=$('days');
+  for(var i=0;i<30;i++){var s=document.createElement('span');if(i===29)s.className='last';days.appendChild(s);}
+  function runDays(){all('span',days).forEach(function(s,i){setTimeout(function(){s.classList.add('on');},reduce?0:150+i*45);});}
+  function runRing(){$('ringA').style.strokeDasharray=(2*Math.PI*56*.5).toFixed(1)+' 400';}
+
+  /* capítulos */
+  var cur=-1, cut=$('cut'), chips=$('chips'), bar=$('bar'), bl=$('blegend');
+  CH.forEach(function(c,i){
+    var b=document.createElement('button');b.innerHTML='<b>'+(i<9?'0':'')+(i+1)+'</b>'+esc(c.s);b.addEventListener('click',function(){pick(i);});chips.appendChild(b);
+    var s=document.createElement('button');s.setAttribute('aria-label','Capítulo '+(i+1)+': '+c.n);s.textContent=(i+1);s.dataset.w=c.t/CD*100;s.addEventListener('click',function(){pick(i,true);});bar.appendChild(s);
+    var l=document.createElement('button');l.innerHTML='<b>'+(i<9?'0':'')+(i+1)+'</b><span>'+esc(c.s)+'</span><em>'+(c.t/CD*100).toFixed(1).replace('.',',')+' %</em>';l.addEventListener('click',function(){pick(i,true);});bl.appendChild(l);
+  });
+  function growBar(){all('button',bar).forEach(function(s){s.style.flexGrow=s.dataset.w;});}
+  function pick(i,scroll){
+    cur=i;var c=CH[i];
+    $('cpN').textContent='Capítulo '+(i<9?'0':'')+(i+1)+' de 08';
+    $('cpT').textContent=c.n;$('cpV').textContent=m(c.t);
+    $('cpP').textContent=(c.t/CD*100).toFixed(1).replace('.',',')+' % del costo directo';
+    $('cpS').style.width='0';requestAnimationFrame(function(){$('cpS').style.width=(c.t/7059250*100).toFixed(1)+'%';});
+    var h='';c.i.forEach(function(it){h+='<li><span class="c">'+it[0]+'</span><span class="d">'+esc(it[1])+'</span><span class="m">'+q(it[3])+' '+it[2]+' × '+m(it[4])+'</span><span class="t">'+m(it[3]*it[4])+'</span></li>';});
+    var ul=$('cpI');ul.innerHTML=h;ul.classList.remove('fade-in');void ul.offsetWidth;ul.classList.add('fade-in');
+    all('button',chips).forEach(function(b,k){b.setAttribute('aria-pressed',String(k===i));});
+    all('button',bar).forEach(function(b,k){b.setAttribute('aria-pressed',String(k===i));});
+    all('button',bl).forEach(function(b,k){b.setAttribute('aria-pressed',String(k===i));});
+    cut.classList.toggle('sel',i<7);
+    all('[data-z]',cut).forEach(function(z){z.classList.toggle('on',+z.getAttribute('data-z')===i+1);});
+    all('.hot',cut).forEach(function(g){g.classList.toggle('on',+g.getAttribute('data-ch')===i+1);});
+    cut.classList.toggle('flow',i===0);
+    if(scroll&&innerWidth<1020)$('cpanel').scrollIntoView({behavior:reduce?'auto':'smooth',block:'start'});
+  }
+  all('.hot',cut).forEach(function(g){
+    var i=+g.getAttribute('data-ch')-1;
+    g.addEventListener('click',function(){pick(i,true);});
+    g.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();pick(i,true);}});
+  });
+  pick(0);
+
+  function act(el){
+    el.classList.add('in');
+    if(el.hasAttribute('data-count'))count(el);
+    if(el.id==='tl')fillTl();
+    if(el.id==='payCard')runRing();
+    if(el.id==='dayCard')runDays();
+    if(el.id==='stack')growBar();
+  }
+  var watch=all('.rv,[data-count],#steps li');
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){act(e.target);io.unobserve(e.target);}});},{threshold:.15});
+    watch.forEach(function(el){io.observe(el);});
+    var so=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){links.forEach(function(a){a.classList.toggle('on',a.getAttribute('href')==='#'+e.target.id);});}});},{rootMargin:'-45% 0px -50% 0px'});
+    ['contexto','obra','alcance','inversion'].forEach(function(id){so.observe($(id));});
+  } else watch.forEach(act);
+
+  var amt=$('amount'),bC=$('bCD'),bT=$('bTot');
+  function setV(tot){bC.setAttribute('aria-pressed',String(!tot));bT.setAttribute('aria-pressed',String(tot));
+    amt.innerHTML=(tot?'$ 35.501.119':'$ 30.718.282')+'<small>'+(tot?'COP':'+ AIU')+'</small>';}
+  bC.addEventListener('click',function(){setV(false);});bT.addEventListener('click',function(){setV(true);});
+})();
+</script>
+</body>
+</html>
