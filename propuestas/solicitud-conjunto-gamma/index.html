@@ -103,6 +103,8 @@ section.s{margin-bottom:72px}
 .tbl .c{font-family:var(--f-mono);color:var(--muted);font-size:13px;white-space:nowrap;width:64px}
 .tbl .u{text-align:center;white-space:nowrap;width:64px;font-family:var(--f-mono);font-size:13px}
 .tbl th.u{text-align:center}
+.tbl .n,.tbl th.n{text-align:right;font-family:var(--f-mono);font-size:13px;white-space:nowrap;font-variant-numeric:tabular-nums;width:84px}
+.tbl .med{font-family:var(--f-mono);font-size:12px;color:var(--muted);display:block;margin-top:4px}
 .tbl .p{font-family:var(--f-mono);font-size:12px;color:var(--accent);display:block;letter-spacing:.04em;margin-bottom:2px}
 .tbl small{display:block;color:var(--muted);font-size:13px;margin-top:2px}
 
@@ -238,7 +240,7 @@ dialog[open]{display:grid;grid-template-columns:1fr 340px;animation:fade .2s eas
   <div class="dl">
     <div>
       <h2>Formato de cotización en Excel</h2>
-      <p>Llene solo las celdas en azul: sus datos, las cantidades y el valor unitario de cada ítem. Los totales por torre y el total de la oferta se calculan solos.</p>
+      <p>Las cantidades ya vienen medidas. Llene solo las celdas en azul: sus datos y el valor unitario de cada ítem. Los totales por torre y el total de la oferta se calculan solos.</p>
     </div>
     <a class="btn" href="Solicitud_Cotizacion_Reparaciones_Gamma_III.xlsx" download><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 3v12m0 0-5-5m5 5 5-5M4 21h16"/></svg>Descargar Excel</a>
   </div>
@@ -267,7 +269,7 @@ dialog[open]{display:grid;grid-template-columns:1fr 340px;animation:fade .2s eas
 
   <section class="s" id="torres">
     <div class="sh"><span class="k">03</span><h2>Torres, actividades y fotos</h2></div>
-    <p class="lead">Toque una foto para ampliarla. Las cantidades las mide el contratista; se recomienda visitar la obra antes de cotizar.</p>
+    <p class="lead">Toque una foto para ampliarla. Las cantidades salen de la medición de campo de Intura del 2 de noviembre de 2026; puede verificarlas en una visita a la obra antes de cotizar.</p>
     <div class="tabs" id="tabs" role="tablist" aria-label="Torres"></div>
     <div id="torre" role="tabpanel" tabindex="-1"></div>
   </section>
@@ -275,8 +277,8 @@ dialog[open]{display:grid;grid-template-columns:1fr 340px;animation:fade .2s eas
   <section class="s" id="enviar">
     <div class="sh"><span class="k">04</span><h2>Cómo enviar su cotización</h2></div>
     <ol class="steps">
-      <li>Coordine con Intura la visita a la obra para verificar los daños y medir las cantidades.</li>
-      <li>Descargue el Excel y llene sus datos, las cantidades y los valores unitarios.</li>
+      <li>Si lo necesita, coordine con Intura una visita a la obra para verificar los daños y las cantidades.</li>
+      <li>Descargue el Excel y llene sus datos y los valores unitarios.</li>
       <li>Indique el plazo que ofrece, la validez de la oferta, la forma de pago que propone y si su precio lleva IVA.</li>
       <li>Firme y envíe el archivo a gerencia@inturagrupoconstructor.com o por WhatsApp al 310 426 1875.</li>
     </ol>
@@ -314,6 +316,7 @@ dialog[open]{display:grid;grid-template-columns:1fr 340px;animation:fade .2s eas
 (() => {
   const S = window.SOL, F = window.FOTOS || {}, $ = s => document.querySelector(s);
   const FOT = '../conjunto-gamma/img/fotos/';
+  const num = v => v.toLocaleString('es-CO', {minimumFractionDigits: 2, maximumFractionDigits: 2});
   const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
   const visibles = t => t.fotos.filter(id => !(F[id] && F[id].oculta));
   const T = S.torres;
@@ -349,8 +352,8 @@ dialog[open]{display:grid;grid-template-columns:1fr 340px;animation:fade .2s eas
         <p class="cap">Capítulo ${t.cap} del Excel<br>${t.items.length} ítems</p>
       </div>
       <div class="tbl-w"><table class="tbl">
-        <thead><tr><th>Ítem</th><th>Actividad</th><th class="u">Und</th></tr></thead>
-        <tbody>${t.items.map(it => `<tr><td class="c">${it.c}</td><td><span class="p">${esc(it.piso)}</span>${esc(it.a)}${it.q ? `<small>${esc(it.q)}</small>` : ''}</td><td class="u">${it.u}</td></tr>`).join('')}</tbody>
+        <thead><tr><th>Ítem</th><th>Actividad</th><th class="u">Und</th><th class="n">Cantidad</th></tr></thead>
+        <tbody>${t.items.map(it => `<tr><td class="c">${it.c}</td><td><span class="p">${esc(it.piso)}</span>${esc(it.a)}${it.q ? `<small>${esc(it.q)}</small>` : ''}<span class="med">Medidas: ${esc(it.m)}</span></td><td class="u">${it.u}</td><td class="n">${num(it.n)}</td></tr>`).join('')}</tbody>
       </table></div>
       <h4 class="sub">Registro fotográfico <span>${lista.length} fotos</span></h4>
       <div class="grid">${lista.map((id, n) => {

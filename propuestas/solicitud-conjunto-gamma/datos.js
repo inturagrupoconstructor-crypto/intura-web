@@ -39,70 +39,90 @@ window.SOL={
      "piso": "Piso 1",
      "a": "Dilatación en cielo raso",
      "q": "",
-     "u": "ml"
+     "u": "ml",
+     "m": "8,50",
+     "n": 8.5
     },
     {
      "c": "2.02",
      "piso": "Piso 1",
      "a": "Dilatación en columnas",
      "q": "",
-     "u": "ml"
+     "u": "ml",
+     "m": "2 × 2,20 + 4 × 2,90",
+     "n": 16.0
     },
     {
      "c": "2.03",
      "piso": "Piso 2",
      "a": "Dilatación en piso",
      "q": "",
-     "u": "ml"
+     "u": "ml",
+     "m": "1,20 × 2",
+     "n": 2.4
     },
     {
      "c": "2.04",
      "piso": "Piso 2",
      "a": "Dilatación en antepechos de fachada, caras exterior e interior",
      "q": "",
-     "u": "ml"
+     "u": "ml",
+     "m": "1,20 × 2 + 1,00 × 2",
+     "n": 4.4
     },
     {
      "c": "2.05",
      "piso": "Piso 2",
      "a": "Dilatación en cielo raso",
      "q": "",
-     "u": "ml"
+     "u": "ml",
+     "m": "1,20 × 2",
+     "n": 2.4
     },
     {
      "c": "2.06",
      "piso": "Piso 2",
      "a": "Dilatación en columnas",
      "q": "",
-     "u": "ml"
+     "u": "ml",
+     "m": "4 × 2,20",
+     "n": 8.8
     },
     {
      "c": "2.07",
      "piso": "Piso 3",
      "a": "Dilatación en piso",
      "q": "",
-     "u": "ml"
+     "u": "ml",
+     "m": "1,10 × 2",
+     "n": 2.2
     },
     {
      "c": "2.08",
      "piso": "Piso 3",
      "a": "Dilatación en antepechos de fachada, caras exterior e interior",
      "q": "",
-     "u": "ml"
+     "u": "ml",
+     "m": "1,20 × 2 + 1,00 × 2",
+     "n": 4.4
     },
     {
      "c": "2.09",
      "piso": "Piso 3",
      "a": "Dilatación en cielo raso",
      "q": "",
-     "u": "ml"
+     "u": "ml",
+     "m": "2,20 × 2",
+     "n": 4.4
     },
     {
      "c": "2.10",
      "piso": "Piso 3",
      "a": "Dilatación en columnas",
      "q": "",
-     "u": "ml"
+     "u": "ml",
+     "m": "4 × 2,20",
+     "n": 8.8
     }
    ],
    "fotos": [
@@ -132,98 +152,126 @@ window.SOL={
      "piso": "Piso 1",
      "a": "Guardaescoba en granito",
      "q": "Terraza apto 108",
-     "u": "ml"
+     "u": "ml",
+     "m": "5,00",
+     "n": 5.0
     },
     {
      "c": "3.02",
      "piso": "Piso 1",
      "a": "Revoque de esquina en fachada",
      "q": "Terraza apto 108",
-     "u": "ml"
+     "u": "und",
+     "m": "1 (verificar en visita)",
+     "n": 1.0
     },
     {
      "c": "3.03",
      "piso": "Piso 1",
      "a": "Demolición y reposición de muro",
      "q": "Muro de entrada, lado derecho",
-     "u": "m²"
+     "u": "m²",
+     "m": "2,10 × 0,80",
+     "n": 1.68
     },
     {
      "c": "3.04",
      "piso": "Piso 1",
      "a": "Dilatación en cielo raso",
      "q": "",
-     "u": "ml"
+     "u": "ml",
+     "m": "1,50 × 2",
+     "n": 3.0
     },
     {
      "c": "3.05",
      "piso": "Piso 1",
      "a": "Demolición y reposición de piso en cerámica",
      "q": "Terraza apto 107",
-     "u": "m²"
+     "u": "und",
+     "m": "4 und",
+     "n": 4.0
     },
     {
      "c": "3.06",
      "piso": "Piso 1",
      "a": "Piso en granito en escaleras",
      "q": "Terraza apto 107, escaleras",
-     "u": "m²"
+     "u": "m²",
+     "m": "5,00 m²",
+     "n": 5.0
     },
     {
      "c": "3.07",
      "piso": "Piso 2",
      "a": "Dilatación en piso",
      "q": "",
-     "u": "ml"
+     "u": "ml",
+     "m": "1,20 × 2",
+     "n": 2.4
     },
     {
      "c": "3.08",
      "piso": "Piso 2",
      "a": "Dilatación en cielo raso",
      "q": "",
-     "u": "ml"
+     "u": "ml",
+     "m": "1,50 × 2",
+     "n": 3.0
     },
     {
      "c": "3.09",
      "piso": "Piso 2",
      "a": "Dilatación en antepechos de fachada, caras exterior e interior",
      "q": "",
-     "u": "ml"
+     "u": "ml",
+     "m": "1,20 × 4 + 0,90 × 4",
+     "n": 8.4
     },
     {
      "c": "3.10",
      "piso": "Piso 2",
      "a": "Demolición y reposición de muro",
      "q": "",
-     "u": "m²"
+     "u": "m²",
+     "m": "4,00 × 0,90 × 2 + 2,00 × 0,90 × 2",
+     "n": 10.8
     },
     {
      "c": "3.11",
      "piso": "Piso 3",
      "a": "Demolición y reposición de muro",
      "q": "",
-     "u": "m²"
+     "u": "m²",
+     "m": "4,00 × 0,90 × 2 + 2,00 × 0,90 × 2",
+     "n": 10.8
     },
     {
      "c": "3.12",
      "piso": "Piso 3",
      "a": "Dilatación en piso",
      "q": "",
-     "u": "ml"
+     "u": "ml",
+     "m": "1,20 × 2",
+     "n": 2.4
     },
     {
      "c": "3.13",
      "piso": "Piso 3",
      "a": "Dilatación en cielo raso",
      "q": "",
-     "u": "ml"
+     "u": "ml",
+     "m": "1,50 × 2",
+     "n": 3.0
     },
     {
      "c": "3.14",
      "piso": "Piso 3",
      "a": "Dilatación en antepechos de fachada, caras exterior e interior",
      "q": "",
-     "u": "ml"
+     "u": "ml",
+     "m": "1,20 × 4 + 0,90 × 4",
+     "n": 8.4
     }
    ],
    "fotos": [
@@ -265,70 +313,90 @@ window.SOL={
      "piso": "Piso 1",
      "a": "Dilatación en columnas con acabado en granito",
      "q": "",
-     "u": "ml"
+     "u": "ml",
+     "m": "2,20 × 6",
+     "n": 13.2
     },
     {
      "c": "4.02",
      "piso": "Piso 1",
      "a": "Dilatación en cielo raso",
      "q": "",
-     "u": "ml"
+     "u": "ml",
+     "m": "1,20 × 2",
+     "n": 2.4
     },
     {
      "c": "4.03",
      "piso": "Piso 2",
      "a": "Dilatación en antepechos de fachada, caras exterior e interior",
      "q": "",
-     "u": "ml"
+     "u": "ml",
+     "m": "1,10 × 2 + 0,80 × 2",
+     "n": 3.8
     },
     {
      "c": "4.04",
      "piso": "Piso 2",
      "a": "Dilatación en piso",
      "q": "",
-     "u": "ml"
+     "u": "ml",
+     "m": "1,10 × 2",
+     "n": 2.2
     },
     {
      "c": "4.05",
      "piso": "Piso 2",
      "a": "Dilatación en columnas",
      "q": "",
-     "u": "ml"
+     "u": "ml",
+     "m": "2,20 × 6",
+     "n": 13.2
     },
     {
      "c": "4.06",
      "piso": "Piso 2",
      "a": "Dilatación en cielo raso",
      "q": "",
-     "u": "ml"
+     "u": "ml",
+     "m": "8,50",
+     "n": 8.5
     },
     {
      "c": "4.07",
      "piso": "Piso 3",
      "a": "Dilatación en antepechos de fachada, caras exterior e interior",
      "q": "",
-     "u": "ml"
+     "u": "ml",
+     "m": "1,10 × 2 + 0,80 × 2",
+     "n": 3.8
     },
     {
      "c": "4.08",
      "piso": "Piso 3",
      "a": "Dilatación en piso",
      "q": "",
-     "u": "ml"
+     "u": "ml",
+     "m": "1,10 × 2",
+     "n": 2.2
     },
     {
      "c": "4.09",
      "piso": "Piso 3",
      "a": "Dilatación en columnas",
      "q": "",
-     "u": "ml"
+     "u": "ml",
+     "m": "4 × 2,20",
+     "n": 8.8
     },
     {
      "c": "4.10",
      "piso": "Piso 3",
      "a": "Dilatación en cielo raso",
      "q": "",
-     "u": "ml"
+     "u": "ml",
+     "m": "1,90 × 2",
+     "n": 3.8
     }
    ],
    "fotos": [
@@ -357,105 +425,135 @@ window.SOL={
      "piso": "Piso 1",
      "a": "Dilatación en cielo raso",
      "q": "",
-     "u": "ml"
+     "u": "ml",
+     "m": "1,50 × 2",
+     "n": 3.0
     },
     {
      "c": "5.02",
      "piso": "Piso 1",
      "a": "Demolición de mortero sobre esterilla, con cartera en revoque y superboard interno",
      "q": "",
-     "u": "m²"
+     "u": "m²",
+     "m": "1,90 × 1,50",
+     "n": 2.85
     },
     {
      "c": "5.03",
      "piso": "Piso 2",
      "a": "Dilatación en cielo raso",
      "q": "",
-     "u": "ml"
+     "u": "ml",
+     "m": "1,50 × 2",
+     "n": 3.0
     },
     {
      "c": "5.04",
      "piso": "Piso 2",
      "a": "Demolición de mortero sobre esterilla, con cartera en revoque y superboard interno",
      "q": "2 lados",
-     "u": "m²"
+     "u": "m²",
+     "m": "1,90 × 1,50 × 2",
+     "n": 5.7
     },
     {
      "c": "5.05",
      "piso": "Piso 2",
      "a": "Dilatación en piso",
      "q": "",
-     "u": "ml"
+     "u": "ml",
+     "m": "1,20 × 2",
+     "n": 2.4
     },
     {
      "c": "5.06",
      "piso": "Piso 2",
      "a": "Dilatación en antepechos de fachada, caras exterior e interior",
      "q": "",
-     "u": "ml"
+     "u": "ml",
+     "m": "1,20 × 4 + 0,90 × 4",
+     "n": 8.4
     },
     {
      "c": "5.07",
      "piso": "Piso 2",
      "a": "Dilatación en alfajías",
      "q": "",
-     "u": "ml"
+     "u": "ml",
+     "m": "0,17 × 4",
+     "n": 0.68
     },
     {
      "c": "5.08",
      "piso": "Piso 2",
      "a": "Reposición de paño de piso en granito",
      "q": "",
-     "u": "m²"
+     "u": "m²",
+     "m": "1,50 m²",
+     "n": 1.5
     },
     {
      "c": "5.09",
      "piso": "Piso 2",
      "a": "Demolición y reposición de muro de antepecho en fachada",
      "q": "Fachadas posterior y frontal",
-     "u": "m²"
+     "u": "m²",
+     "m": "3,85 × 0,90 × 2",
+     "n": 6.93
     },
     {
      "c": "5.10",
      "piso": "Piso 3",
      "a": "Dilatación en antepechos de fachada, caras exterior e interior",
      "q": "",
-     "u": "ml"
+     "u": "ml",
+     "m": "1,20 × 4 + 0,90 × 4",
+     "n": 8.4
     },
     {
      "c": "5.11",
      "piso": "Piso 3",
      "a": "Dilatación en alfajías",
      "q": "",
-     "u": "ml"
+     "u": "ml",
+     "m": "0,17 × 4",
+     "n": 0.68
     },
     {
      "c": "5.12",
      "piso": "Piso 3",
      "a": "Dilatación en piso",
      "q": "Solo un lado",
-     "u": "ml"
+     "u": "ml",
+     "m": "1,20",
+     "n": 1.2
     },
     {
      "c": "5.13",
      "piso": "Piso 3",
      "a": "Demolición y reposición de muro de antepecho en fachada",
      "q": "Fachadas posterior y frontal",
-     "u": "m²"
+     "u": "m²",
+     "m": "3,85 × 0,90 × 2",
+     "n": 6.93
     },
     {
      "c": "5.14",
      "piso": "Piso 3",
      "a": "Demolición de mortero en losa de cubierta",
      "q": "",
-     "u": "m²"
+     "u": "m²",
+     "m": "1,50 × 1,90 + 1,60 × 1,50",
+     "n": 5.25
     },
     {
      "c": "5.15",
      "piso": "Piso 3",
      "a": "Reparación localizada de recubrimiento de viga, sujeta a diagnóstico",
      "q": "",
-     "u": "glb"
+     "u": "glb",
+     "m": "1 gl",
+     "n": 1.0
     }
    ],
    "fotos": [
@@ -492,112 +590,144 @@ window.SOL={
      "piso": "Piso 1",
      "a": "Dilatación en cielo raso",
      "q": "",
-     "u": "ml"
+     "u": "ml",
+     "m": "5,40",
+     "n": 5.4
     },
     {
      "c": "6.02",
      "piso": "Piso 1 a piso 2 · Escaleras",
      "a": "Dilatación en escaleras, cara inferior y antepecho",
      "q": "",
-     "u": "ml"
+     "u": "ml",
+     "m": "5,00",
+     "n": 5.0
     },
     {
      "c": "6.03",
      "piso": "Piso 1 a piso 2 · Escaleras",
      "a": "Reposición de ladrillo en antepecho de escaleras",
      "q": "",
-     "u": "m²"
+     "u": "ml",
+     "m": "0,40",
+     "n": 0.4
     },
     {
      "c": "6.04",
      "piso": "Piso 2",
      "a": "Dilatación en antepechos de fachada, caras exterior e interior",
      "q": "",
-     "u": "ml"
+     "u": "ml",
+     "m": "1,20 × 2 + 0,95 × 2",
+     "n": 4.3
     },
     {
      "c": "6.05",
      "piso": "Piso 2",
      "a": "Dilatación en alfajías",
      "q": "",
-     "u": "ml"
+     "u": "ml",
+     "m": "0,50 × 2",
+     "n": 1.0
     },
     {
      "c": "6.06",
      "piso": "Piso 2",
      "a": "Dilatación en piso y guardaescoba, con reparación puntual y sellado",
      "q": "",
-     "u": "ml"
+     "u": "ml",
+     "m": "1,80 × 2",
+     "n": 3.6
     },
     {
      "c": "6.07",
      "piso": "Piso 2",
      "a": "Dilatación en antepechos de escaleras y pasillos",
      "q": "Vertical en antepecho de escaleras",
-     "u": "ml"
+     "u": "ml",
+     "m": "0,90 × 2",
+     "n": 1.8
     },
     {
      "c": "6.08",
      "piso": "Piso 2",
      "a": "Dilatación en antepechos de escaleras y pasillos",
      "q": "Antepecho de pasillo, parte superior",
-     "u": "ml"
+     "u": "ml",
+     "m": "1,90",
+     "n": 1.9
     },
     {
      "c": "6.09",
      "piso": "Piso 2",
      "a": "Dilatación en cielo raso",
      "q": "",
-     "u": "ml"
+     "u": "ml",
+     "m": "5,40",
+     "n": 5.4
     },
     {
      "c": "6.10",
      "piso": "Piso 2 a piso 3 · Escaleras",
      "a": "Dilatación en antepechos de escaleras y pasillos",
      "q": "Antepecho de escaleras",
-     "u": "ml"
+     "u": "ml",
+     "m": "2,50",
+     "n": 2.5
     },
     {
      "c": "6.11",
      "piso": "Piso 2 a piso 3 · Escaleras",
      "a": "Dilatación en antepechos de escaleras y pasillos",
      "q": "Antepecho de piso 3 hacia escaleras",
-     "u": "ml"
+     "u": "ml",
+     "m": "1,20",
+     "n": 1.2
     },
     {
      "c": "6.12",
      "piso": "Piso 2 a piso 3 · Escaleras",
      "a": "Dilatación en antepechos de escaleras y pasillos",
      "q": "Vertical en antepecho de escaleras",
-     "u": "ml"
+     "u": "ml",
+     "m": "0,90 × 2",
+     "n": 1.8
     },
     {
      "c": "6.13",
      "piso": "Piso 2 a piso 3 · Escaleras",
      "a": "Dilatación en piso",
      "q": "",
-     "u": "ml"
+     "u": "ml",
+     "m": "1,80 + 1,20",
+     "n": 3.0
     },
     {
      "c": "6.14",
      "piso": "Piso 2 a piso 3 · Escaleras",
      "a": "Dilatación en antepechos de fachada, caras exterior e interior",
      "q": "",
-     "u": "ml"
+     "u": "ml",
+     "m": "1,20 × 2 + 0,95 × 2",
+     "n": 4.3
     },
     {
      "c": "6.15",
      "piso": "Piso 2 a piso 3 · Escaleras",
      "a": "Dilatación en alfajías",
      "q": "",
-     "u": "ml"
+     "u": "ml",
+     "m": "0,50 × 2",
+     "n": 1.0
     },
     {
      "c": "6.16",
      "piso": "Piso 2 a piso 3 · Escaleras",
      "a": "Dilatación en cielo raso",
      "q": "",
-     "u": "ml"
+     "u": "ml",
+     "m": "9,50",
+     "n": 9.5
     }
    ],
    "fotos": [
