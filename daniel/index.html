@@ -54,9 +54,11 @@ a{color:var(--azul)}
 .hero{position:relative;min-height:min(100svh,920px);display:flex;align-items:flex-end;color:#fff;background:#111;overflow:hidden}
 .hero img.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:60% 25%;filter:grayscale(1) contrast(1.05) brightness(.75)}
 .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.45) 0%,rgba(0,0,0,0) 30%,rgba(0,0,0,.1) 50%,rgba(0,0,0,.88) 100%)}
+@media (min-width:901px){.hero img.bg{left:auto;right:0;width:58%;object-position:50% 20%}.hero::after{background:linear-gradient(90deg,#111 0%,#111 43%,rgba(17,17,17,.6) 54%,rgba(17,17,17,0) 72%),linear-gradient(180deg,rgba(0,0,0,.35) 0%,rgba(0,0,0,0) 25%,rgba(0,0,0,0) 60%,rgba(0,0,0,.8) 100%)}}
+@media (max-width:900px){.hero img.bg{object-position:55% 15%}}
 .hero .wrap{position:relative;z-index:1;width:100%;padding-top:120px;padding-bottom:clamp(36px,6vh,64px)}
 .kicker{font-family:var(--display);font-weight:700;font-size:16px;letter-spacing:3px;opacity:.9}
-.hero h1{font-family:var(--display);font-weight:900;font-size:clamp(64px,13vw,168px);line-height:.86;margin:14px 0 18px;letter-spacing:-1px}
+.hero h1{font-family:var(--display);font-weight:900;font-size:clamp(64px,13vw,168px);line-height:.96;margin:14px 0 18px;letter-spacing:-1px}
 .role{display:flex;align-items:center;gap:14px;font-size:clamp(13px,1.6vw,16px);letter-spacing:4px;font-weight:600}
 .role i{display:block;width:48px;height:3px;background:var(--azul2)}
 .stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;margin-top:clamp(28px,5vh,48px);border-top:1px solid rgba(255,255,255,.25)}
@@ -245,7 +247,7 @@ section{padding:clamp(56px,9vw,110px) 0}
     <div class="sec-head rv"><span class="n">02</span><h2>EXPERIENCIA</h2></div>
     <div class="tabs" role="tablist" aria-label="Etapas de la experiencia">
       <button class="tab" role="tab" aria-selected="true" aria-controls="t1" id="b1">Post-sismo 2026</button>
-      <button class="tab" role="tab" aria-selected="false" aria-controls="t2" id="b2">Intura 2023 – 2025</button>
+      <button class="tab" role="tab" aria-selected="false" aria-controls="t2" id="b2">Intura 2023 – hoy</button>
       <button class="tab" role="tab" aria-selected="false" aria-controls="t3" id="b3">Independiente 2022 – 2024</button>
       <button class="tab" role="tab" aria-selected="false" aria-controls="t4" id="b4">2015 – 2021</button>
     </div>
@@ -277,7 +279,7 @@ section{padding:clamp(56px,9vw,110px) 0}
     </div>
 
     <div class="panel" role="tabpanel" id="t2" aria-labelledby="b2" hidden>
-      <div class="sub"><b>OBRAS 2023 – 2025</b></div>
+      <div class="sub"><b>PROYECTOS Y OBRAS 2023 – ACTUALIDAD</b></div>
       <div id="intura"></div>
     </div>
 
@@ -392,6 +394,7 @@ function esc(s){return String(s).replace(/[&<>]/g,function(c){return {'&':'&amp;
 function job(o){var b=o.b?'<span class="badge '+o.b[1]+'">'+o.b[0]+'</span>':'';var big=o.n?'<span class="big">'+o.n+'<small>'+o.u+'</small></span>':'';
  return '<div class="job"><div class="meta"><span class="d">'+o.d+'</span>'+big+'</div><div><h4>'+esc(o.t)+b+'</h4><div class="pl">'+esc(o.p)+'</div><p>'+esc(o.x)+'</p></div></div>'}
 var intura=[
+ {d:'Mar 2023 → actualmente',n:'',u:'',t:'Proyecto Audalices',p:'Condominio privado de casas campestres, zonas sociales y ecohotel',x:'Diseños arquitectónicos, estructurales y geotécnicos; trámites de subdivisión, parcelación y ambientales, y subsanación de afectaciones del predio. Próximo a la ejecución de obras.',b:['EN EJECUCIÓN','b-ej']},
  {d:'May 2023 – may 2024',n:'812',u:' m²',t:'Vivienda campestre Senderos Casa 35',p:'Maracay Ciudad Campestre, Pereira',x:'Interventoría técnica en las etapas de inicio, obra negra y obra gris de una vivienda ejecutada por administración delegada del Arq. Juan Zapata. Incluyó la demolición de la casa existente y el aprovechamiento de parte de su cimentación.',b:IN},
  {d:'Sep 2024 – ene 2026',n:'435',u:' m²',t:'Casa campestre Guaduales Norte 39',p:'Maracay, Pereira',x:'Construcción en todas las etapas, hasta la entrega final.',b:AD},
  {d:'Jun 2023 – dic 2024',n:'300',u:' m²',t:'Casa Familia Arcila',p:'San José del Bosque – El Tigre, Cerritos',x:'Gestión de los diseños arquitectónico, estructural, eléctrico e hidrosanitario, y construcción total de la vivienda.',b:AD},
