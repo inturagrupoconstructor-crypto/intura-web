@@ -1,0 +1,453 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Daniel García Tamayo · Ingeniero Civil · Hoja de vida</title>
+<meta name="description" content="Hoja de vida de Daniel García Tamayo, ingeniero civil y Director de Proyectos de Intura Grupo Constructor.">
+<meta property="og:type" content="profile">
+<meta property="og:locale" content="es_CO">
+<meta property="og:site_name" content="Intura Grupo Constructor">
+<meta property="og:title" content="Daniel García Tamayo · Ingeniero Civil · Director de Proyectos">
+<meta property="og:description" content="Hoja de vida · Intura Grupo Constructor">
+<meta property="og:url" content="https://inturagrupoconstructor.com/daniel/">
+<meta property="og:image" content="https://inturagrupoconstructor.com/daniel/img/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="robots" content="noindex, nofollow">
+<meta name="color-scheme" content="light only">
+<meta name="theme-color" content="#0d0d0d">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=Inter+Tight:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--negro:#0d0d0d;--tinta:#141414;--gris:#595959;--gris2:#8c8c8c;--linea:#dcdcdc;--hueso:#f7f6f2;--azul:#2F5597;--azul2:#7593C9;--display:'Big Shoulders Display',sans-serif;--sans:'Inter Tight',system-ui,sans-serif;--g:clamp(20px,5vw,64px);--max:1180px}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:76px;-webkit-text-size-adjust:100%}
+body{margin:0;font-family:var(--sans);color:var(--tinta);background:#fff;line-height:1.5;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:var(--azul)}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 var(--g)}
+/* menú */
+.nav{position:fixed;top:0;left:0;right:0;z-index:50;background:rgba(255,255,255,.92);backdrop-filter:saturate(1.4) blur(10px);-webkit-backdrop-filter:saturate(1.4) blur(10px);border-bottom:1px solid var(--linea);transition:transform .3s}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px;gap:20px}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--tinta)}
+.brand img{height:22px;width:auto}
+.brand span{font-family:var(--display);font-weight:800;font-size:20px;letter-spacing:.5px;white-space:nowrap}
+.links{display:flex;gap:4px;align-items:center}
+.links a{text-decoration:none;color:var(--gris);font-size:13.5px;font-weight:600;padding:8px 12px;border-radius:999px;transition:color .2s,background .2s}
+.links a:hover{color:var(--tinta);background:#f1f1f1}
+.links a.on{color:var(--azul);background:rgba(47,85,151,.08)}
+.btn{display:inline-flex;align-items:center;gap:8px;text-decoration:none;font-weight:700;font-size:13px;letter-spacing:1px;padding:10px 16px;border-radius:999px;background:var(--tinta);color:#fff;border:0;cursor:pointer;white-space:nowrap}
+.btn:hover{background:#333}
+.btn svg{width:15px;height:15px}
+.menu-btn{display:none;background:none;border:1px solid var(--linea);border-radius:999px;padding:9px 14px;font:600 13px var(--sans);color:var(--tinta);cursor:pointer}
+@media (max-width:900px){
+ .links{display:none;position:absolute;top:64px;left:0;right:0;background:#fff;flex-direction:column;align-items:stretch;padding:10px var(--g) 18px;border-bottom:1px solid var(--linea);box-shadow:0 12px 24px rgba(0,0,0,.06)}
+ .links.open{display:flex}
+ .links a{padding:12px 14px;font-size:15px}
+ .menu-btn{display:inline-block}
+ .nav .btn.pdf-top{display:none}
+}
+/* hero */
+.hero{position:relative;min-height:min(100svh,920px);display:flex;align-items:flex-end;color:#fff;background:#111;overflow:hidden}
+.hero img.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:60% 25%;filter:grayscale(1) contrast(1.05) brightness(.75)}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.45) 0%,rgba(0,0,0,0) 30%,rgba(0,0,0,.1) 50%,rgba(0,0,0,.88) 100%)}
+.hero .wrap{position:relative;z-index:1;width:100%;padding-top:120px;padding-bottom:clamp(36px,6vh,64px)}
+.kicker{font-family:var(--display);font-weight:700;font-size:16px;letter-spacing:3px;opacity:.9}
+.hero h1{font-family:var(--display);font-weight:900;font-size:clamp(64px,13vw,168px);line-height:.86;margin:14px 0 18px;letter-spacing:-1px}
+.role{display:flex;align-items:center;gap:14px;font-size:clamp(13px,1.6vw,16px);letter-spacing:4px;font-weight:600}
+.role i{display:block;width:48px;height:3px;background:var(--azul2)}
+.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;margin-top:clamp(28px,5vh,48px);border-top:1px solid rgba(255,255,255,.25)}
+.stat{padding:18px 18px 0 0}
+.stat+.stat{padding-left:18px;border-left:1px solid rgba(255,255,255,.25)}
+.stat b{display:block;font-family:var(--display);font-weight:800;font-size:clamp(40px,6vw,72px);line-height:.95}
+.stat span{font-size:12.5px;letter-spacing:1px;opacity:.85}
+@media (max-width:600px){.stat{padding-right:8px}.stat+.stat{padding-left:10px}}
+/* secciones */
+section{padding:clamp(56px,9vw,110px) 0}
+.sec-head{display:flex;align-items:flex-end;gap:16px;margin-bottom:clamp(24px,4vw,40px);flex-wrap:wrap}
+.sec-head .n{font-family:var(--display);font-weight:800;font-size:26px;color:var(--azul);line-height:1;padding-bottom:10px}
+.sec-head h2{font-family:var(--display);font-weight:900;font-size:clamp(48px,8vw,96px);line-height:.85;margin:0;letter-spacing:-.5px}
+.lede{font-size:clamp(19px,2.3vw,26px);line-height:1.4;font-weight:500;max-width:30ch;margin:0}
+.perfil{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:clamp(24px,5vw,64px);align-items:start}
+.perfil p.txt{color:#333;font-size:16px;margin:0 0 18px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{font-size:12.5px;font-weight:600;border:1px solid var(--linea);padding:7px 12px;border-radius:999px}
+@media (max-width:800px){.perfil{grid-template-columns:1fr}}
+/* experiencia */
+.bg-hueso{background:var(--hueso)}
+.tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:28px}
+.tab{font:600 13px var(--sans);letter-spacing:.5px;padding:10px 16px;border-radius:999px;border:1px solid var(--linea);background:#fff;color:var(--gris);cursor:pointer;transition:all .2s}
+.tab:hover{color:var(--tinta);border-color:#bbb}
+.tab[aria-selected="true"]{background:var(--tinta);color:#fff;border-color:var(--tinta)}
+.panel[hidden]{display:none}
+.co{display:flex;flex-direction:column;gap:4px;padding:14px 0 14px 18px;border-left:4px solid var(--azul);margin-bottom:18px;background:linear-gradient(90deg,rgba(20,20,20,.05),rgba(20,20,20,0))}
+.co h3{margin:0;font-size:clamp(18px,2.2vw,22px);letter-spacing:.3px}
+.co .r{font-size:13.5px;font-weight:600;color:#404040}
+.co .r b{color:var(--tinta);letter-spacing:1px}
+.co .r .arr{color:var(--azul);font-size:18px;margin:0 4px}
+.co p{margin:0;font-size:14px;color:#404040}
+.sub{display:flex;align-items:baseline;gap:12px;margin:28px 0 6px;padding:10px 14px 8px;border-bottom:2px solid #bdbdbd;background:linear-gradient(90deg,rgba(20,20,20,.06),rgba(20,20,20,0))}
+.sub b{font-size:13px;letter-spacing:2px}
+.sub span{margin-left:auto;font-size:12px;color:var(--gris)}
+.job{display:grid;grid-template-columns:150px minmax(0,1fr);gap:22px;padding:18px 0;border-bottom:1px solid var(--linea)}
+.job .meta{display:flex;flex-direction:column;gap:4px}
+.job .d{font-size:13px;font-weight:600;color:#404040}
+.job .big{font-family:var(--display);font-weight:800;font-size:34px;line-height:1;color:var(--azul)}
+.job .big small{font-size:17px;margin-left:2px}
+.job .cl{font-size:11px;letter-spacing:1.5px;font-weight:700;color:var(--gris2)}
+.job .cn{font-size:13.5px;font-weight:600}
+.job h4{margin:0 0 3px;font-size:17px;line-height:1.3}
+.job .pl{font-size:13px;color:var(--gris);margin-bottom:6px}
+.job p{margin:0;font-size:14.5px;color:#262626}
+.job ul{margin:8px 0 0;padding:0;list-style:none;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:4px 20px}
+.job li{font-size:14px;padding-left:14px;position:relative}
+.job li::before{content:"";position:absolute;left:0;top:8px;width:5px;height:5px;background:var(--azul)}
+.badge{display:inline-block;font-size:10px;letter-spacing:1.3px;font-weight:700;padding:3px 8px;margin-left:8px;vertical-align:3px;white-space:nowrap;color:#fff}
+.b-int{background:linear-gradient(90deg,#2F5597,#7593C9)}
+.b-ad{background:linear-gradient(90deg,#4a4a4a,#8f8f8f)}
+.b-tc{background:linear-gradient(90deg,#6B4423,#A88059)}
+.b-mx{background:linear-gradient(90deg,#DCC9A3,#F3EBDB);color:#5E4A22}
+.b-pp{background:linear-gradient(90deg,#141414,#5c5c5c)}
+.b-ej{background:linear-gradient(90deg,#B5DFC2,#E8F5EC);color:#1E5631}
+.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0 22px}
+.cards.c4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.card{padding:14px 0;border-bottom:1px solid var(--linea);display:flex;flex-direction:column;gap:2px}
+.card b{font-size:15px;line-height:1.25}
+.card .pl{font-size:12.5px;color:var(--gris)}
+.card .c{font-size:12.5px;font-weight:600}
+.card p{margin:4px 0 0;font-size:13.5px;color:#262626}
+.lotes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px 22px;margin-top:10px}
+.lotes div b{display:block;font-family:var(--display);font-weight:800;font-size:26px;line-height:1}
+.lotes div span{font-size:12.5px;color:var(--gris)}
+@media (max-width:820px){
+ .job{grid-template-columns:1fr;gap:8px}
+ .job .meta{flex-direction:row;align-items:baseline;gap:12px;flex-wrap:wrap}
+ .job ul{grid-template-columns:1fr}
+ .cards,.cards.c4{grid-template-columns:1fr 1fr}
+ .lotes{grid-template-columns:1fr 1fr}
+}
+@media (max-width:520px){.cards,.cards.c4{grid-template-columns:1fr}.sub span{display:none}}
+/* galería */
+.gal{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));grid-auto-rows:260px;gap:14px}
+.gal button{position:relative;padding:0;border:0;cursor:zoom-in;overflow:hidden;background:#ddd;text-align:left}
+.gal button img{width:100%;height:100%;object-fit:cover;transition:transform .6s cubic-bezier(.2,.8,.2,1)}
+.gal button:hover img{transform:scale(1.04)}
+.gal button .cap{position:absolute;left:0;right:0;bottom:0;padding:40px 16px 12px;background:linear-gradient(180deg,rgba(0,0,0,0),rgba(0,0,0,.72));color:#fff;display:flex;justify-content:space-between;align-items:flex-end;gap:10px}
+.gal .cap b{display:block;font-family:var(--display);font-weight:800;font-size:20px;line-height:1.05}
+.gal .cap span{font-size:12px;opacity:.9}
+.gal .cap em{font-style:normal;font-family:var(--display);font-weight:700;font-size:16px;white-space:nowrap}
+.gal .hero-g{grid-column:1/-1;grid-row:span 2}
+.gal .hero-g .cap b{font-size:clamp(24px,3.4vw,38px)}
+@media (max-width:820px){.gal{grid-template-columns:1fr 1fr;grid-auto-rows:220px}}
+@media (max-width:520px){.gal{grid-template-columns:1fr;grid-auto-rows:240px}.gal .hero-g{grid-row:span 1}}
+.lb{position:fixed;inset:0;z-index:90;background:rgba(10,10,11,.96);display:grid;grid-template-rows:auto 1fr auto;padding:calc(env(safe-area-inset-top,0px) + 14px) var(--g) calc(env(safe-area-inset-bottom,0px) + 16px);gap:14px;color:#fff}
+.lb[hidden]{display:none}
+.lb-top{display:flex;justify-content:space-between;align-items:center;gap:16px}
+.lb-top b{font-family:var(--display);font-weight:800;font-size:clamp(20px,2.4vw,28px);min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.lb button{background:none;border:1px solid rgba(255,255,255,.3);color:#fff;border-radius:999px;cursor:pointer;font:600 12px var(--sans);letter-spacing:1.5px}
+.lb .x{padding:9px 16px}
+.lb-img{position:relative;min-height:0;display:grid;place-items:center}
+.lb-img img{max-width:100%;max-height:100%;object-fit:contain}
+.lb .nv{position:absolute;top:50%;transform:translateY(-50%);width:46px;height:46px;font-size:18px;background:rgba(10,10,11,.5)}
+.lb .pv{left:0}.lb .nx{right:0}
+.lb-cap{text-align:center;font-size:13px;opacity:.8}
+/* formación / herramientas */
+.two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(28px,5vw,64px)}
+.lbl{font-size:11.5px;letter-spacing:2px;font-weight:700;color:var(--gris);margin:0 0 12px}
+.edu{padding:12px 0;border-bottom:1px solid var(--linea)}
+.edu b{display:block;font-size:16px}
+.edu span{font-size:13.5px;color:var(--gris)}
+.tools{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px 20px}
+.tool{display:flex;align-items:center;gap:12px;font-size:14.5px}
+.tool img{width:38px;height:38px;object-fit:contain;flex:none}
+.tool .gl{width:38px;height:38px;border:1px solid #c8c8c8;display:grid;place-items:center;flex:none}
+@media (max-width:820px){.two{grid-template-columns:1fr}}
+.refs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+.ref{padding:14px 16px;border-left:2px solid var(--linea)}
+.ref b{display:block;font-size:15px}
+.ref span{display:block;font-size:13px;color:#404040;margin-top:2px}
+@media (max-width:820px){.refs{grid-template-columns:1fr 1fr}}
+@media (max-width:480px){.refs{grid-template-columns:1fr}}
+/* contacto */
+.contact{background:linear-gradient(90deg,#0d0d0d,#3d3d3d);color:#fff}
+.contact .wrap{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:40px;align-items:center}
+.contact h2{font-family:var(--display);font-weight:900;font-size:clamp(52px,9vw,110px);line-height:.85;margin:0 0 26px}
+.clist{display:grid;grid-template-columns:repeat(2,minmax(0,auto));gap:14px 36px}
+.clist a{display:flex;align-items:center;gap:12px;color:#fff;text-decoration:none;font-size:15.5px;border-bottom:1px solid transparent;width:max-content;max-width:100%}
+.clist a:hover{border-color:#fff}
+.clist svg{width:19px;height:19px;flex:none;stroke:#fff;fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.contact .mark{width:clamp(120px,14vw,180px)}
+@media (max-width:820px){.contact .wrap{grid-template-columns:1fr}.clist{grid-template-columns:1fr}.contact .mark{width:110px}}
+.foot{background:#0d0d0d;color:#bfbfbf;font-size:13px}
+.foot .wrap{display:flex;justify-content:space-between;align-items:center;gap:16px;padding-top:22px;padding-bottom:calc(env(safe-area-inset-bottom,0px) + 22px);flex-wrap:wrap}
+.foot a{color:#fff;text-decoration:none;font-family:var(--display);font-weight:700;font-size:17px;letter-spacing:1.5px;display:flex;align-items:center;gap:12px}
+.foot a img{height:18px}
+/* reveal */
+.rv{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.8,.2,1)}
+.rv.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
+@media print{.nav,.lb{display:none}.rv{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+
+<header class="nav" id="nav">
+  <div class="wrap">
+    <a class="brand" href="#inicio" aria-label="Inicio"><img src="img/ia_negro.png" alt=""><span>DANIEL GARCÍA TAMAYO</span></a>
+    <nav class="links" id="links" aria-label="Secciones">
+      <a href="#perfil">Perfil</a>
+      <a href="#experiencia">Experiencia</a>
+      <a href="#proyectos">Proyectos</a>
+      <a href="#formacion">Formación</a>
+      <a href="#referencias">Referencias</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+    <div style="display:flex;gap:8px;align-items:center">
+      <a class="btn pdf-top" href="hoja-de-vida-daniel-garcia-tamayo.pdf" download><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"/></svg>PDF</a>
+      <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="links">Menú</button>
+    </div>
+  </div>
+</header>
+
+<section class="hero" id="inicio" style="padding:0">
+  <img class="bg" src="img/daniel.jpg" alt="Daniel García Tamayo en obra">
+  <div class="wrap">
+    <div class="kicker">HOJA DE VIDA · PEREIRA, COLOMBIA</div>
+    <h1>DANIEL<br>GARCÍA TAMAYO</h1>
+    <div class="role"><i></i>INGENIERO CIVIL · DIRECTOR DE PROYECTOS</div>
+    <div class="stats">
+      <div class="stat"><b data-count="10" data-suf="+">10+</b><span>años de experiencia en obra</span></div>
+      <div class="stat"><b data-count="20" data-suf="+">20+</b><span>viviendas campestres construidas o intervenidas</span></div>
+      <div class="stat"><b data-count="10000" data-suf="+">10.000+</b><span>m² construidos e intervenidos</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="perfil">
+  <div class="wrap perfil rv">
+    <div>
+      <div class="sec-head"><span class="n">01</span><h2>PERFIL</h2></div>
+      <p class="lede">Más de diez años construyendo viviendas campestres, edificaciones y obras civiles, y más de cinco dirigiendo proyectos de principio a fin: diseño, presupuesto, ejecución y control.</p>
+    </div>
+    <div style="padding-top:clamp(0px,6vw,80px)">
+      <p class="txt">Cofundador y Director de Proyectos de Intura Grupo Constructor. Experiencia en presupuestos y programación de obra, gerencia y administración de obra por administración delegada, interventoría y reforzamiento estructural. Integra herramientas de inteligencia artificial en la gestión de sus proyectos.</p>
+      <div class="chips"><span class="chip">Administración delegada</span><span class="chip">Interventoría</span><span class="chip">Presupuestos y APU</span><span class="chip">Reforzamiento estructural</span><span class="chip">Patología post-sismo</span><span class="chip">Viviendas campestres</span><span class="chip">Construcción en guadua</span></div>
+      <p class="txt" style="margin-top:18px;font-size:14px;color:var(--gris)">Ingeniero Civil · Universidad Libre, Pereira · Matrícula profesional 66202-331568 RIS</p>
+    </div>
+  </div>
+</section>
+
+<section id="experiencia" class="bg-hueso">
+  <div class="wrap">
+    <div class="sec-head rv"><span class="n">02</span><h2>EXPERIENCIA</h2></div>
+    <div class="tabs" role="tablist" aria-label="Etapas de la experiencia">
+      <button class="tab" role="tab" aria-selected="true" aria-controls="t1" id="b1">Post-sismo 2026</button>
+      <button class="tab" role="tab" aria-selected="false" aria-controls="t2" id="b2">Intura 2023 – 2025</button>
+      <button class="tab" role="tab" aria-selected="false" aria-controls="t3" id="b3">Independiente 2022 – 2024</button>
+      <button class="tab" role="tab" aria-selected="false" aria-controls="t4" id="b4">2015 – 2021</button>
+    </div>
+
+    <div class="co">
+      <h3>INTURA GRUPO CONSTRUCTOR S.A.S.</h3>
+      <div class="r">Cofundador · Director de Proyectos · Representante Legal — Marzo 2023 <span class="arr">→</span><b>ACTUALMENTE</b></div>
+      <p>Empresa fundada con el Ing. Cristian Espinosa para el diseño, la construcción, la interventoría y la gerencia de proyectos de edificación.</p>
+    </div>
+
+    <div class="panel" role="tabpanel" id="t1" aria-labelledby="b1">
+      <div class="sub"><b>EJECUCIÓN DE OBRAS</b><span>reparación y reforzamiento</span></div>
+      <div class="job"><div class="meta"><span class="cl">CLIENTE</span><span class="cn">Victoria Centro Comercial Regional PH</span></div><div><h4>Victoria Centro Comercial<span class="badge b-ej">EN EJECUCIÓN</span></h4><div class="pl">Pereira</div><ul><li>Remodelación de la cubierta del mirador del piso 4</li><li>Reforzamiento y reconstrucción de la cubierta de las losas técnicas del piso 5</li><li>Reparaciones locativas en la fachada en vidrio del piso 3</li><li>Desinstalación y reemplazo de los cubrejuntas sísmicos de todo el centro comercial</li><li>Reparación y mantenimiento de las cubiertas del centro comercial</li></ul></div></div>
+      <div class="job"><div class="meta"><span class="cl">CLIENTE</span><span class="cn">Diego Toro</span></div><div><h4>Finca La Suiza<span class="badge b-ej">EN EJECUCIÓN</span></h4><div class="pl">Carminales Alto, Balboa (Risaralda)</div><p>Reparación y reforzamiento de la estructura de la casa, arreglos en cubierta, impermeabilización de losa y estructura nueva para bodega.</p></div></div>
+      <div class="job"><div class="meta"><span class="cl">CLIENTE</span><span class="cn">Conjunto Gamma 3</span></div><div><h4>Conjunto Gamma 3<span class="badge b-ej">EN EJECUCIÓN</span></h4><div class="pl">Barrio Gamma, Pereira</div><p>Reparación de 5 torres con afectaciones por el sismo.</p></div></div>
+      <div class="cards">
+        <div class="card"><b>Glamping Cielo en la Montaña</b><span class="pl">Balboa (Risaralda)</span><span class="c">Proyecto propio</span><p>Reforzamiento de la cimentación en concreto y de las columnas en guadua, reparación de muros y acabados.</p></div>
+        <div class="card"><b>Mirador de la Pradera</b><span class="pl">Torre 1, Apto 403 · Dosquebradas</span><span class="c">Cliente: Sara Lucía Castillo</span><p>Reparación de mampostería, cielos y acabados.</p></div>
+        <div class="card"><b>Casa Calle 28 con Carrera 11</b><span class="pl">Pereira</span><span class="c">Cliente: Norma</span><p>Reparación de muros y cubiertas.</p></div>
+      </div>
+      <div class="sub"><b>CONSULTORÍAS DE VULNERABILIDAD SÍSMICA Y REFORZAMIENTO</b><span>estudios y diseños</span></div>
+      <div class="cards">
+        <div class="card"><b>Conjunto Residencial Cedritos</b><span class="pl">Avenida Sur, Pereira</span><span class="c">Cliente: Víctor Hugo Orrego</span><p>Estudios de ingeniería para el reforzamiento estructural de las unidades de vivienda.</p></div>
+        <div class="card"><b>Edificio Doña Pastora</b><span class="pl">Centro, Pereira</span><p>Consultoría de vulnerabilidad sísmica y reforzamiento.</p></div>
+        <div class="card"><b>Casa Barrio Boston</b><span class="pl">Calle 22 # 19B-82, Pereira</span><p>Diseño de reforzamiento estructural y diseño de mezanine nuevo.</p></div>
+      </div>
+      <div class="sub"><b>INFORMES DE INSPECCIÓN, PRESUPUESTO DE OBRA Y TRÁMITE ANTE ASEGURADORA</b></div>
+      <div class="cards c4" id="informes"></div>
+    </div>
+
+    <div class="panel" role="tabpanel" id="t2" aria-labelledby="b2" hidden>
+      <div class="sub"><b>OBRAS 2023 – 2025</b></div>
+      <div id="intura"></div>
+    </div>
+
+    <div class="panel" role="tabpanel" id="t3" aria-labelledby="b3" hidden>
+      <div class="co" style="border-left-color:#8c8c8c"><h3>INGENIERO CIVIL INDEPENDIENTE</h3><div class="r">En alianza con el Ing. Cristian Espinosa — 2022 – 2024</div></div>
+      <div id="indep"></div>
+    </div>
+
+    <div class="panel" role="tabpanel" id="t4" aria-labelledby="b4" hidden>
+      <div class="co" style="border-left-color:#8c8c8c"><h3>DCI CONSTRUCTOR — EMPRESA PROPIA</h3><div class="r">Fundador e Ingeniero Civil — 2019 – 2021</div><p>Presupuestos, programación, diseño y planos, y ejecución de obras desde reformas locativas hasta casas campestres completas.</p></div>
+      <div class="cards" id="dci"></div>
+      <div class="co" style="border-left-color:#8c8c8c;margin-top:36px"><h3>FERNÁN GÓMEZ Y CÍA. S. EN C.</h3><div class="r">Ingeniero Residente — Febrero 2016 – enero 2019</div><p>Residencia de 6 viviendas campestres: presupuestos, contratación y manejo de personal, compras y supervisión de todo el proceso constructivo.</p></div>
+      <div style="display:flex;gap:28px;align-items:flex-end;flex-wrap:wrap"><div><b style="font-family:var(--display);font-weight:900;font-size:60px;line-height:.9;color:var(--azul)">2.367</b><div style="font-size:13px;color:var(--gris)">m² construidos en total</div></div><div class="lotes" style="flex:1;min-width:260px" id="lotes"></div></div>
+      <p style="font-size:14px;color:#262626;margin:16px 0 0">Además: 2 piscinas con sala de máquinas y tanques de reserva (una con borde infinito) y 3 pozos sépticos en concreto reforzado aprobados por la CARDER.</p>
+      <div class="co" style="border-left-color:#8c8c8c;margin-top:36px"><h3>MOVITIERRA CONSTRUCCIONES S.A.</h3><div class="r">Aprendiz universitario — Mayo – agosto 2015</div><p>Construcción de la glorieta de la Calle 52, Dosquebradas: control de calidad de pavimentos y concretos, cantidades de obra para preactas con la interventoría, comités de obra y bitácora.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="proyectos">
+  <div class="wrap">
+    <div class="sec-head rv"><h2>PROYECTOS DESTACADOS</h2></div>
+    <div class="gal rv" id="gal"></div>
+  </div>
+</section>
+
+<div class="lb" id="lb" hidden role="dialog" aria-modal="true" aria-label="Galería de proyectos">
+  <div class="lb-top"><b id="lbT"></b><button class="x" id="lbX">CERRAR</button></div>
+  <div class="lb-img"><img id="lbI" alt=""><button class="nv pv" id="lbP" aria-label="Anterior">‹</button><button class="nv nx" id="lbN" aria-label="Siguiente">›</button></div>
+  <div class="lb-cap" id="lbC"></div>
+</div>
+
+<section id="formacion" class="bg-hueso">
+  <div class="wrap two">
+    <div class="rv">
+      <div class="sec-head"><span class="n">03</span><h2>FORMACIÓN</h2></div>
+      <p class="lbl">ACADÉMICA</p>
+      <div class="edu"><b>Ingeniero Civil</b><span>Universidad Libre, Seccional Pereira · 2016</span></div>
+      <div class="edu"><b>Bachiller Académico</b><span>Colegio De La Salle, Pereira · 2010</span></div>
+      <p class="lbl" style="margin-top:28px">COMPLEMENTARIA</p>
+      <div class="edu"><b>Presupuestos, programación y control de proyectos con MS Project y Excel</b><span>Universidad EAFIT · 32 horas · 2015</span></div>
+      <div class="edu"><b>SketchUp Pro 2026: de cero a experto</b><span>Manuel Pallares</span></div>
+      <div class="edu"><b>Construyendo viviendas con Revit</b><span>Miguel Ángel Soto, SDQ Training Center</span></div>
+      <div class="edu"><b>Revit desde cero</b><span>Carlos Lucena</span></div>
+      <div class="edu"><b>Lumion de inicio a experto</b><span>Leonel Flórez</span></div>
+      <div class="edu"><b>Claude Code</b><span>Enrique Rocha</span></div>
+    </div>
+    <div class="rv">
+      <div class="sec-head"><span class="n">04</span><h2>HERRAMIENTAS</h2></div>
+      <div class="tools">
+        <div class="tool"><img src="img/logo-claude.png" alt="">Claude Cowork y Claude Code</div>
+        <div class="tool"><img src="img/logo-ia.png" alt="">IA aplicada a la administración de obra</div>
+        <div class="tool"><img src="img/logo-autocad.png" alt="">AutoCAD</div>
+        <div class="tool"><img src="img/logo-sketchup.png" alt="">SketchUp</div>
+        <div class="tool"><img src="img/logo-revit.png" alt="">Revit</div>
+        <div class="tool"><img src="img/logo-lumion.png" alt="">Lumion</div>
+        <div class="tool"><img src="img/logo-excel.png" alt="">Excel</div>
+        <div class="tool"><span class="gl"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#141414" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.6-3.8-9S9.5 5.6 12 3z"/></svg></span>Español (nativo)</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="referencias">
+  <div class="wrap rv">
+    <div class="sec-head"><span class="n">05</span><h2>REFERENCIAS</h2></div>
+    <p class="lbl">LABORALES</p>
+    <div class="refs">
+      <div class="ref"><b>Ing. Jhonatan Ramírez</b><span>Ingeniero civil independiente · JR Construcciones</span></div>
+      <div class="ref"><b>Ing. Sebastián Salazar</b><span>Ingeniero civil independiente con empresa propia</span></div>
+      <div class="ref"><b>Felipe Carvajal</b><span>Ingeniero comercial · Propietario de Motores del Eje</span></div>
+      <div class="ref"><b>Diego Toro</b><span>CEO de Hamptons VIP (Nueva York) · Propietario del Glamping Camp de Luxe</span></div>
+    </div>
+    <p class="lbl" style="margin-top:26px">PERSONALES</p>
+    <div class="refs">
+      <div class="ref"><b>Santiago Montoya</b><span>Propietario de laboratorio dental</span></div>
+      <div class="ref"><b>Jorge Osorio</b><span>Ingeniero de sistemas</span></div>
+    </div>
+    <p style="font-size:13.5px;color:var(--gris);margin:22px 0 0">Los datos de contacto de las referencias están en la hoja de vida en PDF.</p>
+  </div>
+</section>
+
+<section class="contact" id="contacto">
+  <div class="wrap">
+    <div>
+      <h2>CONTACTO</h2>
+      <div class="clist">
+        <a href="tel:+573104261875"><svg viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>310 426 1875</a>
+        <a href="mailto:gerencia@inturagrupoconstructor.com"><svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>gerencia@inturagrupoconstructor.com</a>
+        <a href="mailto:dgarcia.civil@gmail.com"><svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>dgarcia.civil@gmail.com</a>
+        <a href="https://instagram.com/ingdanielgarciat" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".6"/></svg>@ingdanielgarciat</a>
+        <a href="https://instagram.com/inturagrupoconstructor" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".6"/></svg>@inturagrupoconstructor</a>
+        <a href="https://inturagrupoconstructor.com/"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.6-3.8-9S9.5 5.6 12 3z"/></svg>www.inturagrupoconstructor.com</a>
+      </div>
+      <a class="btn" href="hoja-de-vida-daniel-garcia-tamayo.pdf" download style="margin-top:30px;background:#fff;color:#141414"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"/></svg>DESCARGAR HOJA DE VIDA EN PDF</a>
+    </div>
+    <img class="mark" src="img/ia_blanco.png" alt="Intura Grupo Constructor">
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="wrap">
+    <a href="https://inturagrupoconstructor.com/"><img src="img/ia_blanco.png" alt="">inturagrupoconstructor.com</a>
+    <span>Hoja de vida · Daniel García Tamayo</span>
+  </div>
+</footer>
+
+<script>
+(function(){
+var AD=['ADMINISTRACIÓN DELEGADA','b-ad'],TC=['CONTRATO TODO COSTO','b-tc'],MX=['CONTRATO MIXTO','b-mx'],IN=['INTERVENTORÍA','b-int'],PP=['PROYECTO PROPIO','b-pp'];
+function esc(s){return String(s).replace(/[&<>]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;'}[c]})}
+function job(o){var b=o.b?'<span class="badge '+o.b[1]+'">'+o.b[0]+'</span>':'';var big=o.n?'<span class="big">'+o.n+'<small>'+o.u+'</small></span>':'';
+ return '<div class="job"><div class="meta"><span class="d">'+o.d+'</span>'+big+'</div><div><h4>'+esc(o.t)+b+'</h4><div class="pl">'+esc(o.p)+'</div><p>'+esc(o.x)+'</p></div></div>'}
+var intura=[
+ {d:'May 2023 – may 2024',n:'812',u:' m²',t:'Vivienda campestre Senderos Casa 35',p:'Maracay Ciudad Campestre, Pereira',x:'Interventoría técnica en las etapas de inicio, obra negra y obra gris de una vivienda ejecutada por administración delegada del Arq. Juan Zapata. Incluyó la demolición de la casa existente y el aprovechamiento de parte de su cimentación.',b:IN},
+ {d:'Sep 2024 – ene 2026',n:'435',u:' m²',t:'Casa campestre Guaduales Norte 39',p:'Maracay, Pereira',x:'Construcción en todas las etapas, hasta la entrega final.',b:AD},
+ {d:'Jun 2023 – dic 2024',n:'300',u:' m²',t:'Casa Familia Arcila',p:'San José del Bosque – El Tigre, Cerritos',x:'Gestión de los diseños arquitectónico, estructural, eléctrico e hidrosanitario, y construcción total de la vivienda.',b:AD},
+ {d:'Abr 2023 – jun 2024',n:'340',u:' m²',t:'Restaurante El Jazmín',p:'Paraje Balsora, Santa Rosa de Cabal',x:'Demolición de la estructura existente y construcción de una estructura nueva, con sistema de tratamiento de aguas residuales (STARD).',b:AD},
+ {d:'Jul 2023 – mar 2024',n:'51',u:' m²',t:'Vivienda Mz 5 Casa 9',p:'Barrio Tinajas, Pereira',x:'Demoliciones, reforzamiento estructural del piso 1 y construcción del piso 2.',b:TC},
+ {d:'Ago – dic 2025',n:'80',u:' m²',t:'Casa campestre en guadua',p:'Carminales Alto, Balboa (Risaralda)',x:'Construcción total en guadua, con STARD.',b:AD},
+ {d:'Sep 2024 – feb 2025',n:'1',u:' cabaña',t:'Glamping Cielo en la Montaña',p:'Balboa (Risaralda)',x:'Construcción de una cabaña en guadua con cubierta en techo de paja, urbanismo del lote y construcción de la zona social.',b:PP}];
+var indep=[
+ {d:'2022 – 2024',n:'190',u:' m²',t:'Glamping Camp de Luxe',p:'Altagracia, Pereira',x:'Desde cero: diseño arquitectónico y construcción de 2 cabañas de 50 m² y recepción de 90 m², urbanismo del lote (vía interna, escaleras) y estabilización del talud con canales en concreto y 2 cortinas de pilotes.',b:AD},
+ {d:'Jul 2022 – ago 2024',n:'2',u:' casas',t:'Proyecto Brisamar — El Poblado S.A.',p:'San José (Caldas)',x:'Construcción de 2 viviendas casa tipo Guaimaral: Mz 11 Lote 41 (jul 2022 – jul 2023) y Mz 7 Lote 7 (oct 2023 – ago 2024).',b:MX},
+ {d:'Oct 2022 – may 2023',n:'3',u:' pisos',t:'Vivienda Mz 2 Casa 11',p:'Barrio La Acuarela (Cuba), Pereira',x:'Demolición de la vivienda existente y construcción de una nueva de 3 pisos.',b:TC},
+ {d:'Sep 2022',n:'455',u:' m²',t:'Terminal de Transportes de Pereira',p:'Pereira',x:'Desmonte e instalación de la cubierta del pasillo central del segundo piso.',b:TC},
+ {d:'Ene 2022 – ene 2024',n:'4',u:' locales',t:'Restaurantes Vita Salata y Sanito – La Rebeca',p:'C.C. Victoria, Unicentro y Cerritos Mall',x:'Adecuaciones locativas de los restaurantes.',b:TC}];
+var inf=[['Cerritos Reservado','Torre 5, Apto 5041','Steven Correa'],['Chorlaví, Casa 8','El Tigre','Héctor Fernando Aragón'],['Villa del Sol','Bloque 6, Apto 101','Gladys Franco Gallo'],['Laguitos Pinares','Torre B, Apto 602','Paola Salcedo'],['Ecohotel La Selecta','Vía Altagracia','Paola Salcedo'],['Casa Cra 16 # 23-36','Centenario','Luis Fernando Correa'],['El Nogal Club Residencial','Torre 4, Apto 423','Daniela Morales'],['Torres de Centenario','Cra 15 # 22-41, Apto 208','Alejandro Granados'],['Casa 4D Loma Linda','Vía Condina','Rocka Labs'],['Edificio 30 de Agosto','# 52-342','Camilo Ortiz'],['Edificio El Lago','Calle 25 # 8-27','Juan Pablo Morales'],['Edificio Karami','Av. Circunvalar','Juan Zapata'],['Escuela Gastronómica de Occidente','Pereira','EGO Pereira S.A.S.'],['Edificio Jaimar','Cartago','Jaime Alzate'],['Camino de Álamos','Torre 2, Apto 502','Martha Lucía Manzano'],['Jardines de Tanambí','Bloque 9, Apto 914','Luz Amparo Henao'],['Obelisco de la Villa','Torre 2, Apto 302','Alba Irene Castañeda']];
+var dci=[['Casa 7, Condominio San Felipe','Cerritos · 728 m² de vivienda + 235 m² de piscina y jacuzzi, cancha sintética y estructuras metálicas'],['Casa campestre familia Flórez','Ulloa (Valle) · construcción hasta obra gris'],['Restaurantes El Patio Burgués y Vita Salata','Galicia Mall, Unicentro y Victoria · remodelación total de locales'],['Casa Cural La Sultana','Dosquebradas · segundo piso, redes nuevas y acabados'],['Terrazas de Chipichape','Cali · placas de contrapiso y entrepiso para tanques de agua potable'],['Molivento de las Villas 1','Dosquebradas · reparación de techos de 7 manzanas y 2 torres'],['Casa 7, Condominio Alcaravanes','Viterbo · reparación de cubierta y canales'],['Edificio Maipú','Planos récord de redes eléctricas'],['Edificio Monserrate y Casa Gualanday 7','Dosquebradas y Cerritos · presupuestos y programación de obra']];
+var lotes=[['414 m²','Bosques de Maracay, L21'],['560 m²','Guaduales Sur Maracay, L13'],['209 m²','Cond. Alsacia, L26'],['230 m²','Cond. Alsacia, L39'],['495 m²','Taquara Cerritos, L14'],['460 m²','Taquara Cerritos, L15']];
+document.getElementById('intura').innerHTML=intura.map(job).join('');
+document.getElementById('indep').innerHTML=indep.map(job).join('');
+document.getElementById('informes').innerHTML=inf.map(function(r){return '<div class="card"><b>'+r[0]+'</b><span class="pl">'+r[1]+'</span><span class="c">'+r[2]+'</span></div>'}).join('');
+document.getElementById('dci').innerHTML=dci.map(function(r){return '<div class="card"><b>'+r[0]+'</b><p>'+r[1]+'</p></div>'}).join('');
+document.getElementById('lotes').innerHTML=lotes.map(function(r){return '<div><b>'+r[0]+'</b><span>'+r[1]+'</span></div>'}).join('');
+
+// tabs
+var tabs=[].slice.call(document.querySelectorAll('.tab'));
+tabs.forEach(function(t,i){t.addEventListener('click',function(){tabs.forEach(function(o){o.setAttribute('aria-selected',o===t?'true':'false');document.getElementById(o.getAttribute('aria-controls')).hidden=o!==t});});
+ t.addEventListener('keydown',function(e){var k=e.key==='ArrowRight'?1:e.key==='ArrowLeft'?-1:0;if(k){var n=tabs[(i+k+tabs.length)%tabs.length];n.focus();n.click();}})});
+
+// galería
+var G=[['guaduales','Casa campestre Guaduales Norte 39','Maracay, Pereira · Administración delegada · 435 m²','2024 – 2026','50% 74%'],['camp','Glamping Camp de Luxe','Cabaña Mármol · Altagracia','2022 – 2024','50% 45%'],['cielo','Glamping Cielo en la Montaña','Proyecto propio · Balboa','2024 – 2025','50% 62%'],['senderos','Senderos Casa 35','Interventoría · Maracay','2023 – 2024','50% 55%'],['victoria','Victoria Centro Comercial','Cubierta del mirador, piso 4','2026','50% 50%'],['brisamar','Proyecto Brisamar','El Poblado · San José (Caldas)','2022 – 2024','50% 45%'],['balboa','Casa campestre en guadua','Estructura en guadua · Balboa','2025','50% 40%']];
+var gal=document.getElementById('gal');
+gal.innerHTML=G.map(function(g,i){return '<button type="button" class="'+(i===0?'hero-g':'')+'" data-i="'+i+'" aria-label="Ver '+g[1]+'"><img src="img/'+g[0]+'.jpg" alt="'+g[1]+'" loading="lazy" style="object-position:'+g[4]+'"><span class="cap"><span><b>'+g[1]+'</b><span>'+g[2]+'</span></span><em>'+g[3]+'</em></span></button>'}).join('');
+var lb=document.getElementById('lb'),I=document.getElementById('lbI'),T=document.getElementById('lbT'),C=document.getElementById('lbC'),cur=0,last=null;
+function show(i){cur=(i+G.length)%G.length;var g=G[cur];I.src='img/'+g[0]+'.jpg';I.alt=g[1];T.textContent=g[1];C.textContent=g[2]+' · '+g[3]+'  ('+(cur+1)+' / '+G.length+')';}
+gal.addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;last=b;show(+b.dataset.i);lb.hidden=false;document.body.style.overflow='hidden';document.getElementById('lbX').focus();});
+function close(){lb.hidden=true;document.body.style.overflow='';if(last)last.focus();}
+document.getElementById('lbX').onclick=close;document.getElementById('lbP').onclick=function(){show(cur-1)};document.getElementById('lbN').onclick=function(){show(cur+1)};
+lb.addEventListener('click',function(e){if(e.target===lb||e.target.classList.contains('lb-img'))close();});
+lb.addEventListener('keydown',function(e){if(e.key==='Escape')close();if(e.key==='ArrowRight')show(cur+1);if(e.key==='ArrowLeft')show(cur-1);});
+var sx=null;lb.addEventListener('touchstart',function(e){sx=e.touches[0].clientX},{passive:true});lb.addEventListener('touchend',function(e){if(sx===null)return;var dx=e.changedTouches[0].clientX-sx;if(Math.abs(dx)>40)show(cur+(dx<0?1:-1));sx=null;});
+
+// menú
+var mb=document.getElementById('menuBtn'),lk=document.getElementById('links');
+mb.addEventListener('click',function(){var o=lk.classList.toggle('open');mb.setAttribute('aria-expanded',o)});
+lk.addEventListener('click',function(e){if(e.target.tagName==='A'){lk.classList.remove('open');mb.setAttribute('aria-expanded','false')}});
+var secs=['perfil','experiencia','proyectos','formacion','referencias','contacto'].map(function(id){return document.getElementById(id)});
+var la=[].slice.call(lk.querySelectorAll('a'));
+function spy(){var y=window.scrollY+120,on=-1;secs.forEach(function(s,i){if(s.offsetTop<=y)on=i});la.forEach(function(a,i){a.classList.toggle('on',i===on)})}
+window.addEventListener('scroll',spy,{passive:true});spy();
+
+// reveal + contadores
+var red=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+if('IntersectionObserver' in window&&!red){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12});document.querySelectorAll('.rv').forEach(function(el){io.observe(el)});}
+else document.querySelectorAll('.rv').forEach(function(el){el.classList.add('in')});
+if(!red){document.querySelectorAll('[data-count]').forEach(function(el){var to=+el.dataset.count,suf=el.dataset.suf||'',t0=null,d=1400;function f(n){return n.toLocaleString('es-CO')}
+ function step(ts){if(!t0)t0=ts;var p=Math.min(1,(ts-t0)/d),v=Math.round(to*(1-Math.pow(1-p,3)));el.textContent=f(v)+suf;if(p<1)requestAnimationFrame(step)}el.textContent='0'+suf;setTimeout(function(){requestAnimationFrame(step)},300);});}
+})();
+</script>
+</body>
+</html>
